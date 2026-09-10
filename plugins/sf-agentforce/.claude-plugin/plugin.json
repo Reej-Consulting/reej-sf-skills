@@ -1,0 +1,21 @@
+{
+  "name": "sf-agentforce",
+  "displayName": "Salesforce — Agentforce & Data 360",
+  "version": "2026.9.8",
+  "description": "Agentforce (Agent Script, tests, observabilité, architecture, migration Einstein Bots), Data 360 / Data Cloud, Models API et canaux Agentforce. 14 skills, synchronisés depuis forcedotcom/sf-skills@bfca400c.",
+  "author": {
+    "name": "Reej Consulting (repackaging) — skills © Salesforce",
+    "url": "https://github.com/forcedotcom/sf-skills"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/forcedotcom/sf-skills",
+  "keywords": [
+    "salesforce",
+    "agentforce",
+    "agent script",
+    "data cloud",
+    "data 360",
+    "einstein bots"
+  ],
+  "skills": "./skills/"
+}

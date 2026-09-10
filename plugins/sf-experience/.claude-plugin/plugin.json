@@ -1,0 +1,22 @@
+{
+  "name": "sf-experience",
+  "displayName": "Salesforce — Experience, LWC & Mobile",
+  "version": "2026.9.8",
+  "description": "Experience Cloud, LWC, LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile SDK. 42 skills, synchronisés depuis forcedotcom/sf-skills@bfca400c.",
+  "author": {
+    "name": "Reej Consulting (repackaging) — skills © Salesforce",
+    "url": "https://github.com/forcedotcom/sf-skills"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/forcedotcom/sf-skills",
+  "keywords": [
+    "salesforce",
+    "lwc",
+    "experience cloud",
+    "react",
+    "cms",
+    "commerce",
+    "mobile"
+  ],
+  "skills": "./skills/"
+}

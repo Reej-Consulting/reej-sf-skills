@@ -1,0 +1,21 @@
+{
+  "name": "sf-devops",
+  "displayName": "Salesforce — DevOps & Orgs",
+  "version": "2026.9.8",
+  "description": "DevOps Center, pipelines, gestion des orgs (scratch, sandbox, Dev Hub, trials), packaging, post-copy sandbox. 20 skills, synchronisés depuis forcedotcom/sf-skills@bfca400c.",
+  "author": {
+    "name": "Reej Consulting (repackaging) — skills © Salesforce",
+    "url": "https://github.com/forcedotcom/sf-skills"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/forcedotcom/sf-skills",
+  "keywords": [
+    "salesforce",
+    "devops",
+    "sandbox",
+    "scratch org",
+    "dev hub",
+    "packaging"
+  ],
+  "skills": "./skills/"
+}
