@@ -32,6 +32,7 @@ PLUGINS_DIR = ROOT / "plugins"
 MARKETPLACE_FILE = ROOT / ".claude-plugin" / "marketplace.json"
 STATE_FILE = ROOT / "SYNC_STATE.json"
 PLUGIN_PREFIX = "sf-"
+LONG_PATH_WARN = 170  # longueur relative au-delà de laquelle un chemin est signalé (Windows MAX_PATH = 260)
 
 # --------------------------------------------------------------------------
 # Répartition par domaine. L'ordre compte : la première règle qui matche gagne.
@@ -230,6 +231,23 @@ def main() -> int:
             print("### ⚠️ EXTRA_SKILLS introuvables upstream (déplacés ou supprimés ?)\n")
             for rel in missing_extra:
                 print(f"- `{rel}`")
+            print()
+        # Windows : limite MAX_PATH = 260 caractères. Claude Code clone le marketplace sous
+        # C:\Users\<user>\.claude\plugins\marketplaces\<temp>\ (≈ 70-90 caractères de préfixe).
+        long_paths = []
+        for s in skills:
+            for f in sources[s].rglob("*"):
+                if f.is_file():
+                    rel = f"plugins/{PLUGIN_PREFIX}{placement[s]}/skills/{s}/{f.relative_to(sources[s]).as_posix()}"
+                    if len(rel) > LONG_PATH_WARN:
+                        long_paths.append((len(rel), rel))
+        if long_paths:
+            long_paths.sort(reverse=True)
+            print(f"### ⚠️ {len(long_paths)} chemins > {LONG_PATH_WARN} caractères (risque « Filename too long » sous Windows sans `core.longpaths`)\n")
+            for n, rel in long_paths[:10]:
+                print(f"- {n} : `{rel}`")
+            if len(long_paths) > 10:
+                print(f"- … et {len(long_paths) - 10} autres")
             print()
         counts = {d: sum(1 for v in placement.values() if v == d) for d in DOMAINS}
         print("### Répartition\n")
