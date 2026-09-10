@@ -25,7 +25,7 @@ La liste exacte des skills de chaque plugin est dans `plugins/<plugin>/README.md
 ### Claude Code (VS Code / terminal)
 
 ```bash
-claude plugin marketplace add <ORG_GITHUB>/reej-sf-skills
+claude plugin marketplace add Reej-Consulting/reej-sf-skills
 claude plugin install sf-agentforce@reej-salesforce
 claude plugin install sf-platform@reej-salesforce
 ```
@@ -37,7 +37,21 @@ claude plugin marketplace update reej-salesforce
 claude plugin update sf-agentforce@reej-salesforce
 ```
 
-Si le repo est privé, remplacez `<ORG_GITHUB>/reej-sf-skills` par l'URL git complète (SSH ou HTTPS avec vos identifiants).
+Sans le CLI `claude` dans le terminal (extension VS Code seule), tapez `/plugin` dans la conversation Claude Code : l'onglet *Marketplaces* accepte `Reej-Consulting/reej-sf-skills` ou l'URL complète du repo.
+
+**Windows — à faire une fois avant l'ajout du marketplace.** Certains skills (exemples OmniStudio notamment) ont des chemins qui dépassent la limite Windows de 260 caractères une fois clonés sous `C:\Users\<vous>\.claude\plugins\marketplaces\…`. Sans ce réglage, l'ajout échoue avec `Filename too long` :
+
+```powershell
+git config --global core.longpaths true
+```
+
+Si l'erreur persiste, activer les chemins longs au niveau de Windows (PowerShell en administrateur, puis redémarrer le terminal) :
+
+```powershell
+New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
+```
+
+Si le repo est privé, remplacez `Reej-Consulting/reej-sf-skills` par l'URL git complète (SSH ou HTTPS avec vos identifiants).
 
 ### Claude Cowork (app desktop)
 
