@@ -37,7 +37,7 @@ claude plugin marketplace update reej-salesforce
 claude plugin update sf-agentforce@reej-salesforce
 ```
 
-Sans le CLI `claude` dans le terminal (extension VS Code seule), tapez `/plugin` dans la conversation Claude Code : l'onglet *Marketplaces* accepte `Reej-Consulting/reej-sf-skills` ou l'URL complète du repo.
+Sans le CLI `claude` dans le terminal (extension VS Code seule), tapez `/plugin` dans la conversation Claude Code : l'onglet *Marketplaces* accepte `Reej-Consulting/reej-sf-skills` ou l'URL complète du repo `https://github.com/Reej-Consulting/reej-sf-skills`.
 
 **Windows — à faire une fois avant l'ajout du marketplace.** Certains skills (exemples OmniStudio notamment) ont des chemins qui dépassent la limite Windows de 260 caractères une fois clonés sous `C:\Users\<vous>\.claude\plugins\marketplaces\…`. Sans ce réglage, l'ajout échoue avec `Filename too long` :
 
