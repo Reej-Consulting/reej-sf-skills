@@ -16,7 +16,6 @@ Usage :
 from __future__ import annotations
 
 import argparse
-import datetime as dt
 import json
 import os
 import re
@@ -323,7 +322,8 @@ def main() -> int:
             "upstream_repo": UPSTREAM_URL,
             "upstream_commit": commit,
             "upstream_commit_date": commit_date,
-            "synced_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+            # pas d'horodatage du run : le fichier ne doit changer que si l'upstream change,
+            # sinon chaque exécution ouvrirait une PR vide
             "skills": placement,
         }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         log("Synchro terminée.")
