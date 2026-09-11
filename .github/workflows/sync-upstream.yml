@@ -57,6 +57,7 @@ jobs:
           title: "Sync sf-skills upstream (${{ steps.sync.outputs.upstream_date }})"
           body-path: /tmp/sync-summary.md
           labels: sync
+          assignees: ncomm
 
       - name: Commit directly to main
         if: steps.sync.outputs.changed == 'true' && inputs.auto_merge == true
