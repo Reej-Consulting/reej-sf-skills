@@ -2,7 +2,7 @@
 
 Service Cloud : Omni-Channel, Digital Engagement (WhatsApp, messaging), ITSM, Email-to-Case, Help Agent, portails.
 
-61 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `bfca400c` (2026-09-08). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+61 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `80e068df` (2026-09-11). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 | Skill | Description |
 |---|---|

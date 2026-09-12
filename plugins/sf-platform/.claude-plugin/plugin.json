@@ -1,8 +1,8 @@
 {
   "name": "sf-platform",
   "displayName": "Salesforce — Platform & Apex",
-  "version": "2026.9.8",
-  "description": "Socle plateforme : métadonnées (objets, champs, permissions, sharing), Apex, Flow, SOQL, déploiement/retrieve, Code Analyzer, SLDS, documentation Salesforce. 54 skills, synchronisés depuis forcedotcom/sf-skills@bfca400c.",
+  "version": "2026.9.11",
+  "description": "Socle plateforme : métadonnées (objets, champs, permissions, sharing), Apex, Flow, SOQL, déploiement/retrieve, Code Analyzer, SLDS, documentation Salesforce. 54 skills, synchronisés depuis forcedotcom/sf-skills@80e068df.",
   "author": {
     "name": "Reej Consulting (repackaging) — skills © Salesforce",
     "url": "https://github.com/forcedotcom/sf-skills"

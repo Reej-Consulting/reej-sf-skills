@@ -2,7 +2,7 @@
 
 Agentforce (Agent Script, tests, observabilité, architecture, migration Einstein Bots), Data 360 / Data Cloud, Models API et canaux Agentforce.
 
-14 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `bfca400c` (2026-09-08). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+15 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `80e068df` (2026-09-11). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 | Skill | Description |
 |---|---|
@@ -19,4 +19,5 @@ Agentforce (Agent Script, tests, observabilité, architecture, migration Einstei
 | `platform-tracing-agentforce-configure` | Generate AgentforcePlatformTracingSettings metadata to enable or disable Agentforce agent execution trace spans flowing to Data Cloud. Use this skill for any AgentforcePlatformTrac… |
 | `sales-agentforce-pipeline-management-configure` | Use to configure, set up, or repair the Sales Management agent and Agentforce Pipeline Management in a Salesforce org. Automates metadata creation for flows, prompt templates, perm… |
 | `service-agentforce-channel-configure` | Wires an existing, active Agentforce agent to a channel by resolving a fallback queue, setting up inbound routing (either PATCH SessionHandlerId on the MessagingChannel, or an inbo… |
+| `service-agentforce-contact-center-coordinate` | Coordinates end-to-end setup of an Agentforce Contact Center voice channel: gathers country and phone-number-type selections, procures a chosen number, resolves its CommunicationCh… |
 | `service-agentforce-human-escalation-configure` | Use to configure and verify Agentforce agent-to-human escalation, including human handoff, a staffed fallback queue, and failure-threshold directives. Triggers: configure agent esc… |

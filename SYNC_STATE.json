@@ -1,8 +1,7 @@
 {
   "upstream_repo": "https://github.com/forcedotcom/sf-skills.git",
-  "upstream_commit": "bfca400cddef350aba61abc1be548cf9f1f1e2fc",
-  "upstream_commit_date": "2026-09-08",
-  "synced_at": "2026-09-10T16:09:32+00:00",
+  "upstream_commit": "80e068df8b06cbba9fc1f11c800f3e9a299be787",
+  "upstream_commit_date": "2026-09-11",
   "skills": {
     "platform-tracing-agentforce-configure": "agentforce",
     "education-cloud-student-recruitment-agent-configure": "industries",
@@ -93,6 +92,7 @@
     "experience-content-media-stock-image-search": "experience",
     "platform-agentsetup-categories-fetch": "agentforce",
     "dx-code-analyzer-configure": "platform",
+    "service-agentforce-contact-center-coordinate": "agentforce",
     "agentforce-generate": "agentforce",
     "automation-sandbox-post-copy-configure": "devops",
     "experience-cms-content-generate": "experience",
