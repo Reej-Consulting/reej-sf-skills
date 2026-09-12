@@ -1,8 +1,8 @@
 {
   "name": "sf-industries",
   "displayName": "Salesforce — Industries",
-  "version": "2026.9.8",
-  "description": "Field Service, Consumer Goods, Education Cloud, Life Sciences. 27 skills, synchronisés depuis forcedotcom/sf-skills@bfca400c.",
+  "version": "2026.9.11",
+  "description": "Field Service, Consumer Goods, Education Cloud, Life Sciences. 27 skills, synchronisés depuis forcedotcom/sf-skills@80e068df.",
   "author": {
     "name": "Reej Consulting (repackaging) — skills © Salesforce",
     "url": "https://github.com/forcedotcom/sf-skills"

@@ -1,6 +1,6 @@
 {
   "name": "reej-salesforce",
-  "version": "2026.9.8",
+  "version": "2026.9.11",
   "description": "Marketplace Reej — skills Salesforce & Agentforce (miroir de forcedotcom/sf-skills, repackagé par domaine, synchro quotidienne).",
   "owner": {
     "name": "Reej Consulting"
@@ -9,8 +9,8 @@
     {
       "name": "sf-agentforce",
       "source": "./plugins/sf-agentforce",
-      "description": "Agentforce (Agent Script, tests, observabilité, architecture, migration Einstein Bots), Data 360 / Data Cloud, Models API et canaux Agentforce. 14 skills, synchronisés depuis forcedotcom/sf-skills@bfca400c.",
-      "version": "2026.9.8",
+      "description": "Agentforce (Agent Script, tests, observabilité, architecture, migration Einstein Bots), Data 360 / Data Cloud, Models API et canaux Agentforce. 15 skills, synchronisés depuis forcedotcom/sf-skills@80e068df.",
+      "version": "2026.9.11",
       "keywords": [
         "salesforce",
         "agentforce",
@@ -23,8 +23,8 @@
     {
       "name": "sf-platform",
       "source": "./plugins/sf-platform",
-      "description": "Socle plateforme : métadonnées (objets, champs, permissions, sharing), Apex, Flow, SOQL, déploiement/retrieve, Code Analyzer, SLDS, documentation Salesforce. 54 skills, synchronisés depuis forcedotcom/sf-skills@bfca400c.",
-      "version": "2026.9.8",
+      "description": "Socle plateforme : métadonnées (objets, champs, permissions, sharing), Apex, Flow, SOQL, déploiement/retrieve, Code Analyzer, SLDS, documentation Salesforce. 54 skills, synchronisés depuis forcedotcom/sf-skills@80e068df.",
+      "version": "2026.9.11",
       "keywords": [
         "salesforce",
         "apex",
@@ -38,8 +38,8 @@
     {
       "name": "sf-devops",
       "source": "./plugins/sf-devops",
-      "description": "DevOps Center, pipelines, gestion des orgs (scratch, sandbox, Dev Hub, trials), packaging, post-copy sandbox. 20 skills, synchronisés depuis forcedotcom/sf-skills@bfca400c.",
-      "version": "2026.9.8",
+      "description": "DevOps Center, pipelines, gestion des orgs (scratch, sandbox, Dev Hub, trials), packaging, post-copy sandbox. 20 skills, synchronisés depuis forcedotcom/sf-skills@80e068df.",
+      "version": "2026.9.11",
       "keywords": [
         "salesforce",
         "devops",
@@ -52,8 +52,8 @@
     {
       "name": "sf-service",
       "source": "./plugins/sf-service",
-      "description": "Service Cloud : Omni-Channel, Digital Engagement (WhatsApp, messaging), ITSM, Email-to-Case, Help Agent, portails. 61 skills, synchronisés depuis forcedotcom/sf-skills@bfca400c.",
-      "version": "2026.9.8",
+      "description": "Service Cloud : Omni-Channel, Digital Engagement (WhatsApp, messaging), ITSM, Email-to-Case, Help Agent, portails. 61 skills, synchronisés depuis forcedotcom/sf-skills@80e068df.",
+      "version": "2026.9.11",
       "keywords": [
         "salesforce",
         "service cloud",
@@ -66,8 +66,8 @@
     {
       "name": "sf-experience",
       "source": "./plugins/sf-experience",
-      "description": "Experience Cloud, LWC, LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile SDK. 42 skills, synchronisés depuis forcedotcom/sf-skills@bfca400c.",
-      "version": "2026.9.8",
+      "description": "Experience Cloud, LWC, LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile SDK. 42 skills, synchronisés depuis forcedotcom/sf-skills@80e068df.",
+      "version": "2026.9.11",
       "keywords": [
         "salesforce",
         "lwc",
@@ -81,8 +81,8 @@
     {
       "name": "sf-integration",
       "source": "./plugins/sf-integration",
-      "description": "Connected Apps, Named Credentials, Change Data Capture, Platform Events, OmniStudio (OmniScript, FlexCards, Integration Procedures, DataRaptor). 12 skills, synchronisés depuis forcedotcom/sf-skills@bfca400c.",
-      "version": "2026.9.8",
+      "description": "Connected Apps, Named Credentials, Change Data Capture, Platform Events, OmniStudio (OmniScript, FlexCards, Integration Procedures, DataRaptor). 12 skills, synchronisés depuis forcedotcom/sf-skills@80e068df.",
+      "version": "2026.9.11",
       "keywords": [
         "salesforce",
         "integration",
@@ -95,8 +95,8 @@
     {
       "name": "sf-industries",
       "source": "./plugins/sf-industries",
-      "description": "Field Service, Consumer Goods, Education Cloud, Life Sciences. 27 skills, synchronisés depuis forcedotcom/sf-skills@bfca400c.",
-      "version": "2026.9.8",
+      "description": "Field Service, Consumer Goods, Education Cloud, Life Sciences. 27 skills, synchronisés depuis forcedotcom/sf-skills@80e068df.",
+      "version": "2026.9.11",
       "keywords": [
         "salesforce",
         "field service",

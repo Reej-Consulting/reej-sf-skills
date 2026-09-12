@@ -1,8 +1,8 @@
 {
   "name": "sf-integration",
   "displayName": "Salesforce — Integration & OmniStudio",
-  "version": "2026.9.8",
-  "description": "Connected Apps, Named Credentials, Change Data Capture, Platform Events, OmniStudio (OmniScript, FlexCards, Integration Procedures, DataRaptor). 12 skills, synchronisés depuis forcedotcom/sf-skills@bfca400c.",
+  "version": "2026.9.11",
+  "description": "Connected Apps, Named Credentials, Change Data Capture, Platform Events, OmniStudio (OmniScript, FlexCards, Integration Procedures, DataRaptor). 12 skills, synchronisés depuis forcedotcom/sf-skills@80e068df.",
   "author": {
     "name": "Reej Consulting (repackaging) — skills © Salesforce",
     "url": "https://github.com/forcedotcom/sf-skills"
