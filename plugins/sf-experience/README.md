@@ -2,7 +2,7 @@
 
 Experience Cloud, LWC, LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile SDK.
 
-42 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `bfca400c` (2026-09-08). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+43 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `91488fd1` (2026-09-15). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 | Skill | Description |
 |---|---|
@@ -17,6 +17,7 @@ Experience Cloud, LWC, LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile 
 | `experience-cms-content-render` | Renders, embeds, or displays existing Salesforce CMS content in a React or Angular uiBundle app: installs the CMS toolkit package, registers a typed reference, generates a framewor… |
 | `experience-cms-content-type-generate` | Salesforce CMS ContentTypeBundle creation skill. Use this skill ANY TIME a user request involves creating a ContentTypeBundle, and activate FIRST when CMS ContentTypeBundle creatio… |
 | `experience-content-media-stock-image-search` | Searches for and downloads ethically-licensed stock images via the media-management MCP server. Use this skill whenever a user wants an image, photo, or picture — for BOTH requests… |
+| `experience-design-validate` | Use this skill to run a visual-craft audit of a rendered UI and produce an evidence-grounded Craft Report across Useful, Usable, Reliable, Coherent, and Well-Crafted. Invoke it for… |
 | `experience-lds-best-practices-apply` | Use when reviewing or implementing Lightning Data Service best practices in an LWC (.js, .html, .js-meta.xml) — UIAPI vs Apex, refreshApex / notifyRecordUpdateAvailable, @salesforc… |
 | `experience-lds-data-requirements-generate` | Use when a Lightning Web Component data need is described in ambiguous natural language — turn \"get contact info\" or \"show account data\" into a clear, PRD-ready data-requiremen… |
 | `experience-lds-graphql-generate` | Use ALWAYS when a prompt mentions GraphQL, lightning/uiGraphQLApi, @wire(graphql, ...), or gql template tags in an LWC context — even if the surface ask is \"build an LWC\". Owns t… |

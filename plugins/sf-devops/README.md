@@ -2,7 +2,7 @@
 
 DevOps Center, pipelines, gestion des orgs (scratch, sandbox, Dev Hub, trials), packaging, post-copy sandbox.
 
-20 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `bfca400c` (2026-09-08). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+21 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `91488fd1` (2026-09-15). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 | Skill | Description |
 |---|---|
@@ -19,6 +19,7 @@ DevOps Center, pipelines, gestion des orgs (scratch, sandbox, Dev Hub, trials), 
 | `dx-devops-test-suite-assignments-configure` | Recommends and manages DevOps Center test suite assignments for pipeline stages. Mode A analyzes a commit diff against assigned suite metadata to recommend relevant existing suites… |
 | `dx-devops-test-suite-run` | Runs DevOps Center test suites on a pipeline stage (Pre-Promote, Post-Promote, or Review event) end to end: triggers async execution via the Connect API after an explicit confirmat… |
 | `dx-devops-work-item-manage` | Use this skill to manage the full lifecycle of DevOps Center work items — list, create, update, commit changes, perform status transitions, and create pull requests. Update fields … |
+| `dx-org-analyze` | Compare two Salesforce orgs side-by-side and produce a comparison report with drift score, or analyze a single org to produce an inventory covering metadata components, org permiss… |
 | `dx-org-devhub-configure` | Enable Dev Hub on a Salesforce org and view its scratch org allocation, using the Salesforce CLI (sf). Use when someone wants to turn on or enable Dev Hub, set up an org to create … |
 | `dx-org-manage` | INVOKE this skill to execute Salesforce org operations: create scratch orgs, list/display/resume/delete scratch orgs, create org snapshots, open orgs in browser. This skill EXECUTE… |
 | `dx-org-permission-set-assign` | ALWAYS USE THIS SKILL to assign permission sets to org users. Assign one or more permission sets to org users using the sf org assign permset command. TRIGGER when the user asks to… |
