@@ -2,17 +2,18 @@
 
 Service Cloud : Omni-Channel, Digital Engagement (WhatsApp, messaging), ITSM, Email-to-Case, Help Agent, portails.
 
-61 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `91488fd1` (2026-09-15). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+65 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `c217b703` (2026-09-18). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 | Skill | Description |
 |---|---|
 | `service-catalog-template-coordinate` | Single entry point for the Unified Catalog Service Process lifecycle in Salesforce — find and deploy Service Process templates, create a Service Process from scratch, activate one,… |
 | `service-concierge-portal-generate` | Deploys an Agentforce Concierge portal on an LWR Experience Cloud site: provisions the site, configures Concierge components, sets up branding, wires the agent, enables guest acces… |
-| `service-de-channel-activate` | Activate an Enhanced `MessagingChannel` (WhatsApp / Apple / Facebook / SMS / RCS) by PATCHing `MessagingChannelUsage.DeploymentStatus` from `Disabled` to `Provisioning` via the sta… |
+| `service-de-channel-activate` | Activate an Enhanced `MessagingChannel` (WhatsApp/Apple/Facebook/SMS/RCS) by PATCHing `MessagingChannelUsage.DeploymentStatus` from `Disabled` to `Provisioning` via the REST sobjec… |
 | `service-de-channel-consent-configure` | Configure consent (opt-in/opt-out) on an Enhanced `MessagingChannel` so activation will accept it. Given a `{CHANNEL_ID}`, sets the channel's `ConsentType` (ImplicitOptIn / Explici… |
-| `service-de-channel-create` | **INTERNAL USE ONLY — invoked by `service-de-headless-channel-configure` orchestrator.** Insert an Enhanced messaging `MessagingChannel` record (plus its child `MessagingChannelUsa… |
-| `service-de-channel-routing-configure` | Configure routing on a newly-inserted Enhanced `MessagingChannel` so that activation will accept it. Given a `{CHANNEL_ID}`, walks the user through picking a routing type (Omni-Cha… |
-| `service-de-headless-channel-configure` | Top-level orchestrator: given a messaging channel type and its type-specific inputs, produces an activated Enhanced `MessagingChannel` in the target Salesforce org — without the Me… |
+| `service-de-channel-create` | **INTERNAL USE ONLY — invoked by `service-de-headless-channel-configure`.** Insert an Enhanced messaging `MessagingChannel` (plus child `MessagingChannelUsage` as a free side-effec… |
+| `service-de-channel-routing-configure` | Configure routing on a newly-inserted Enhanced `MessagingChannel` so activation will accept it. Given a `{CHANNEL_ID}`, walks through picking a routing type (Omni-Channel Queue, Om… |
+| `service-de-channel-settings-configure` | Configure settings on an already-existing Enhanced `MessagingChannel` (any type — WhatsApp, Text/SMS, LINE, Apple, Facebook, EmbeddedMessaging), given its `{CHANNEL_ID}`. Covers fi… |
+| `service-de-headless-channel-configure` | Top-level orchestrator: given a messaging channel type and its inputs, produces an activated Enhanced `MessagingChannel` in the target org — without the Meta/LINE/Apple setup popup… |
 | `service-de-waba-integrate` | Confirm the customer's WhatsApp Business Account is shared with Salesforce on Meta's side. Pure instruction + one user-confirmation prompt — no API calls, no token handling. The ac… |
 | `service-digital-engagement-channel-configure` | Configures and deploys enhanced chat Messaging Channels for Messaging for In-App and Web (MIAW). Use when the user needs to create, deploy, and activate a messaging channel configu… |
 | `service-digital-engagement-deployment-configure` | Configures Embedded Messaging Deployments for Messaging for In-App and Web (MIAW). Use when the user needs to create a new embedded messaging deployment from scratch using Connect … |
@@ -25,13 +26,13 @@ Service Cloud : Omni-Channel, Digital Engagement (WhatsApp, messaging), ITSM, Em
 | `service-itsm-agentic-setup-agentforce-studio-validate` | Validate the Agentforce for IT Service prerequisites for a Fulfiller or Employee agent, using the Salesforce CLI (sf). The READ-ONLY prerequisite check: it reads the Salesforce Go … |
 | `service-itsm-agentic-setup-cmdb-access-assign` | Grant a specific user access to CMDB (Configuration Management Database) data in Service Cloud ITSM against a production or sandbox org by assigning the license-backed CMDB permiss… |
 | `service-itsm-agentic-setup-cmdb-bundle-deploy` | Deploy (install) the CMDB Foundation base content bundle in Service Cloud ITSM against a production or sandbox org, after the CMDB feature is enabled. Use when the user asks to ins… |
-| `service-itsm-agentic-setup-cmdb-configure` | Enable the CMDB (Configuration Management Database) feature in Service Cloud ITSM against a production or sandbox org: verify the CMDB org SKU, provision the ITOM tenant, and enabl… |
+| `service-itsm-agentic-setup-cmdb-configure` | Enable the CMDB (Configuration Management Database) feature in Service Cloud ITSM against a production or sandbox org: verify the CMDB org SKU, provision the CMDB tenant, and enabl… |
 | `service-itsm-agentic-setup-cmdb-coordinate` | Orchestrator skill for enabling CMDB (Configuration Management Database) end-to-end in Service Cloud ITSM against a production or sandbox org. Use when the user asks to set up CMDB… |
 | `service-itsm-agentic-setup-cmdb-discovery-configure` | Enable CMDB Asset Discovery in Service Cloud ITSM against a production or sandbox org by turning on the service-cloud-itsm-discovery-integration feature, then grant a user the Disc… |
 | `service-itsm-agentic-setup-configure` | Top-level orchestrator for setting up IT Service Management (ITSM) in Salesforce Service Cloud. Use when the user asks to set up ITSM, configure service management, wants a guided … |
 | `service-itsm-agentic-setup-employee-agent-configure` | Create and activate an IT Service Employee agent as a Next-Gen Authoring (NGA) native agent from an ITSM Employee agent template's Agent Script, via the Salesforce CLI (sf): read t… |
 | `service-itsm-agentic-setup-fulfiller-agent-configure` | Create and activate the IT Service Fulfiller agent as a Next-Gen Authoring (NGA) native agent from the shipped ITSM Fulfiller template's Agent Script, using the Salesforce CLI (sf)… |
-| `service-itsm-agentic-setup-incident-management` | Orchestrator skill for setting up Incident Management features in Salesforce Service Cloud ITSM. Use when the user asks to set up incident management, configure ITSM incident featu… |
+| `service-itsm-agentic-setup-incident-management` | Orchestrator for Incident Management setup in Salesforce Service Cloud ITSM: presents the available features, tracks progress, and configures each — SLA & Milestones, Priority Matr… |
 | `service-itsm-agentic-setup-incident-sla-configure` | End-to-end Incident SLA setup for Service Cloud ITSM — creating a MilestoneType, an Incident-scoped SLA Policy (SlaProcess), attaching a Milestone with criteria, and wiring an Enti… |
 | `service-itsm-agentic-setup-itsm-agentforce-permset-assign` | Resolve missing ITSM Intelligence invocable actions so a Fulfiller NGA agent can activate. Reads which of the three Core Fulfiller persona permsets (IncidentFulfiller, ProblemFulfi… |
 | `service-itsm-agentic-setup-uel-user-create` | Provision and enable a Unified Employee License (UEL) user in Salesforce with the full entity chain — User, Person Account, PersonContact, and Employee2 — through the Salesforce-ho… |
@@ -49,8 +50,11 @@ Service Cloud : Omni-Channel, Digital Engagement (WhatsApp, messaging), ITSM, Em
 | `service-native-voice-recording-transcription-configure` | Configure (enable OR disable) call recording and call transcription for Native Voice (Thunderbird Voice) programmatically via the Metadata API, for headless / API-driven support wh… |
 | `service-omni-agent-users-create` | Create reusable agent users for Omni-Channel setup and routing validation. TRIGGER when users ask to create Omni agents, provision Omni test users, seed sandbox users for routing, … |
 | `service-omni-agent-work-sharing-configure` | Use to configure or verify org-wide AgentWork visibility for supervisors after explicit confirmation. Triggers: let supervisors read AgentWork, configure AgentWork sharing, verify … |
+| `service-omni-attribute-routing-configure` | Use to manage Omni-Channel attribute-based routing rules through the Tooling API. TRIGGER when: list attribute-routing rules, inspect a WorkSkillRouting rule, create an inactive ro… |
 | `service-omni-base-settings-configure` | Use to enable the five Omni-Channel base settings on a Salesforce org via the Metadata API. The canonical writer scripts/configure-and-report.sh detects, deploys, and re-verifies i… |
-| `service-omni-channel-setup-coordinate` | Use to stand up Omni-Channel setup headlessly on Salesforce: base settings, agent users, service channels, routing configs, queues (create and align) and members, presence statuses… |
+| `service-omni-channel-inventory-analyze` | Use to inventory configured Omni-Channel instances across Voice, Email, Chat, SMS, Facebook, WhatsApp, and In-App, including each channel's Queue, Flow, or Other routing target, wi… |
+| `service-omni-channel-limits-analyze` | Use to report Omni-Channel Pending Service Routing usage without changing the org: query the current PendingServiceRouting count, compare it with an admin-supplied maximum or a lab… |
+| `service-omni-channel-setup-coordinate` | Use to stand up Omni-Channel headlessly: base settings, users, service channels, routing configs, queues and members, presence statuses, permissions, supervisor configuration, and … |
 | `service-omni-command-center-analyze` | Use to analyze whether an org should use Command Center for Service V2 or classic Omni Supervisor and recommend the next action without making changes. Triggers: detect Command Cen… |
 | `service-omni-permission-set-assign` | Assign the required Omni permission sets to provisioned agent users. TRIGGER when users ask to assign Omni permissions to agents, grant Omni-Channel access, add Omni_Agent permissi… |
 | `service-omni-presence-status-deploy` | Create the standard Available and Busy presence statuses needed for Omni-Channel routing. TRIGGER when users ask to deploy Omni presence statuses, configure agent availability, dep… |
