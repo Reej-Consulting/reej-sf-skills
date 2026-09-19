@@ -2,7 +2,7 @@
 
 Socle plateforme : métadonnées (objets, champs, permissions, sharing), Apex, Flow, SOQL, déploiement/retrieve, Code Analyzer, SLDS, documentation Salesforce.
 
-54 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `91488fd1` (2026-09-15). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+56 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `c217b703` (2026-09-18). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 | Skill | Description |
 |---|---|
@@ -16,6 +16,7 @@ Socle plateforme : métadonnées (objets, champs, permissions, sharing), Apex, F
 | `dx-code-analyzer-run` | Run Salesforce Code Analyzer to scan code for security, performance, best practice, and code style violations. Supports all engines (PMD, ESLint, CPD, RetireJS, Flow, SFGE, ApexGur… |
 | `external-diagram-mermaid-generate` | Salesforce architecture diagrams using Mermaid with ASCII fallback. Use this skill when generating text-based diagrams for Salesforce architecture, OAuth flows, ERDs, integration s… |
 | `platform-agentexchange-partner-offers-configure` | Enable or disable the org preference that controls whether a Salesforce org can receive partner offers from the Transactable Marketplace. Use this skill when the user wants to turn… |
+| `platform-agenticsetup-categories-get` | Get agentic setup prompt categories from a connected Salesforce org using the Connect API via sf api request rest. Use this skill to call GET /services/data/vXX.0/agenticsetup/cate… |
 | `platform-apex-anonymous-run` | Use this skill to run anonymous Apex against the connected Salesforce org — from a .apex file or a pasted snippet — capturing the debug log, surfacing compile and runtime errors, a… |
 | `platform-apex-generate` | Primary Apex authoring skill for class generation, refactoring, and review. ALWAYS ACTIVATE when the user mentions Apex, .cls, triggers, or asks to create/refactor a class (service… |
 | `platform-apex-logs-debug` | Salesforce debug log analysis and troubleshooting with 100-point scoring. TRIGGER when: user analyzes debug logs, hits governor limits, reads stack traces, or touches .log files fr… |
@@ -60,3 +61,4 @@ Socle plateforme : métadonnées (objets, champs, permissions, sharing), Apex, F
 | `platform-validation-rule-generate` | Use this skill when users need to create, modify, or validate Salesforce Validation Rules. Trigger when users mention validation rules, field validation, data quality rules, formul… |
 | `platform-value-set-generate` | Use this skill when users need to create, generate, or validate a Salesforce global value set or customize a standard value set. Trigger when users mention a global value set, Glob… |
 | `platform-widget-generate` | Use this skill to author a complete HXL WidgetBundle (UEM body + schema.json + -meta.xml). TRIGGER when: user asks for a widget, mosaic, fragment, card, or rich UI surface for any … |
+| `sales-call-scoring-configure` | Configure, set up, or repair AI Call Scoring (a.k.a. Call Coaching / Coaching Competencies) on an ECI-enabled Salesforce org. Flips ECICallScoringEnabled via SOAP Metadata API, ena… |

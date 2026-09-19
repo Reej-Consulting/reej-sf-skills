@@ -2,7 +2,7 @@
 
 Experience Cloud, LWC, LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile SDK.
 
-43 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `91488fd1` (2026-09-15). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+43 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `c217b703` (2026-09-18). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 | Skill | Description |
 |---|---|
@@ -21,7 +21,7 @@ Experience Cloud, LWC, LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile 
 | `experience-lds-best-practices-apply` | Use when reviewing or implementing Lightning Data Service best practices in an LWC (.js, .html, .js-meta.xml) — UIAPI vs Apex, refreshApex / notifyRecordUpdateAvailable, @salesforc… |
 | `experience-lds-data-requirements-generate` | Use when a Lightning Web Component data need is described in ambiguous natural language — turn \"get contact info\" or \"show account data\" into a clear, PRD-ready data-requiremen… |
 | `experience-lds-graphql-generate` | Use ALWAYS when a prompt mentions GraphQL, lightning/uiGraphQLApi, @wire(graphql, ...), or gql template tags in an LWC context — even if the surface ask is \"build an LWC\". Owns t… |
-| `experience-lwc-accessibility-jest-run` | Use ALWAYS when running Sa11y accessibility Jest tests for a Lightning Web Component — locally before pushing, producing the exact command(s), running one file vs a whole suite, se… |
+| `experience-lwc-accessibility-jest-run` | Use ALWAYS when running Sa11y accessibility Jest tests for an LWC — locally before pushing, producing the command(s), running one file vs a suite, selecting tests by naming convent… |
 | `experience-lwc-base-components-integrate` | Pick the right Lightning Base Component (`lightning-*`) for a given UI task, retrieve its full API (props, methods, events, slots) from the bundled per-component reference, and wir… |
 | `experience-lwc-design-generate` | Use when you need to create a brand new Lightning Web Component from a Figma design, a Product Requirements Document, or another design artifact — orchestrating the five-phase work… |
 | `experience-lwc-generate` | Lightning Web Components with PICKLES methodology and 165-point scoring. Use this skill when the user creates or edits LWC components, builds wire service patterns, or writes Jest … |
@@ -37,11 +37,11 @@ Experience Cloud, LWC, LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile 
 | `experience-ui-bundle-app-coordinate` | MUST activate when the user wants to build, create, or generate a React application, React app, web application, single-page application (SPA), or frontend application — even if no… |
 | `experience-ui-bundle-custom-app-generate` | MUST activate when the project contains a uiBundles/*/src/ directory and the task involves creating or configuring a Custom Application for hosting a UI bundle in Lightning Experie… |
 | `experience-ui-bundle-deploy` | MUST activate when the project has a uiBundles/*/src/ directory and the task involves deploying to an org or post-deploy org setup. Deploys a UI bundle app and runs ordered setup: … |
-| `experience-ui-bundle-features-generate` | MUST activate when the project contains a uiBundles/*/src/ directory and the user wants to add a pre-built feature — such as authentication (login, logout, protected routes, sessio… |
+| `experience-ui-bundle-features-generate` | MUST activate when the project contains a uiBundles/*/src/ directory (React or Angular) and the user wants to add a pre-built feature — such as authentication (login, logout, prote… |
 | `experience-ui-bundle-file-upload-generate` | MUST activate when the project contains a uiBundles/*/src/ directory and the task involves uploading, attaching, or dropping files. Use this skill when adding file upload functiona… |
 | `experience-ui-bundle-frontend-generate` | MUST activate before editing ANY file under uiBundles/*/src/ (or the bundle's index.html) for visual or UI changes to an EXISTING app — pages, components, sections, layout, styling… |
 | `experience-ui-bundle-localize` | MUST activate to localize / internationalize a uiBundles/*/src/ project (React or Angular): extract hardcoded user-facing strings into Custom Labels, wire a runtime i18n library ov… |
-| `experience-ui-bundle-metadata-generate` | Use this skill when adding a front-end React UI bundle to an existing project or configuring UI bundle metadata and config files. TRIGGER when: adding or scaffolding a new UI bundl… |
+| `experience-ui-bundle-metadata-generate` | Use this skill when adding a front-end React or Angular UI bundle to an EXISTING SFDX project, or configuring UI bundle metadata and config files. TRIGGER when: adding or scaffoldi… |
 | `experience-ui-bundle-mfa-configure` | Configure Multi-Factor Authentication (MFA) for Salesforce Experience Site users. TRIGGER when: user wants to enable MFA on a community, enforce two-factor authentication for porta… |
 | `experience-ui-bundle-project-generate` | Generates a minimal, ready-to-develop SFDX starter project from template instead of hand-scaffolding files. Use this skill when starting a brand-new Salesforce UI bundle app (React… |
 | `experience-ui-bundle-salesforce-data-access` | MUST activate whenever a uiBundles/*/src/ project reads, writes, or displays Salesforce data — INCLUDING building a page, list, table, card grid, dashboard, or form that shows, fil… |

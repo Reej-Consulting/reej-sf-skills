@@ -2,7 +2,7 @@
 
 Connected Apps, Named Credentials, Change Data Capture, Platform Events, OmniStudio (OmniScript, FlexCards, Integration Procedures, DataRaptor).
 
-12 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `91488fd1` (2026-09-15). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+12 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `c217b703` (2026-09-18). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 | Skill | Description |
 |---|---|

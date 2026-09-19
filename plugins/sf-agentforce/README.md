@@ -2,7 +2,7 @@
 
 Agentforce (Agent Script, tests, observabilité, architecture, migration Einstein Bots), Data 360 / Data Cloud, Models API et canaux Agentforce.
 
-15 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `91488fd1` (2026-09-15). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+14 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `c217b703` (2026-09-18). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 | Skill | Description |
 |---|---|
@@ -14,7 +14,6 @@ Agentforce (Agent Script, tests, observabilité, architecture, migration Einstei
 | `agentforce-test` | Write, run, and analyze structured test suites for Agentforce agents — functional AND security. TRIGGER when: user writes or modifies test spec YAML (AiEvaluationDefinition); runs … |
 | `data360-code-extension-generate` | Develop and deploy Data Cloud Code Extensions using SF CLI plugin. Use this skill when creating custom Python transformations for Data Cloud, deploying code extensions, or testing … |
 | `data360-schema-get` | Retrieve Data Lake Object (DLO) and Data Model Object (DMO) schema information from Salesforce Data Cloud using REST APIs. Use this skill when you need to inspect DLO or DMO field … |
-| `platform-agentsetup-categories-fetch` | Fetch agentic setup prompt categories from a connected Salesforce org using the Connect API. Use this skill to call GET /agenticsetup/categories and return the list of prompt categ… |
 | `platform-models-api-configure` | Configure (or troubleshoot) an AI coding agent or CLI to route through the Salesforce Models API using a signed OrgJWT. Use this skill when pointing an agent at the Salesforce mode… |
 | `platform-tracing-agentforce-configure` | Generate AgentforcePlatformTracingSettings metadata to enable or disable Agentforce agent execution trace spans flowing to Data Cloud. Use this skill for any AgentforcePlatformTrac… |
 | `sales-agentforce-pipeline-management-configure` | Use to configure, set up, or repair the Sales Management agent and Agentforce Pipeline Management in a Salesforce org. Automates metadata creation for flows, prompt templates, perm… |
