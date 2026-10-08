@@ -237,7 +237,7 @@ Stop and ask the user if any of these would be introduced:
 ## Reference Skill
 
 Use the core Apex standards, testing patterns, and guardrails in:
-- [skills/platform-apex-generate/SKILL.md](<skill:platform-apex-generate — plugin sf-platform>/SKILL.md)
+- skills/platform-apex-generate/SKILL.md (skill `sf-platform:platform-apex-generate`)
 
 ---
 

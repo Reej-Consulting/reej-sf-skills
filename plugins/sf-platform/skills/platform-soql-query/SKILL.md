@@ -121,7 +121,7 @@ Next step: <run in platform-data-manage or embed in Apex>
 | run the query against an org | [platform-data-manage](../platform-data-manage/SKILL.md) | execution and export |
 | embed the query in services/selectors | [platform-apex-generate](../platform-apex-generate/SKILL.md) | implementation context |
 | analyze slow-query symptoms from logs | [platform-apex-logs-debug](../platform-apex-logs-debug/SKILL.md) | runtime evidence |
-| wire query-backed UI | [experience-lwc-generate](<skill:experience-lwc-generate — plugin sf-experience>/SKILL.md) | frontend integration |
+| wire query-backed UI | skill `sf-experience:experience-lwc-generate` | frontend integration |
 | validate query behavior in tests | [platform-apex-test-run](../platform-apex-test-run/SKILL.md) | test coverage for query logic |
 
 ---

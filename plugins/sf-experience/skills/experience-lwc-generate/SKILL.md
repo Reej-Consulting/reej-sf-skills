@@ -39,9 +39,9 @@ Use `experience-lwc-generate` when the work involves:
 - Jest unit tests for LWC
 
 Delegate elsewhere when the user is:
-- writing Apex controllers or business logic first → [platform-apex-generate](<skill:platform-apex-generate — plugin sf-platform>/SKILL.md)
-- building Flow XML rather than an LWC screen component → [automation-flow-generate](<skill:automation-flow-generate — plugin sf-platform>/SKILL.md)
-- deploying metadata → [platform-metadata-deploy](<skill:platform-metadata-deploy — plugin sf-platform>/SKILL.md)
+- writing Apex controllers or business logic first → skill `sf-platform:platform-apex-generate`
+- building Flow XML rather than an LWC screen component → skill `sf-platform:automation-flow-generate`
+- deploying metadata → skill `sf-platform:platform-metadata-deploy`
 
 ---
 
@@ -98,9 +98,9 @@ Check:
 
 ### 5. Hand off supporting backend or deploy work
 Use:
-- [platform-apex-generate](<skill:platform-apex-generate — plugin sf-platform>/SKILL.md) for controllers / services
-- [platform-metadata-deploy](<skill:platform-metadata-deploy — plugin sf-platform>/SKILL.md) for deployment
-- [platform-apex-test-run](<skill:platform-apex-test-run — plugin sf-platform>/SKILL.md) only for Apex-side test loops, not Jest
+- skill `sf-platform:platform-apex-generate` for controllers / services
+- skill `sf-platform:platform-metadata-deploy` for deployment
+- skill `sf-platform:platform-apex-test-run` only for Apex-side test loops, not Jest
 
 ---
 
@@ -148,10 +148,10 @@ Local Dev commands install just-in-time on first run. They are long-running proc
 
 | Need | Delegate to | Reason |
 |---|---|---|
-| Apex controller or service | [platform-apex-generate](<skill:platform-apex-generate — plugin sf-platform>/SKILL.md) | backend logic |
-| embed in Flow screens | [automation-flow-generate](<skill:automation-flow-generate — plugin sf-platform>/SKILL.md) | declarative orchestration |
-| deploy component bundle | [platform-metadata-deploy](<skill:platform-metadata-deploy — plugin sf-platform>/SKILL.md) | org rollout |
-| create supporting metadata (message channels, objects) | [platform-metadata-deploy](<skill:platform-metadata-deploy — plugin sf-platform>/SKILL.md) | metadata deployment |
+| Apex controller or service | skill `sf-platform:platform-apex-generate` | backend logic |
+| embed in Flow screens | skill `sf-platform:automation-flow-generate` | declarative orchestration |
+| deploy component bundle | skill `sf-platform:platform-metadata-deploy` | org rollout |
+| create supporting metadata (message channels, objects) | skill `sf-platform:platform-metadata-deploy` | metadata deployment |
 
 ---
 

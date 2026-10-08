@@ -145,8 +145,8 @@ Call out the key relationships, flow direction, and any assumptions.
 | Need | Delegate to | Reason |
 |---|---|---|
 | real object / field definitions | [platform-custom-object-generate](../platform-custom-object-generate/SKILL.md) / [platform-custom-field-generate](../platform-custom-field-generate/SKILL.md) | grounded ERD generation |
-| connected-app auth setup context | [integration-connectivity-connected-app-configure](<skill:integration-connectivity-connected-app-configure — plugin sf-integration>/SKILL.md) | accurate OAuth flows |
-| Agentforce logic visualization | [agentforce-generate](<skill:agentforce-generate — plugin sf-agentforce>/SKILL.md) | source-of-truth behavior details |
+| connected-app auth setup context | skill `sf-integration:integration-connectivity-connected-app-configure` | accurate OAuth flows |
+| Agentforce logic visualization | skill `sf-agentforce:agentforce-generate` | source-of-truth behavior details |
 | Flow behavior diagrams | [automation-flow-generate](../automation-flow-generate/SKILL.md) | actual Flow logic grounding |
 
 ---

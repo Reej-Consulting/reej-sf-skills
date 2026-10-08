@@ -2,7 +2,7 @@
 
 Miroir de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) (skills officiels Salesforce, licence Apache-2.0), **repackagé en 7 plugins par domaine** et **synchronisé chaque nuit**, auquel s'ajoutent les **skills maison Reej** (`reej-*`). Rien n'est écrit à la main dans `plugins/` : tout y est régénéré par `scripts/sync.py` ; les skills Reej vivent dans `reej-plugins/`.
 
-Pourquoi ce repo plutôt que le marketplace officiel ? Celui de Salesforce ne packageait que ~107 skills sur 227 au moment de la création, sans les skills Agentforce ni Data 360. Ici, les 230 skills autonomes sont couverts, et l'on maîtrise le découpage et le rythme de mise à jour.
+Pourquoi ce repo plutôt que le marketplace officiel ? Celui de Salesforce ne packageait que ~107 skills sur 227 au moment de la création, sans les skills Agentforce ni Data 360. Ici, tous les skills autonomes sont couverts, et l'on maîtrise le découpage et le rythme de mise à jour.
 
 ## Plugins
 
@@ -19,7 +19,7 @@ Pourquoi ce repo plutôt que le marketplace officiel ? Celui de Salesforce ne pa
 
 Les plugins `sf-*` sont le miroir Salesforce, régénérés automatiquement ; les plugins `reej-*` sont écrits par Reej, dans `reej-plugins/`, et se contribuent par PR — voir [CONTRIBUTING.md](CONTRIBUTING.md).
 
-La liste exacte des skills de chaque plugin est dans `plugins/<plugin>/README.md`. Les skills se référencent entre eux : quand un skill renvoie vers un skill d'un autre plugin, le lien est remplacé par `<skill:nom — plugin sf-xxx>`, ce qui indique quel plugin installer en plus.
+La liste exacte des skills de chaque plugin est dans `plugins/<plugin>/README.md`. Les skills se référencent entre eux : quand un skill renvoie vers un skill d'un autre plugin, le lien est remplacé par son nom appelable `sf-xxx:nom` : Claude l'invoque directement si le plugin `sf-xxx` est installé, sinon le nom indique quel plugin installer en plus.
 
 > Conseil : commencez par `sf-agentforce` + `sf-platform` — voir « Combien de plugins installer ? » plus bas.
 
@@ -94,7 +94,7 @@ Chaque plugin ajoute les descriptions de ses skills au contexte de chaque sessio
 
 ## Synchronisation
 
-- **Automatique** : le workflow `.github/workflows/sync-upstream.yml` tourne chaque jour à 05:00 UTC. S'il y a des changements upstream, il ouvre une PR `sync/upstream` dont le corps liste les skills ajoutés, retirés ou déplacés. Merger la PR publie la nouvelle version ; les utilisateurs la récupèrent avec `marketplace update`.
+- **Automatique** : le workflow `.github/workflows/sync-upstream.yml` tourne chaque jour à 05:00 UTC. S'il y a des changements upstream, il ouvre une PR `sync/upstream` dont le corps liste les skills ajoutés, retirés ou déplacés, ainsi que les scripts et `allowed-tools` modifiés (ce qui s'exécute sur les postes : à relire en priorité). Merger la PR publie la nouvelle version ; les utilisateurs la récupèrent avec `marketplace update`.
 - **Manuelle** : onglet Actions → *Sync sf-skills upstream* → *Run workflow*. Cocher `auto_merge` pour pousser directement sur `main` sans PR.
 - **Locale** : `python3 scripts/sync.py` (ou `--dry-run` pour voir sans écrire), puis `python3 scripts/validate.py`. Après ajout d'un plugin maison : `python3 scripts/sync.py --marketplace-only` (régénère `marketplace.json` sans cloner Salesforce).
 - **Validation des PR humaines** : le workflow `validate.yml` vérifie `marketplace.json` et la structure des plugins sur toute PR touchant `reej-plugins/` ou `scripts/`.

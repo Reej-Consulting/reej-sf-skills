@@ -34,7 +34,7 @@ Use `platform-apex-logs-debug` when the work involves:
 Delegate elsewhere when the user is:
 - running or repairing Apex tests → [platform-apex-test-run](../platform-apex-test-run/SKILL.md)
 - generating or implementing the code fix → [platform-apex-generate](../platform-apex-generate/SKILL.md)
-- debugging Agentforce session traces / parquet telemetry → [agentforce-observe](<skill:agentforce-observe — plugin sf-agentforce>/SKILL.md)
+- debugging Agentforce session traces / parquet telemetry → skill `sf-agentforce:agentforce-observe`
 
 ---
 

@@ -41,8 +41,8 @@ Confirm two things. If either is missing, ask before proceeding.
 | Connect to OData, GraphQL, DynamoDB, Athena, or Cross-Org | Standard adapter setup — no Apex needed, different flow |
 | Connect to Snowflake via Salesforce's native Snowflake adapter (direct Snowflake protocol) | Built-in Snowflake adapter — no Apex needed |
 | Access Snowflake (or any database) data via a REST or HTTP API | **This skill** — Snowflake REST endpoint → custom Apex adapter |
-| Call an external API from Apex or Flow logic | the platform-apex-generate skill or [integration-connectivity-generate](<skill:integration-connectivity-generate — plugin sf-integration>/SKILL.md) |
-| Expose Salesforce data to an external system | [integration-connectivity-generate](<skill:integration-connectivity-generate — plugin sf-integration>/SKILL.md) |
+| Call an external API from Apex or Flow logic | the platform-apex-generate skill or skill `sf-integration:integration-connectivity-generate` |
+| Expose Salesforce data to an external system | skill `sf-integration:integration-connectivity-generate` |
 | Receive real-time pushed data or subscribe to external events | Not Salesforce Connect — Connect is pull-only. Use Platform Events or Change Data Capture instead |
 | Sync or copy data for analytics or bulk processing | Data Cloud or ETL — Connect is zero-copy virtualization only |
 
