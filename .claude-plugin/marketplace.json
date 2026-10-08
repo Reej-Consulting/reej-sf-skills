@@ -1,7 +1,7 @@
 {
   "name": "reej-salesforce",
   "version": "2026.10.7",
-  "description": "Marketplace Reej — skills Salesforce & Agentforce (miroir de forcedotcom/sf-skills, repackagé par domaine, synchro quotidienne).",
+  "description": "Marketplace Reej — skills Salesforce & Agentforce (miroir de forcedotcom/sf-skills, repackagé par domaine, synchro quotidienne) et skills maison Reej (reej-*).",
   "owner": {
     "name": "Reej Consulting"
   },
