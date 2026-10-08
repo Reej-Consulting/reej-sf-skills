@@ -44,7 +44,7 @@ DOMAINS: dict[str, dict] = {
         "keywords": ["salesforce", "agentforce", "agent script", "data cloud", "data 360", "einstein bots"],
         "match": [
             r"^agentforce-", r"^data360-", r"^platform-models-api-",
-            r"^platform-agentsetup-", r"^platform-tracing-agentforce-",
+            r"^platform-agent(ic)?setup-", r"^platform-tracing-agentforce-",
             r"^sales-agentforce-", r"^service-agentforce-",
         ],
     },
@@ -52,7 +52,8 @@ DOMAINS: dict[str, dict] = {
         "displayName": "Salesforce — Platform & Apex",
         "description": "Socle plateforme : métadonnées (objets, champs, permissions, sharing), Apex, Flow, SOQL, déploiement/retrieve, Code Analyzer, SLDS, documentation Salesforce.",
         "keywords": ["salesforce", "apex", "flow", "soql", "metadata", "deploy", "slds"],
-        "match": [r"^platform-", r"^automation-flow-", r"^design-systems-", r"^external-", r"^dx-code-", r"^dx-apexguru-"],
+        "match": [r"^platform-", r"^automation-flow-", r"^design-systems-", r"^external-", r"^dx-code-", r"^dx-apexguru-",
+                  r"^tableau-", r"^marketing-", r"^sales-"],  # clouds isolés (1-2 skills) : pas de plugin dédié tant que ça reste marginal
     },
     "devops": {
         "displayName": "Salesforce — DevOps & Orgs",
@@ -82,7 +83,7 @@ DOMAINS: dict[str, dict] = {
         "displayName": "Salesforce — Industries",
         "description": "Field Service, Consumer Goods, Education Cloud, Life Sciences.",
         "keywords": ["salesforce", "field service", "consumer goods", "education cloud", "life sciences"],
-        "match": [r"^field-service-", r"^consumer-goods-", r"^education-cloud-", r"^life-sciences-"],
+        "match": [r"^field-service-", r"^consumer-goods-", r"^education-cloud-", r"^life-sciences-", r"^insurance-"],
     },
 }
 DEFAULT_DOMAIN = "platform"
@@ -94,7 +95,7 @@ DEFAULT_DOMAIN = "platform"
 # `salesforce-development` et ne sont volontairement pas repris.
 EXTRA_SKILLS: dict[str, str] = {
     "plugins/builder/salesforce-development/skills/platform-apex-anonymous-run": "platform",
-    "plugins/builder/salesforce-development/skills/platform-architecture-analyze": "platform",
+    "plugins/builder/salesforce-code-quality/skills/platform-architecture-analyze": "platform",  # déplacé upstream le 2026-10-07
     "plugins/builder/salesforce-development/skills/platform-manifest-generate": "platform",
 }
 
