@@ -150,7 +150,7 @@ Verify: <test or rerun step>
 | Implement Apex fix | [platform-apex-generate](../platform-apex-generate/SKILL.md) | code change generation / review |
 | Reproduce via tests | [platform-apex-test-run](../platform-apex-test-run/SKILL.md) | test execution and coverage loop |
 | Deploy fix | [platform-metadata-deploy](../platform-metadata-deploy/SKILL.md) | deployment orchestration |
-| Create debugging data | [platform-data-manage](../platform-data-manage/SKILL.md) | targeted seed / repro data |
+| Create debugging data | skill `sf-platform:platform-data-manage` | targeted seed / repro data |
 | Optimize slow SOQL queries | [platform-soql-query](../platform-soql-query/SKILL.md) | query shape / performance tuning |
 
 ---

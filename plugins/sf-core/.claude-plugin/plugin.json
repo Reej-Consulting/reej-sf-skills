@@ -1,0 +1,23 @@
+{
+  "name": "sf-core",
+  "displayName": "Salesforce — Socle",
+  "version": "2026.10.7",
+  "description": "Socle commun : SOQL, retrieve/deploy, Apex et tests, Flow, génération de métadonnées, LWC, Lightning Types, Agent Script, documentation Salesforce. Installé automatiquement avec tout autre plugin sf-*. 21 skills, synchronisés depuis forcedotcom/sf-skills@e5164d94.",
+  "author": {
+    "name": "Reej Consulting (repackaging) — skills © Salesforce",
+    "url": "https://github.com/forcedotcom/sf-skills"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/forcedotcom/sf-skills",
+  "keywords": [
+    "salesforce",
+    "soql",
+    "apex",
+    "flow",
+    "metadata",
+    "deploy",
+    "lwc",
+    "agentforce"
+  ],
+  "skills": "./skills/"
+}

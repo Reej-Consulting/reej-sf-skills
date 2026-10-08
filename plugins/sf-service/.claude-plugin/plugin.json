@@ -17,5 +17,8 @@
     "itsm",
     "messaging"
   ],
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "dependencies": [
+    "sf-core"
+  ]
 }

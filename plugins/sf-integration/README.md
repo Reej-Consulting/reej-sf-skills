@@ -4,6 +4,8 @@ Connected Apps, Named Credentials, Change Data Capture, Platform Events, OmniStu
 
 12 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `e5164d94` (2026-10-07). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
+Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
+
 | Skill | Description |
 |---|---|
 | `integration-connectivity-connected-app-configure` | Salesforce Connected Apps and External Client Apps OAuth configuration with 120-point scoring. Use this skill to configure OAuth flows, JWT bearer auth, Connected Apps, and Externa… |
