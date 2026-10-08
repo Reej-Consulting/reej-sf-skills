@@ -31,6 +31,8 @@ PLUGINS_DIR = ROOT / "plugins"
 MARKETPLACE_FILE = ROOT / ".claude-plugin" / "marketplace.json"
 STATE_FILE = ROOT / "SYNC_STATE.json"
 PLUGIN_PREFIX = "sf-"
+REEJ_PLUGINS_DIR = ROOT / "reej-plugins"   # plugins maison : jamais effacés ni régénérés par ce script
+REEJ_PREFIX = "reej-"
 LONG_PATH_WARN = 170  # longueur relative au-delà de laquelle un chemin est signalé (Windows MAX_PATH = 260)
 
 # --------------------------------------------------------------------------
@@ -161,6 +163,60 @@ def rewrite_cross_links(plugin_dir: Path, placement: dict[str, str], this_domain
     return rewritten
 
 
+def collect_reej_plugins() -> list[dict]:
+    """Entrées marketplace des plugins maison (reej-plugins/<nom>/.claude-plugin/plugin.json)."""
+    entries = []
+    if not REEJ_PLUGINS_DIR.is_dir():
+        return entries
+    for pdir in sorted(REEJ_PLUGINS_DIR.iterdir()):
+        manifest = pdir / ".claude-plugin" / "plugin.json"
+        if not manifest.is_file():
+            continue
+        m = json.loads(manifest.read_text(encoding="utf-8"))
+        if m.get("name") != pdir.name:
+            raise SystemExit(f"reej-plugins/{pdir.name}: plugin.json.name = {m.get('name')!r} ≠ nom du dossier")
+        if not pdir.name.startswith(REEJ_PREFIX):
+            raise SystemExit(f"reej-plugins/{pdir.name}: le nom doit commencer par {REEJ_PREFIX!r}")
+        entries.append({
+            "name": m["name"],
+            "source": f"./reej-plugins/{pdir.name}",
+            "description": m.get("description", ""),
+            "version": m.get("version", "0.1.0"),
+            "keywords": m.get("keywords", []),
+        })
+    return entries
+
+
+def marketplace_doc(version: str, reej_entries: list[dict], mirror_entries: list[dict]) -> dict:
+    return {
+        "name": "reej-salesforce",
+        "version": version,
+        "description": "Marketplace Reej — skills Salesforce & Agentforce (miroir de forcedotcom/sf-skills, repackagé par domaine, synchro quotidienne) et skills maison Reej (reej-*).",
+        "owner": {"name": "Reej Consulting"},
+        "plugins": reej_entries + mirror_entries,
+    }
+
+
+def write_marketplace_only() -> int:
+    """Régénère marketplace.json sans toucher aux plugins : entrées miroir relues depuis plugins/, maison depuis reej-plugins/."""
+    mirror = []
+    for pdir in sorted(PLUGINS_DIR.iterdir()) if PLUGINS_DIR.is_dir() else []:
+        manifest = pdir / ".claude-plugin" / "plugin.json"
+        if manifest.is_file():
+            m = json.loads(manifest.read_text(encoding="utf-8"))
+            mirror.append({"name": m["name"], "source": f"./plugins/{pdir.name}", "description": m.get("description", ""),
+                           "version": m.get("version", "0.0.0"), "keywords": m.get("keywords", [])})
+    order = [f"{PLUGIN_PREFIX}{d}" for d in DOMAINS]  # même ordre que la synchro complète, sinon diff parasite
+    mirror.sort(key=lambda e: order.index(e["name"]) if e["name"] in order else len(order))
+    reej = collect_reej_plugins()
+    state = load_state()
+    version = state.get("version") or (MARKETPLACE_FILE.is_file() and json.loads(MARKETPLACE_FILE.read_text(encoding="utf-8")).get("version")) or "0.0.0"
+    MARKETPLACE_FILE.parent.mkdir(exist_ok=True)
+    MARKETPLACE_FILE.write_text(json.dumps(marketplace_doc(version, reej, mirror), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    log(f"marketplace.json régénéré : {len(reej)} plugin(s) maison + {len(mirror)} miroir")
+    return 0
+
+
 def load_state() -> dict:
     if STATE_FILE.exists():
         return json.loads(STATE_FILE.read_text(encoding="utf-8"))
@@ -171,7 +227,12 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--upstream", type=Path, help="clone local déjà présent (sinon clone frais)")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--marketplace-only", action="store_true",
+                    help="ne clone rien : régénère seulement marketplace.json à partir des plugins présents (après ajout d'un plugin maison)")
     args = ap.parse_args()
+
+    if args.marketplace_only:
+        return write_marketplace_only()
 
     tmp = None
     if args.upstream:
@@ -309,20 +370,19 @@ def main() -> int:
             })
             log(f"  {PLUGIN_PREFIX}{d}: {len(members)} skills, {n_links} liens inter-plugins réécrits")
 
-        marketplace = {
-            "name": "reej-salesforce",
-            "version": version,
-            "description": "Marketplace Reej — skills Salesforce & Agentforce (miroir de forcedotcom/sf-skills, repackagé par domaine, synchro quotidienne).",
-            "owner": {"name": "Reej Consulting"},
-            "plugins": market_plugins,
-        }
+        # ---- Plugins maison (reej-plugins/) : jamais touchés par la synchro, seulement listés ----
+        reej_entries = collect_reej_plugins()
+        for e in reej_entries:
+            log(f"  {e['name']} (maison) v{e['version']}")
+
         MARKETPLACE_FILE.parent.mkdir(exist_ok=True)
-        MARKETPLACE_FILE.write_text(json.dumps(marketplace, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        MARKETPLACE_FILE.write_text(json.dumps(marketplace_doc(version, reej_entries, market_plugins), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
         STATE_FILE.write_text(json.dumps({
             "upstream_repo": UPSTREAM_URL,
             "upstream_commit": commit,
             "upstream_commit_date": commit_date,
+            "version": version,
             # pas d'horodatage du run : le fichier ne doit changer que si l'upstream change,
             # sinon chaque exécution ouvrirait une PR vide
             "skills": placement,

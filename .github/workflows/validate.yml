@@ -1,0 +1,38 @@
+name: Validate marketplace
+
+# Contrôle de cohérence sur toute PR ou push touchant les plugins maison, les scripts ou le marketplace.
+on:
+  pull_request:
+    paths:
+      - "reej-plugins/**"
+      - "scripts/**"
+      - ".claude-plugin/marketplace.json"
+  push:
+    branches: [main]
+    paths:
+      - "reej-plugins/**"
+      - "scripts/**"
+      - ".claude-plugin/marketplace.json"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: marketplace.json à jour ?
+        run: |
+          cp .claude-plugin/marketplace.json /tmp/before.json
+          python3 scripts/sync.py --marketplace-only
+          if ! diff -q /tmp/before.json .claude-plugin/marketplace.json; then
+            echo "::error::marketplace.json n'est pas à jour — lancer 'python3 scripts/sync.py --marketplace-only' et commiter le résultat"
+            diff /tmp/before.json .claude-plugin/marketplace.json || true
+            exit 1
+          fi
+      - name: Validate
+        run: python3 scripts/validate.py

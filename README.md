@@ -1,6 +1,6 @@
 # reej-sf-skills — Marketplace Reej des skills Salesforce & Agentforce
 
-Miroir de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) (skills officiels Salesforce, licence Apache-2.0), **repackagé en 7 plugins par domaine** et **synchronisé chaque nuit**. Rien n'est écrit à la main dans `plugins/` : tout est régénéré par `scripts/sync.py`.
+Miroir de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) (skills officiels Salesforce, licence Apache-2.0), **repackagé en 7 plugins par domaine** et **synchronisé chaque nuit**, auquel s'ajoutent les **skills maison Reej** (`reej-*`). Rien n'est écrit à la main dans `plugins/` : tout y est régénéré par `scripts/sync.py` ; les skills Reej vivent dans `reej-plugins/`.
 
 Pourquoi ce repo plutôt que le marketplace officiel ? Celui de Salesforce ne packageait que ~107 skills sur 227 au moment de la création, sans les skills Agentforce ni Data 360. Ici, les 230 skills autonomes sont couverts, et l'on maîtrise le découpage et le rythme de mise à jour.
 
@@ -15,59 +15,89 @@ Pourquoi ce repo plutôt que le marketplace officiel ? Celui de Salesforce ne pa
 | `sf-experience` | Experience Cloud, LWC, UI bundles React, CMS, Commerce B2B, Mobile |
 | `sf-integration` | Connected Apps, CDC, Platform Events, OmniStudio |
 | `sf-industries` | Field Service, Consumer Goods, Education, Life Sciences |
+| `reej-design` | **Maison Reej** — maquettes HTML SLDS pour l'avant-vente et les ateliers (voir `reej-plugins/`) |
+
+Les plugins `sf-*` sont le miroir Salesforce, régénérés automatiquement ; les plugins `reej-*` sont écrits par Reej, dans `reej-plugins/`, et se contribuent par PR — voir [CONTRIBUTING.md](CONTRIBUTING.md).
 
 La liste exacte des skills de chaque plugin est dans `plugins/<plugin>/README.md`. Les skills se référencent entre eux : quand un skill renvoie vers un skill d'un autre plugin, le lien est remplacé par `<skill:nom — plugin sf-xxx>`, ce qui indique quel plugin installer en plus.
 
-> Conseil : n'installez que les plugins dont vous avez besoin. Chaque plugin ajoute les descriptions de ses skills au contexte de chaque session ; `sf-agentforce` + `sf-platform` couvrent l'essentiel d'une mission Agentforce.
+> Conseil : commencez par `sf-agentforce` + `sf-platform` — voir « Combien de plugins installer ? » plus bas.
 
 ## Installation
 
-### Claude Code (VS Code / terminal)
+Le marketplace s'appelle `reej-salesforce` ; son adresse est `Reej-Consulting/reej-sf-skills` (ou `https://github.com/Reej-Consulting/reej-sf-skills`). Le repo est public : aucune authentification n'est demandée.
 
-```bash
-claude plugin marketplace add Reej-Consulting/reej-sf-skills
-claude plugin install sf-agentforce@reej-salesforce
-claude plugin install sf-platform@reej-salesforce
-```
+Quel que soit l'outil, le parcours est le même en trois temps : **ajouter le marketplace** (une fois), **installer les plugins** voulus, **mettre à jour** de temps en temps. Commencez par `sf-agentforce` et `sf-platform` ; ajoutez les autres selon vos missions.
 
-Mise à jour :
+### 0. Prérequis Windows (une fois par poste)
 
-```bash
-claude plugin marketplace update reej-salesforce
-claude plugin update sf-agentforce@reej-salesforce
-```
-
-Sans le CLI `claude` dans le terminal (extension VS Code seule), tapez `/plugin` dans la conversation Claude Code : l'onglet *Marketplaces* accepte `Reej-Consulting/reej-sf-skills` ou l'URL complète du repo `https://github.com/Reej-Consulting/reej-sf-skills`.
-
-**Windows — à faire une fois avant l'ajout du marketplace.** Certains skills (exemples OmniStudio notamment) ont des chemins qui dépassent la limite Windows de 260 caractères une fois clonés sous `C:\Users\<vous>\.claude\plugins\marketplaces\…`. Sans ce réglage, l'ajout échoue avec `Filename too long` :
+Certains skills (exemples OmniStudio) ont des chemins qui dépassent la limite Windows de 260 caractères une fois clonés sous `C:\Users\<vous>\.claude\plugins\…`. Sans ce réglage, l'ajout du marketplace échoue avec `Filename too long`. Dans un terminal :
 
 ```powershell
 git config --global core.longpaths true
 ```
 
-Si l'erreur persiste, activer les chemins longs au niveau de Windows (PowerShell en administrateur, puis redémarrer le terminal) :
+Si l'erreur persiste malgré tout, activer les chemins longs au niveau de Windows (PowerShell **en administrateur**, puis redémarrer le terminal) :
 
 ```powershell
 New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
 ```
 
-Si le repo est privé, remplacez `Reej-Consulting/reej-sf-skills` par l'URL git complète (SSH ou HTTPS avec vos identifiants).
+### A. Claude Code dans VS Code (extension)
 
-### Claude Cowork (app desktop)
+Tout se fait depuis la conversation Claude Code, avec la commande `/plugin` qui ouvre le gestionnaire de plugins.
 
-Paramètres → Plugins → ajouter un marketplace avec l'URL du repo, puis installer les plugins voulus depuis la liste. Les mises à jour se récupèrent depuis le même écran.
+1. **Ajouter le marketplace** : `/plugin` → onglet *Marketplaces* → *Add* → saisir `Reej-Consulting/reej-sf-skills` → valider. Le clone prend quelques secondes (≈ 60 Mo).
+2. **Installer les plugins** : `/plugin` → onglet *Discover* → repérer les plugins `sf-…` du marketplace `reej-salesforce` → *Install* sur `sf-agentforce`, puis `sf-platform`. Portée « utilisateur » par défaut : les plugins sont disponibles dans tous vos projets.
+3. **Vérifier** : dans une nouvelle conversation, taper `/sf-` — l'autocomplétion doit proposer `/sf-agentforce:agentforce-generate`, `/sf-platform:platform-soql-query`, etc.
+4. **Mettre à jour** : `/plugin` → onglet *Marketplaces* → *Update* sur `reej-salesforce`, puis onglet *Installed* → *Update* sur chaque plugin `sf-…`. À faire quand une PR de synchro a été mergée, ou une fois par mois.
+
+### B. Claude Code en ligne de commande (CLI `claude`)
+
+Si la commande `claude` est disponible dans votre terminal (installation native ou `npm install -g @anthropic-ai/claude-code`), les mêmes opérations en commandes :
+
+```bash
+# 1. Ajouter le marketplace (une fois)
+claude plugin marketplace add Reej-Consulting/reej-sf-skills
+
+# 2. Installer les plugins
+claude plugin install sf-agentforce@reej-salesforce
+claude plugin install sf-platform@reej-salesforce
+
+# 3. Vérifier
+claude plugin list
+
+# 4. Mettre à jour
+claude plugin marketplace update reej-salesforce
+claude plugin update sf-agentforce@reej-salesforce
+claude plugin update sf-platform@reej-salesforce
+```
+
+Pour limiter un plugin à un seul projet, lancer `claude plugin install … --scope project` depuis le dossier du projet.
+
+### C. Application Claude sur le poste (Cowork)
+
+1. **Ajouter le marketplace** : Paramètres → *Plugins* → ajouter un marketplace / une source → coller `https://github.com/Reej-Consulting/reej-sf-skills` → valider.
+2. **Installer les plugins** : dans la liste du marketplace `reej-salesforce`, installer `sf-agentforce` et `sf-platform` (et les autres au besoin).
+3. **Vérifier** : ouvrir une **nouvelle** session (les plugins sont chargés au démarrage) et demander par exemple « selon le skill agentforce-test, quelles métriques choisir pour un agent de service ? ».
+4. **Mettre à jour** : même écran Paramètres → *Plugins* → mise à jour du marketplace puis des plugins.
 
 Limite à connaître : ces skills sont conçus pour un poste de développement avec le **Salesforce CLI (`sf`) et une org authentifiée**. Dans Cowork (et sur claude.ai), ces prérequis sont absents par défaut : les skills servent alors surtout de base de connaissance (syntaxe Agent Script, specs de test, patterns d'architecture) plutôt que de workflows exécutables de bout en bout.
 
-### claude.ai (web)
+### D. claude.ai (web)
 
-Pas de mécanisme de marketplace à ce jour. Les skills s'ajoutent individuellement (zip d'un dossier `plugins/<plugin>/skills/<skill>/`) ou via les skills d'organisation par un administrateur. Pas de mise à jour automatique sur cette surface.
+Pas de mécanisme de marketplace à ce jour. Un skill s'ajoute individuellement : zipper le dossier `plugins/<plugin>/skills/<skill>/` et l'importer dans Paramètres → Capacités → Skills (ou via les skills d'organisation, par un administrateur). Pas de mise à jour automatique : à réserver à 2 ou 3 skills réellement utilisés hors VS Code.
+
+### Combien de plugins installer ?
+
+Chaque plugin ajoute les descriptions de ses skills au contexte de chaque session. Sept plugins partout, c'est lourd pour rien : installer `sf-agentforce` + `sf-platform` comme socle, puis `sf-service`, `sf-experience`, `sf-devops`, `sf-integration` ou `sf-industries` seulement là où la mission le justifie. Dans Claude Code, `/context` montre ce que les skills consomment.
 
 ## Synchronisation
 
 - **Automatique** : le workflow `.github/workflows/sync-upstream.yml` tourne chaque jour à 05:00 UTC. S'il y a des changements upstream, il ouvre une PR `sync/upstream` dont le corps liste les skills ajoutés, retirés ou déplacés. Merger la PR publie la nouvelle version ; les utilisateurs la récupèrent avec `marketplace update`.
 - **Manuelle** : onglet Actions → *Sync sf-skills upstream* → *Run workflow*. Cocher `auto_merge` pour pousser directement sur `main` sans PR.
-- **Locale** : `python3 scripts/sync.py` (ou `--dry-run` pour voir sans écrire), puis `python3 scripts/validate.py`.
+- **Locale** : `python3 scripts/sync.py` (ou `--dry-run` pour voir sans écrire), puis `python3 scripts/validate.py`. Après ajout d'un plugin maison : `python3 scripts/sync.py --marketplace-only` (régénère `marketplace.json` sans cloner Salesforce).
+- **Validation des PR humaines** : le workflow `validate.yml` vérifie `marketplace.json` et la structure des plugins sur toute PR touchant `reej-plugins/` ou `scripts/`.
 
 La version des plugins suit la date du commit upstream (`2026.9.10`), ce qui garantit qu'elle croît à chaque synchro.
 
@@ -83,4 +113,4 @@ Modifier le dictionnaire `DOMAINS` dans `scripts/sync.py` (regex sur le nom du s
 
 ## Licence
 
-Les skills sont © Salesforce, sous licence Apache-2.0 (voir `LICENSE` et `NOTICE`). Les scripts de ce repo sont sous la même licence.
+Les skills `sf-*` sont © Salesforce, sous licence Apache-2.0 (voir `LICENSE` et `NOTICE`) ; les scripts de ce repo sont sous la même licence. Les skills `reej-*` sont © Reej Consulting.
