@@ -44,7 +44,7 @@ Salesforce's official Help Agent template-creation API is not yet shipped. Witho
 - Readiness checks (licenses, Einstein Agent User, Data Cloud permission sets)
 
 **Out of scope — delegate elsewhere:**
-- OAuth / External Client App setup → [integration-connectivity-connected-app-configure](<skill:integration-connectivity-connected-app-configure — plugin sf-integration>/SKILL.md)
+- OAuth / External Client App setup → skill `sf-integration:integration-connectivity-connected-app-configure`
 - Raw agent authoring with no Help Agent lineage → `agentforce-generate`
 - Metadata deploy/retrieve → `platform-metadata-deploy`
 

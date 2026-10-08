@@ -22,6 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0  # historique complet : la version des plugins maison est comparée à la branche cible
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
@@ -35,4 +37,5 @@ jobs:
             exit 1
           fi
       - name: Validate
-        run: python3 scripts/validate.py
+        # sur une PR, exige aussi un incrément de version pour tout plugin maison modifié
+        run: python3 scripts/validate.py ${{ github.event_name == 'pull_request' && format('--base origin/{0}', github.base_ref) || '' }}

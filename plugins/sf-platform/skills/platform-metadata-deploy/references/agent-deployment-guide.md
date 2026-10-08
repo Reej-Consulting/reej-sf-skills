@@ -624,5 +624,5 @@ sf agent activate --api-name My_Agent --target-org myorg
 
 ## Related Documentation
 
-- [Agentforce Development Guide](../<skill:agentforce-generate — plugin sf-agentforce>/SKILL.md)
-- [Agentforce Testing Guide](../<skill:agentforce-test — plugin sf-agentforce>/SKILL.md)
+- Agentforce Development Guide (skill `sf-agentforce:agentforce-generate`)
+- Agentforce Testing Guide (skill `sf-agentforce:agentforce-test`)

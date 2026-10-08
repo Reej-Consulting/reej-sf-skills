@@ -24,7 +24,7 @@ La partie la plus importante est la `description` du frontmatter : c'est elle qu
 1. Créer une branche depuis `main`.
 2. Ajouter le skill sous `reej-plugins/<plugin>/skills/<reej-nom-du-skill>/`. Pour un nouveau plugin, copier la structure de `reej-plugins/reej-design/` (le `plugin.json` est obligatoire).
 3. Incrémenter `version` dans `reej-plugins/<plugin>/.claude-plugin/plugin.json` (semver : correctif → patch, nouveau skill → minor). **Sans ça, les postes déjà installés ne verront pas la mise à jour.**
-4. Régénérer le marketplace : `python3 scripts/sync.py --marketplace-only` puis `python3 scripts/validate.py` (les deux doivent passer).
+4. Régénérer le marketplace : `python3 scripts/sync.py --marketplace-only` puis `python3 scripts/validate.py --base origin/main` (les deux doivent passer ; `--base` vérifie l'incrément de version, comme la CI). Le validateur refuse tout `TODO` restant dans le dossier du skill, gabarits et références compris.
 5. Tester localement avant la PR : dans Claude Code, `/plugin` → Marketplaces → ajouter le **chemin local** du repo comme marketplace, installer le plugin, vérifier que le skill se déclenche sur 2-3 prompts attendus et **ne se déclenche pas** sur 2 prompts voisins.
 6. Ouvrir une PR vers `main` avec, dans la description : à quoi sert le skill, les prompts testés, et si un skill Salesforce voisin existe, pourquoi celui-ci s'en distingue. Le workflow *Validate marketplace* doit être vert.
 7. Après merge, prévenir l'équipe (canal Slack de la practice) : nom du plugin à mettre à jour.

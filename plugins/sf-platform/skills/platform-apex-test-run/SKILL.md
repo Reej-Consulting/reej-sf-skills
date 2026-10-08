@@ -36,7 +36,7 @@ Use `platform-apex-test-run` when the work involves:
 Delegate elsewhere when the user is:
 - writing or refactoring production Apex → `platform-apex-generate` skill
 - testing Agentforce agents → `agentforce-test` skill
-- testing LWC with Jest → [experience-lwc-generate](<skill:experience-lwc-generate — plugin sf-experience>/SKILL.md)
+- testing LWC with Jest → skill `sf-experience:experience-lwc-generate`
 
 ---
 
