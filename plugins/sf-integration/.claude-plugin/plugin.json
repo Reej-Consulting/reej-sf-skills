@@ -17,5 +17,8 @@
     "platform events",
     "omnistudio"
   ],
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "dependencies": [
+    "sf-core"
+  ]
 }

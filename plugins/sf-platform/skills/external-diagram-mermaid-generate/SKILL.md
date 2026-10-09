@@ -42,7 +42,7 @@ Use `external-diagram-mermaid-generate` when the user wants:
 
 ### Out of Scope — Delegate elsewhere when the user wants:
 - non-Salesforce systems only → use a more general diagramming skill
-- object discovery before an ERD → [platform-custom-object-generate](../platform-custom-object-generate/SKILL.md) or [platform-custom-field-generate](../platform-custom-field-generate/SKILL.md)
+- object discovery before an ERD → skill `sf-core:platform-custom-object-generate` or skill `sf-core:platform-custom-field-generate`
 
 ---
 
@@ -79,7 +79,7 @@ Ask for or infer:
 
 ### 2. Gather data
 For ERDs and grounded diagrams:
-- use [platform-custom-object-generate](../platform-custom-object-generate/SKILL.md) or [platform-custom-field-generate](../platform-custom-field-generate/SKILL.md) when real schema discovery is needed
+- use skill `sf-core:platform-custom-object-generate` or skill `sf-core:platform-custom-field-generate` when real schema discovery is needed
 - optionally use the local metadata helper script for counts / relationship context when appropriate
 
 ### 3. Generate Mermaid first
@@ -144,10 +144,10 @@ Call out the key relationships, flow direction, and any assumptions.
 
 | Need | Delegate to | Reason |
 |---|---|---|
-| real object / field definitions | [platform-custom-object-generate](../platform-custom-object-generate/SKILL.md) / [platform-custom-field-generate](../platform-custom-field-generate/SKILL.md) | grounded ERD generation |
+| real object / field definitions | skill `sf-core:platform-custom-object-generate` / skill `sf-core:platform-custom-field-generate` | grounded ERD generation |
 | connected-app auth setup context | skill `sf-integration:integration-connectivity-connected-app-configure` | accurate OAuth flows |
-| Agentforce logic visualization | skill `sf-agentforce:agentforce-generate` | source-of-truth behavior details |
-| Flow behavior diagrams | [automation-flow-generate](../automation-flow-generate/SKILL.md) | actual Flow logic grounding |
+| Agentforce logic visualization | skill `sf-core:agentforce-generate` | source-of-truth behavior details |
+| Flow behavior diagrams | skill `sf-core:automation-flow-generate` | actual Flow logic grounding |
 
 ---
 

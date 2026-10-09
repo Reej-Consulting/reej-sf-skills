@@ -4,7 +4,7 @@
 
 Marketplace de plugins Claude (`reej-salesforce`) pour la practice Salesforce de Reej Consulting. Il sert deux familles de plugins, installables dans Claude Code (`/plugin`) et Cowork :
 
-- `plugins/sf-*` — **miroir** des skills officiels Salesforce (https://github.com/forcedotcom/sf-skills, Apache-2.0), repackagés en 7 plugins par domaine : `sf-agentforce`, `sf-platform`, `sf-devops`, `sf-service`, `sf-experience`, `sf-integration`, `sf-industries`. ~250 skills. **Généré automatiquement, ne jamais éditer à la main.**
+- `plugins/sf-*` — **miroir** des skills officiels Salesforce (https://github.com/forcedotcom/sf-skills, Apache-2.0), repackagés en un socle `sf-core` (~20 skills choisis d'après l'usage réel, liste `CORE_SKILLS` de `sync.py`) et 7 plugins par domaine : `sf-agentforce`, `sf-platform`, `sf-devops`, `sf-service`, `sf-experience`, `sf-integration`, `sf-industries`, qui déclarent chacun une dépendance à `sf-core` (installé automatiquement avec eux). ~250 skills. **Généré automatiquement, ne jamais éditer à la main.**
 - `reej-plugins/reej-*` — skills **maison Reej**, écrits par l'équipe. Premier plugin : `reej-design` (skill `reej-slds-mockup-generate`).
 
 Pourquoi un miroir plutôt que le marketplace officiel : au démarrage (sept. 2026) celui-ci ne packageait qu'une partie des skills (aucun Agentforce/Data 360). On garde le miroir pour la couverture complète, le découpage par domaine, l'absence des hooks de télémétrie Salesforce, et un point d'entrée unique pour l'équipe. Salesforce a depuis ajouté un plugin officiel `agentforce-adlc` ; si leur marketplace devient complet, rebasculer dessus est une option à réévaluer.
@@ -25,7 +25,7 @@ Pourquoi un miroir plutôt que le marketplace officiel : au démarrage (sept. 20
 ## Règles de travail dans ce repo
 
 1. **Ne jamais modifier `plugins/`, `marketplace.json` ni `SYNC_STATE.json` à la main.** Tout passe par `scripts/sync.py`.
-2. Pour changer le rangement d'un skill : éditer `DOMAINS` dans `sync.py` (regex sur le nom, première règle gagnante ; non-mappé → `sf-platform` + alerte dans la PR). `EXTRA_SKILLS` liste les skills qui n'existent que dans les plugins officiels et sont autonomes (actuellement 3, dont `platform-architecture-analyze` depuis `plugins/builder/salesforce-code-quality`).
+2. Pour changer le rangement d'un skill : éditer `DOMAINS` dans `sync.py` (regex sur le nom, première règle gagnante ; non-mappé → `sf-platform` + alerte dans la PR). Pour le socle : `CORE_SKILLS` (noms exacts), à garder sobre car chaque description pèse dans toutes les sessions. Un skill n'est jamais copié dans deux plugins : deux skills de même nom se feraient concurrence. `EXTRA_SKILLS` liste les skills qui n'existent que dans les plugins officiels et sont autonomes (actuellement 3, dont `platform-architecture-analyze` depuis `plugins/builder/salesforce-code-quality`).
 3. Toute modification de `sync.py` doit être **poussée sur `main` avant** de relancer le workflow : il exécute la version de `main` au moment du clic.
 4. Vérifier l'idempotence après toute modification des scripts : deux exécutions consécutives doivent donner `git status` vide.
 5. Skills maison : préfixe `reej-` sur plugin et skill, `name` = nom du dossier, description avec « TRIGGER when / DO NOT TRIGGER when » qui cite le skill Salesforce voisin le cas échéant, pas de données client ni d'URL interne (repo public), incrémenter `version` du `plugin.json` à chaque changement, puis `python scripts/sync.py --marketplace-only` et `python scripts/validate.py`.
@@ -39,5 +39,6 @@ Lire le corps de la PR : « Scripts ajoutés ou modifiés » et « `allowed-tool
 
 - Windows : `Filename too long` au clone du marketplace → `core.longpaths true`. Modes de fichiers 644/755 : un commit depuis Windows peut produire une PR de 150 « file mode changed » ; `git config core.fileMode false` dans le clone.
 - Les skills upstream s'appellent entre eux par liens relatifs ; quand la cible est dans un autre plugin, `sync.py` remplace le lien par le nom appelable `sf-<plugin>:<skill>`, qui dit aussi quel plugin installer.
+- Version des plugins `sf-*` = date du commit upstream. Changer `DOMAINS` ou `CORE_SKILLS` sans publication upstream modifie le contenu à version constante : Claude Code répond « already at the latest version » et ne met rien à jour. Les postes concernés désinstallent puis réinstallent les plugins.
 - Les skills Salesforce supposent le CLI `sf` et une org authentifiée : pleinement exploitables dans Claude Code sur un projet SFDX ; dans Cowork/web ils servent surtout de base de connaissance.
 - Règle Reej : aucune suppression d'enregistrements dans une org de production, quoi que suggère un skill (`platform-data-manage`, `platform-trust-archive-manage`, `platform-dsar-policy-manage`).

@@ -39,9 +39,9 @@ Use `experience-lwc-generate` when the work involves:
 - Jest unit tests for LWC
 
 Delegate elsewhere when the user is:
-- writing Apex controllers or business logic first → skill `sf-platform:platform-apex-generate`
-- building Flow XML rather than an LWC screen component → skill `sf-platform:automation-flow-generate`
-- deploying metadata → skill `sf-platform:platform-metadata-deploy`
+- writing Apex controllers or business logic first → [platform-apex-generate](../platform-apex-generate/SKILL.md)
+- building Flow XML rather than an LWC screen component → [automation-flow-generate](../automation-flow-generate/SKILL.md)
+- deploying metadata → [platform-metadata-deploy](../platform-metadata-deploy/SKILL.md)
 
 ---
 
@@ -98,9 +98,9 @@ Check:
 
 ### 5. Hand off supporting backend or deploy work
 Use:
-- skill `sf-platform:platform-apex-generate` for controllers / services
-- skill `sf-platform:platform-metadata-deploy` for deployment
-- skill `sf-platform:platform-apex-test-run` only for Apex-side test loops, not Jest
+- [platform-apex-generate](../platform-apex-generate/SKILL.md) for controllers / services
+- [platform-metadata-deploy](../platform-metadata-deploy/SKILL.md) for deployment
+- [platform-apex-test-run](../platform-apex-test-run/SKILL.md) only for Apex-side test loops, not Jest
 
 ---
 
@@ -148,10 +148,10 @@ Local Dev commands install just-in-time on first run. They are long-running proc
 
 | Need | Delegate to | Reason |
 |---|---|---|
-| Apex controller or service | skill `sf-platform:platform-apex-generate` | backend logic |
-| embed in Flow screens | skill `sf-platform:automation-flow-generate` | declarative orchestration |
-| deploy component bundle | skill `sf-platform:platform-metadata-deploy` | org rollout |
-| create supporting metadata (message channels, objects) | skill `sf-platform:platform-metadata-deploy` | metadata deployment |
+| Apex controller or service | [platform-apex-generate](../platform-apex-generate/SKILL.md) | backend logic |
+| embed in Flow screens | [automation-flow-generate](../automation-flow-generate/SKILL.md) | declarative orchestration |
+| deploy component bundle | [platform-metadata-deploy](../platform-metadata-deploy/SKILL.md) | org rollout |
+| create supporting metadata (message channels, objects) | [platform-metadata-deploy](../platform-metadata-deploy/SKILL.md) | metadata deployment |
 
 ---
 

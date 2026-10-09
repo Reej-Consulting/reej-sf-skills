@@ -17,5 +17,8 @@
     "dev hub",
     "packaging"
   ],
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "dependencies": [
+    "sf-core"
+  ]
 }

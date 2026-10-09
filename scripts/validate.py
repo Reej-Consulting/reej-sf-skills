@@ -79,6 +79,10 @@ for entry in market.get("plugins", []):
         err(f"{name} : version non semver `{m.get('version')}`")
     if is_reej and not m.get("description"):
         err(f"{name} : description manquante dans plugin.json")
+    for dep in m.get("dependencies", []):  # une dépendance introuvable fait échouer l'installation chez l'utilisateur
+        dep_name = dep if isinstance(dep, str) else dep.get("name")
+        if "@" not in str(dep_name) and dep_name not in listed:
+            err(f"{name} : dépendance `{dep_name}` absente du marketplace")
     skills_dir = pdir / "skills"
     if not skills_dir.is_dir():
         err(f"{name} : dossier skills/ manquant")

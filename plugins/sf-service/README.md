@@ -4,6 +4,8 @@ Service Cloud : Omni-Channel, Digital Engagement (WhatsApp, messaging), ITSM, Em
 
 65 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `e5164d94` (2026-10-07). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
+Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
+
 | Skill | Description |
 |---|---|
 | `service-catalog-template-coordinate` | Single entry point for the Unified Catalog Service Process lifecycle in Salesforce — find and deploy Service Process templates, create a Service Process from scratch, activate one,… |

@@ -41,11 +41,11 @@ Use `platform-metadata-deploy` when the work involves:
 
 Delegate elsewhere when the user is:
 - authoring Apex code → [platform-apex-generate](../platform-apex-generate/SKILL.md)
-- authoring LWC components → skill `sf-experience:experience-lwc-generate`
+- authoring LWC components → [experience-lwc-generate](../experience-lwc-generate/SKILL.md)
 - creating custom objects or fields → [platform-custom-object-generate](../platform-custom-object-generate/SKILL.md), [platform-custom-field-generate](../platform-custom-field-generate/SKILL.md)
 - building Flows → [automation-flow-generate](../automation-flow-generate/SKILL.md)
-- doing org data operations → [platform-data-manage](../platform-data-manage/SKILL.md)
-- authoring or testing Agentforce agents → skill `sf-agentforce:agentforce-generate`
+- doing org data operations → skill `sf-platform:platform-data-manage`
+- authoring or testing Agentforce agents → [agentforce-generate](../agentforce-generate/SKILL.md)
 
 ---
 
@@ -104,7 +104,7 @@ Use manifest- or metadata-scoped validation when the change set is targeted.
 After a successful validation, guide the user to the correct next action:
 1. deploy now
 2. assign permission sets
-3. create test data via [platform-data-manage](../platform-data-manage/SKILL.md)
+3. create test data via skill `sf-platform:platform-data-manage`
 4. run tests / smoke checks
 5. orchestrate multiple post-deploy steps in order
 
@@ -174,7 +174,7 @@ Deep reference: [references/deployment-workflows.md](references/deployment-workf
 ## Agentforce Deployment Note
 
 Use this skill to orchestrate **deployment/publish sequencing** around agents, but use the agent-specific skill for authoring decisions:
-- skill `sf-agentforce:agentforce-generate` for `.agent` authoring, Agent Builder, Prompt Builder, and metadata config
+- [agentforce-generate](../agentforce-generate/SKILL.md) for `.agent` authoring, Agent Builder, Prompt Builder, and metadata config
 
 For full agent DevOps details, including `Agent:` pseudo metadata, publish/activate, and sync-between-orgs, see:
 - [references/agent-deployment-guide.md](references/agent-deployment-guide.md)
@@ -190,8 +190,8 @@ For full agent DevOps details, including `Agent:` pseudo metadata, publish/activ
 | Apex authoring / fixes | [platform-apex-generate](../platform-apex-generate/SKILL.md) | code authoring and repair |
 | run tests after deployment | [platform-apex-test-run](../platform-apex-test-run/SKILL.md) | post-deploy test execution and coverage |
 | Flow creation / repair | [automation-flow-generate](../automation-flow-generate/SKILL.md) | Flow authoring and activation guidance |
-| test data or seed records | [platform-data-manage](../platform-data-manage/SKILL.md) | describe-first data setup and cleanup |
-| Agent authoring and publish readiness | skill `sf-agentforce:agentforce-generate` | agent-specific correctness |
+| test data or seed records | skill `sf-platform:platform-data-manage` | describe-first data setup and cleanup |
+| Agent authoring and publish readiness | [agentforce-generate](../agentforce-generate/SKILL.md) | agent-specific correctness |
 
 ---
 

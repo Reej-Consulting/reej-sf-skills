@@ -4,6 +4,8 @@ DevOps Center, pipelines, gestion des orgs (scratch, sandbox, Dev Hub, trials), 
 
 22 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `e5164d94` (2026-10-07). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
+Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
+
 | Skill | Description |
 |---|---|
 | `automation-sandbox-post-copy-config-generate` | Generate the JSON config file that the Salesforce sandbox post-copy automation tool consumes, from a customer SOP in any format (PDF, xlsx, csv, JSON, docx, Markdown, plain text, o… |
