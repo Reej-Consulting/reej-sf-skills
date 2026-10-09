@@ -6,5 +6,6 @@
   "author": { "name": "Reej Consulting", "url": "https://github.com/Reej-Consulting/reej-sf-skills" },
   "license": "Proprietary",
   "keywords": ["reej", "salesforce", "slds", "maquette", "mockup", "design"],
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "dependencies": ["sf-core"]
 }
