@@ -51,7 +51,7 @@ New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name
 Tout se fait depuis la conversation Claude Code, avec la commande `/plugin` qui ouvre le gestionnaire de plugins.
 
 1. **Ajouter le marketplace** : `/plugin` → onglet *Marketplaces* → *Add* → saisir `Reej-Consulting/reej-sf-skills` → valider. Le clone prend quelques secondes (≈ 60 Mo).
-2. **Installer les plugins** : `/plugin` → onglet *Discover* → repérer les plugins `sf-…` du marketplace `reej-salesforce` → *Install* sur `sf-core`. Portée « utilisateur » par défaut : le plugin est disponible dans tous vos projets. Pour un plugin de domaine (ex. `sf-agentforce`), préférer la portée « projet », depuis le projet concerné.
+2. **Installer les plugins** : `/plugin` → onglet *Discover* → repérer les plugins `sf-…` du marketplace `reej-salesforce` → *Install* sur `sf-core`. Portée « utilisateur » par défaut : le plugin est disponible dans tous vos projets. Pour un plugin de domaine (ex. `sf-agentforce`), choisir la portée « locale » (pour vous seul, dans ce projet), depuis le projet concerné. Éviter la portée « projet » : elle écrit `.claude/settings.json`, un fichier fait pour être commité, qui imposerait le plugin à tous ceux qui clonent le dépôt, y compris l'équipe d'un client.
 3. **Vérifier** : dans une nouvelle conversation, taper `/sf-` — l'autocomplétion doit proposer `/sf-core:agentforce-generate`, `/sf-core:platform-soql-query`, etc.
 4. **Mettre à jour** : `/plugin` → onglet *Marketplaces* → *Update* sur `reej-salesforce`, puis onglet *Installed* → *Update* sur chaque plugin `sf-…`, puis `/reload-plugins` (installe un socle ou une dépendance ajoutés entre-temps). À faire quand une PR de synchro a été mergée, ou une fois par mois.
 
@@ -65,7 +65,7 @@ claude plugin marketplace add Reej-Consulting/reej-sf-skills
 
 # 2. Installer le socle (partout), puis un plugin de domaine pour un projet donné
 claude plugin install sf-core@reej-salesforce
-claude plugin install sf-agentforce@reej-salesforce --scope project   # depuis le dossier du projet
+claude plugin install sf-agentforce@reej-salesforce --scope local   # depuis le dossier du projet
 
 # 3. Vérifier
 claude plugin list
@@ -76,7 +76,7 @@ claude plugin update sf-core@reej-salesforce
 claude plugin update sf-agentforce@reej-salesforce
 ```
 
-Pour limiter un plugin à un seul projet, lancer `claude plugin install … --scope project` depuis le dossier du projet.
+Pour limiter un plugin à un seul projet, lancer `claude plugin install … --scope local` depuis le dossier du projet : le réglage reste personnel (`.claude/settings.local.json`). Ne pas utiliser `--scope project`, qui écrit dans `.claude/settings.json`, fichier destiné à être commité et partagé avec tous ceux qui clonent le dépôt.
 
 ### C. Application Claude sur le poste (Cowork)
 
@@ -105,7 +105,7 @@ Pas de mécanisme de marketplace à ce jour. Un skill s'ajoute individuellement 
 
 ### Combien de plugins installer ?
 
-Chaque plugin ajoute les descriptions de ses skills au contexte de chaque session, et au-delà d'un certain volume Claude ne voit plus que le nom des skills, sans leur description : il ne pense alors plus à les utiliser. D'où le socle `sf-core`, volontairement limité à ~20 skills choisis d'après l'usage réel : l'installer partout (portée utilisateur). Les plugins de domaine (`sf-agentforce`, `sf-platform`, `sf-service`, `sf-experience`, `sf-devops`, `sf-integration`, `sf-industries`) s'installent en portée **projet**, seulement là où la mission le justifie. Dans Claude Code, `/context` montre ce que les skills consomment.
+Chaque plugin ajoute les descriptions de ses skills au contexte de chaque session, et au-delà d'un certain volume Claude ne voit plus que le nom des skills, sans leur description : il ne pense alors plus à les utiliser. D'où le socle `sf-core`, volontairement limité à ~20 skills choisis d'après l'usage réel : l'installer partout (portée utilisateur). Les plugins de domaine (`sf-agentforce`, `sf-platform`, `sf-service`, `sf-experience`, `sf-devops`, `sf-integration`, `sf-industries`) s'installent en portée **locale** (pour vous seul, dans le projet concerné), seulement là où la mission le justifie. Dans Claude Code, `/context` montre ce que les skills consomment.
 
 ## Synchronisation
 
