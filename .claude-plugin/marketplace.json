@@ -7,6 +7,20 @@
   },
   "plugins": [
     {
+      "name": "reej-design",
+      "source": "./reej-plugins/reej-design",
+      "description": "Skills maison Reej pour le design d'interfaces Salesforce : maquettes HTML statiques en SLDS pour l'avant-vente et les ateliers de conception.",
+      "version": "0.1.0",
+      "keywords": [
+        "reej",
+        "salesforce",
+        "slds",
+        "maquette",
+        "mockup",
+        "design"
+      ]
+    },
+    {
       "name": "sf-core",
       "source": "./plugins/sf-core",
       "description": "Socle commun : SOQL, retrieve/deploy, Apex et tests, Flow, génération de métadonnées, LWC, Lightning Types, Agent Script, documentation Salesforce. Installé automatiquement avec tout autre plugin sf-*. 21 skills, synchronisés depuis forcedotcom/sf-skills@e5164d94.",

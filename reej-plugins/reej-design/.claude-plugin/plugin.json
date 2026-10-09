@@ -1,0 +1,11 @@
+{
+  "name": "reej-design",
+  "displayName": "Reej — Design & maquettes",
+  "version": "0.1.0",
+  "description": "Skills maison Reej pour le design d'interfaces Salesforce : maquettes HTML statiques en SLDS pour l'avant-vente et les ateliers de conception.",
+  "author": { "name": "Reej Consulting", "url": "https://github.com/Reej-Consulting/reej-sf-skills" },
+  "license": "Proprietary",
+  "keywords": ["reej", "salesforce", "slds", "maquette", "mockup", "design"],
+  "skills": "./skills/",
+  "dependencies": ["sf-core"]
+}
