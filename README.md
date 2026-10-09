@@ -51,7 +51,7 @@ New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name
 Tout se fait depuis la conversation Claude Code, avec la commande `/plugin` qui ouvre le gestionnaire de plugins.
 
 1. **Ajouter le marketplace** : `/plugin` → onglet *Marketplaces* → *Add* → saisir `Reej-Consulting/reej-sf-skills` → valider. Le clone prend quelques secondes (≈ 60 Mo).
-2. **Installer les plugins** : `/plugin` → onglet *Discover* → repérer les plugins `sf-…` du marketplace `reej-salesforce` → *Install* sur `sf-core`. Portée « utilisateur » par défaut : le plugin est disponible dans tous vos projets. Pour un plugin de domaine (ex. `sf-agentforce`), préférer la portée « projet », depuis le projet concerné.
+2. **Installer les plugins** : `/plugin` → onglet *Discover* → repérer les plugins `sf-…` du marketplace `reej-salesforce` → *Install* sur `sf-core`. Portée « utilisateur » par défaut : le plugin est disponible dans tous vos projets. Pour un plugin de domaine (ex. `sf-agentforce`), choisir la portée « locale » (pour vous seul, dans ce projet), depuis le projet concerné. Éviter la portée « projet » : elle écrit `.claude/settings.json`, un fichier fait pour être commité, qui imposerait le plugin à tous ceux qui clonent le dépôt, y compris l'équipe d'un client.
 3. **Vérifier** : dans une nouvelle conversation, taper `/sf-` — l'autocomplétion doit proposer `/sf-core:agentforce-generate`, `/sf-core:platform-soql-query`, etc.
 4. **Mettre à jour** : `/plugin` → onglet *Marketplaces* → *Update* sur `reej-salesforce`, puis onglet *Installed* → *Update* sur chaque plugin `sf-…`, puis `/reload-plugins` (installe un socle ou une dépendance ajoutés entre-temps). À faire quand une PR de synchro a été mergée, ou une fois par mois.
 
@@ -65,7 +65,7 @@ claude plugin marketplace add Reej-Consulting/reej-sf-skills
 
 # 2. Installer le socle (partout), puis un plugin de domaine pour un projet donné
 claude plugin install sf-core@reej-salesforce
-claude plugin install sf-agentforce@reej-salesforce --scope project   # depuis le dossier du projet
+claude plugin install sf-agentforce@reej-salesforce --scope local   # depuis le dossier du projet
 
 # 3. Vérifier
 claude plugin list
@@ -76,16 +76,28 @@ claude plugin update sf-core@reej-salesforce
 claude plugin update sf-agentforce@reej-salesforce
 ```
 
-Pour limiter un plugin à un seul projet, lancer `claude plugin install … --scope project` depuis le dossier du projet.
+Pour limiter un plugin à un seul projet, lancer `claude plugin install … --scope local` depuis le dossier du projet : le réglage reste personnel (`.claude/settings.local.json`). Ne pas utiliser `--scope project`, qui écrit dans `.claude/settings.json`, fichier destiné à être commité et partagé avec tous ceux qui clonent le dépôt.
 
 ### C. Application Claude sur le poste (Cowork)
 
 1. **Ajouter le marketplace** : Paramètres → *Plugins* → ajouter un marketplace / une source → coller `https://github.com/Reej-Consulting/reej-sf-skills` → valider.
-2. **Installer les plugins** : dans la liste du marketplace `reej-salesforce`, installer `sf-core` (et les plugins de domaine au besoin ; installer `sf-core` explicitement, l'installation automatique des dépendances n'étant pas documentée pour Cowork).
+2. **Installer les plugins** : dans la liste du marketplace `reej-salesforce`, installer `sf-core` (et les plugins de domaine au besoin). Contrairement à VS Code, Claude Desktop n'installe pas les dépendances : installer `sf-core` explicitement.
 3. **Vérifier** : ouvrir une **nouvelle** session (les plugins sont chargés au démarrage) et demander par exemple « selon le skill agentforce-generate, comment structurer un sous-agent en Agent Script ? ».
 4. **Mettre à jour** : même écran Paramètres → *Plugins* → mise à jour du marketplace puis des plugins.
 
 Limite à connaître : ces skills sont conçus pour un poste de développement avec le **Salesforce CLI (`sf`) et une org authentifiée**. Dans Cowork (et sur claude.ai), ces prérequis sont absents par défaut : les skills servent alors surtout de base de connaissance (syntaxe Agent Script, specs de test, patterns d'architecture) plutôt que de workflows exécutables de bout en bout.
+
+### Desktop et VS Code sur le même poste
+
+Un plugin installé dans Claude Desktop est enregistré sur votre compte claude.ai, puis recopié automatiquement dans Claude Code (VS Code, CLI) sous le nom `<plugin>@synced`. Cette copie n'est pas mise à jour en même temps que le marketplace : elle peut être périmée et faire doublon avec les plugins installés dans VS Code (même skill présent deux fois, descriptions qui disparaissent faute de place). Dans `/plugin`, elle apparaît avec le suffixe `@synced`.
+
+Si vous installez les plugins dans VS Code via le marketplace, coupez cette recopie en ajoutant dans `~/.claude/settings.json` :
+
+```json
+"syncClaudeAiPlugins": false
+```
+
+Au démarrage suivant, les copies `@synced` sont déplacées dans `~/.claude/plugins/.trash/` et ne se chargent plus. Contrepartie : un plugin activé dans Desktop n'arrive plus dans VS Code, il faut l'y installer aussi. Pour ne couper qu'un seul plugin, désactivez sa ligne `@synced` dans `/plugin`.
 
 ### D. claude.ai (web)
 
@@ -93,7 +105,7 @@ Pas de mécanisme de marketplace à ce jour. Un skill s'ajoute individuellement 
 
 ### Combien de plugins installer ?
 
-Chaque plugin ajoute les descriptions de ses skills au contexte de chaque session, et au-delà d'un certain volume Claude ne voit plus que le nom des skills, sans leur description : il ne pense alors plus à les utiliser. D'où le socle `sf-core`, volontairement limité à ~20 skills choisis d'après l'usage réel : l'installer partout (portée utilisateur). Les plugins de domaine (`sf-agentforce`, `sf-platform`, `sf-service`, `sf-experience`, `sf-devops`, `sf-integration`, `sf-industries`) s'installent en portée **projet**, seulement là où la mission le justifie. Dans Claude Code, `/context` montre ce que les skills consomment.
+Chaque plugin ajoute les descriptions de ses skills au contexte de chaque session, et au-delà d'un certain volume Claude ne voit plus que le nom des skills, sans leur description : il ne pense alors plus à les utiliser. D'où le socle `sf-core`, volontairement limité à ~20 skills choisis d'après l'usage réel : l'installer partout (portée utilisateur). Les plugins de domaine (`sf-agentforce`, `sf-platform`, `sf-service`, `sf-experience`, `sf-devops`, `sf-integration`, `sf-industries`) s'installent en portée **locale** (pour vous seul, dans le projet concerné), seulement là où la mission le justifie. Dans Claude Code, `/context` montre ce que les skills consomment.
 
 ## Synchronisation
 
@@ -117,6 +129,7 @@ Attention : un changement de découpage (`DOMAINS`, `CORE_SKILLS`) ne change pas
 - **Instabilité upstream assumée** : Salesforce prévient que les skills peuvent être renommés ou supprimés sans préavis. La PR quotidienne rend ces changements visibles avant qu'ils n'arrivent chez les utilisateurs — relire la section « Retirés » avant de merger.
 - **Ce qui n'est pas repris** : les plugins officiels `salesforce-development` et `salesforce-test-drive` embarquent aussi des hooks (gate de déploiement production, télémétrie envoyée à Salesforce), un agent, un serveur MCP (LSP Apex/SOQL) et 7 skills qui dépendent de cet outillage (`platform-destructive-deploy`, `platform-lsp-integrate`, `platform-capability-search`, `platform-environment-validate`, `platform-deploy-validate`, `platform-quick-deploy`, `dx-project-create`). Ce miroir ne reprend **que les skills autonomes** ; pour ces extras, ajouter en plus le marketplace officiel `forcedotcom/sf-skills`.
 - **Règle Reej** : aucune suppression d'enregistrements dans une org de production, quoi que suggère un skill (`platform-data-manage`, `platform-trust-archive-manage`, `platform-dsar-policy-manage` notamment). Les skills restent des instructions tierces : garder l'œil sur ce qu'ils déclenchent.
+- **Avis et avertissements dans Claude Desktop** (Paramètres → Plugins → Gérer les marketplaces) : les « avis » signalent qu'un plugin a changé depuis la dernière synchro, ce qui est normal après chaque mise à jour. Les « avertissements » portent sur quelques skills Salesforce dont la description contient un mot entre chevrons (`<description>`, `<suffix>`…) : claude.ai retire les chevrons, le skill reste disponible. Sans conséquence, rien à faire.
 
 ## Licence
 
