@@ -16,5 +16,8 @@
     "education cloud",
     "life sciences"
   ],
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "dependencies": [
+    "sf-core"
+  ]
 }

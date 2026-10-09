@@ -4,6 +4,8 @@ Field Service, Consumer Goods, Education Cloud, Life Sciences.
 
 31 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `e5164d94` (2026-10-07). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
+Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
+
 | Skill | Description |
 |---|---|
 | `consumer-goods-accruals-datakit-deploy` | Use this skill to deploy the TPM Liability Accruals data kit end to end to a Salesforce org. Invoke when a customer or teammate wants to install the accrual engine, verify the Data… |

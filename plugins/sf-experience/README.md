@@ -1,8 +1,10 @@
 # Salesforce — Experience, LWC & Mobile
 
-Experience Cloud, LWC, LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile SDK.
+Experience Cloud, LWC avancé (migration, accessibilité, sécurité), LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile SDK.
 
-45 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `e5164d94` (2026-10-07). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+44 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `e5164d94` (2026-10-07). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+
+Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 
 | Skill | Description |
 |---|---|
@@ -25,7 +27,6 @@ Experience Cloud, LWC, LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile 
 | `experience-lwc-accessibility-jest-run` | Use ALWAYS when running Sa11y accessibility Jest tests for an LWC — locally before pushing, producing the command(s), running one file vs a suite, selecting tests by naming convent… |
 | `experience-lwc-base-components-integrate` | Pick the right Lightning Base Component (`lightning-*`) for a given UI task, retrieve its full API (props, methods, events, slots) from the bundled per-component reference, and wir… |
 | `experience-lwc-design-generate` | Use when you need to create a brand new Lightning Web Component from a Figma design, a Product Requirements Document, or another design artifact — orchestrating the five-phase work… |
-| `experience-lwc-generate` | Lightning Web Components with PICKLES methodology and 165-point scoring. Use this skill when the user creates or edits LWC components, builds wire service patterns, or writes Jest … |
 | `experience-lwc-legacy-migrate` | Migrate legacy Salesforce UI stacks onto modern LWC — Aura → LWC conversion completeness verification and Lightning Out Beta → Lightning Out 2.0 host-page migration. TRIGGER on \"v… |
 | `experience-lwc-rtl-validate` | Use this skill to review a Lightning Web Component (.html, .js, .css files) for right-to-left (RTL) internationalization correctness, producing a finding list with code-level fixes… |
 | `experience-lwc-runtime-observe` | Use when running Salesforce Lightning Preview for an app or a single LWC component to extract the runtime DOM for inspection. TRIGGER when the user says \"preview an LWC locally\",… |

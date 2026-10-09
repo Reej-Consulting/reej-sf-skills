@@ -33,7 +33,7 @@ Use `platform-soql-query` when the work involves:
 - SOQL/SOSL syntax and governor-aware design
 
 Delegate elsewhere when the user is:
-- performing bulk data operations → [platform-data-manage](../platform-data-manage/SKILL.md)
+- performing bulk data operations → skill `sf-platform:platform-data-manage`
 - embedding query logic inside broader Apex implementation → [platform-apex-generate](../platform-apex-generate/SKILL.md)
 - debugging via logs rather than query shape → [platform-apex-logs-debug](../platform-apex-logs-debug/SKILL.md)
 
@@ -78,7 +78,7 @@ Check:
 
 ### 4. Validate execution path if needed
 If the user wants runtime verification, hand off execution to:
-- [platform-data-manage](../platform-data-manage/SKILL.md)
+- skill `sf-platform:platform-data-manage`
 
 ---
 
@@ -118,10 +118,10 @@ Next step: <run in platform-data-manage or embed in Apex>
 
 | Need | Delegate to | Reason |
 |---|---|---|
-| run the query against an org | [platform-data-manage](../platform-data-manage/SKILL.md) | execution and export |
+| run the query against an org | skill `sf-platform:platform-data-manage` | execution and export |
 | embed the query in services/selectors | [platform-apex-generate](../platform-apex-generate/SKILL.md) | implementation context |
 | analyze slow-query symptoms from logs | [platform-apex-logs-debug](../platform-apex-logs-debug/SKILL.md) | runtime evidence |
-| wire query-backed UI | [experience-lwc-generate](<skill:experience-lwc-generate — plugin sf-experience>/SKILL.md) | frontend integration |
+| wire query-backed UI | [experience-lwc-generate](../experience-lwc-generate/SKILL.md) | frontend integration |
 | validate query behavior in tests | [platform-apex-test-run](../platform-apex-test-run/SKILL.md) | test coverage for query logic |
 
 ---

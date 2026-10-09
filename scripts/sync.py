@@ -3,10 +3,12 @@
 Synchronise les skills Salesforce (forcedotcom/sf-skills) dans le marketplace Reej.
 
 - Clone (shallow) le repo upstream
-- Range chaque skill de `skills/` dans un plugin par domaine (voir DOMAINS)
-- Réécrit les liens relatifs `../<skill>/...` qui traversent un plugin
+- Range chaque skill de `skills/` dans un plugin par domaine (voir DOMAINS) ; les skills de
+  CORE_SKILLS vont dans `sf-core`, dont chaque plugin de domaine déclare la dépendance
+- Réécrit les liens relatifs `../<skill>/...` qui traversent un plugin en nom appelable `sf-<plugin>:<skill>`
 - Régénère `plugins/<plugin>/.claude-plugin/plugin.json` et `.claude-plugin/marketplace.json`
-- Écrit `SYNC_STATE.json` (commit upstream, inventaire) et imprime un résumé des changements
+- Écrit `SYNC_STATE.json` (commit upstream, inventaire) et imprime un résumé des changements,
+  dont les scripts embarqués et les `allowed-tools` modifiés (ce qui s'exécute chez l'utilisateur, à relire)
 
 Usage :
     python3 scripts/sync.py                 # synchro complète
@@ -36,13 +38,45 @@ REEJ_PREFIX = "reej-"
 LONG_PATH_WARN = 170  # longueur relative au-delà de laquelle un chemin est signalé (Windows MAX_PATH = 260)
 
 # --------------------------------------------------------------------------
+# Socle : skills choisis à la main d'après l'usage réel, regroupés dans sf-core.
+# Ils sont DÉPLACÉS (pas copiés) hors de leur plugin de domaine — deux copies d'un même
+# skill se feraient concurrence — et chaque plugin de domaine déclare une dépendance à
+# sf-core, que Claude Code installe automatiquement avec lui. Rester sobre : chaque
+# description pèse dans le contexte de chaque session.
+# --------------------------------------------------------------------------
+CORE_DOMAIN = "core"
+CORE_SKILLS = [
+    # Requêtes et métadonnées
+    "platform-soql-query", "platform-data-and-tooling-api-context-get", "platform-metadata-api-context-get",
+    "platform-metadata-retrieve", "platform-metadata-deploy",
+    # Apex et Flow
+    "platform-apex-generate", "platform-apex-test-generate", "platform-apex-test-run",
+    "platform-apex-anonymous-run", "platform-apex-logs-debug", "automation-flow-generate",
+    # Génération de métadonnées
+    "platform-custom-object-generate", "platform-custom-field-generate", "platform-permission-set-generate",
+    "platform-custom-lightning-type-generate",
+    # UI
+    "experience-lwc-generate", "design-systems-slds-apply",
+    # Agentforce
+    "agentforce-generate", "agentforce-architecture-analyze",
+    # Transverse
+    "platform-docs-get", "platform-architecture-analyze",
+]
+
+# --------------------------------------------------------------------------
 # Répartition par domaine. L'ordre compte : la première règle qui matche gagne.
 # Un skill non couvert tombe dans DEFAULT_DOMAIN et est signalé dans le résumé.
 # --------------------------------------------------------------------------
 DOMAINS: dict[str, dict] = {
+    CORE_DOMAIN: {
+        "displayName": "Salesforce — Socle",
+        "description": "Socle commun : SOQL, retrieve/deploy, Apex et tests, Flow, génération de métadonnées, LWC, Lightning Types, Agent Script, documentation Salesforce. Installé automatiquement avec tout autre plugin sf-*.",
+        "keywords": ["salesforce", "soql", "apex", "flow", "metadata", "deploy", "lwc", "agentforce"],
+        "match": [rf"^{re.escape(s)}$" for s in CORE_SKILLS],
+    },
     "agentforce": {
         "displayName": "Salesforce — Agentforce & Data 360",
-        "description": "Agentforce (Agent Script, tests, observabilité, architecture, migration Einstein Bots), Data 360 / Data Cloud, Models API et canaux Agentforce.",
+        "description": "Agentforce avancé (tests, observabilité, persona, migration Einstein Bots, canaux), Data 360 / Data Cloud, Models API. L'écriture d'Agent Script est dans sf-core.",
         "keywords": ["salesforce", "agentforce", "agent script", "data cloud", "data 360", "einstein bots"],
         "match": [
             r"^agentforce-", r"^data360-", r"^platform-models-api-",
@@ -52,7 +86,7 @@ DOMAINS: dict[str, dict] = {
     },
     "platform": {
         "displayName": "Salesforce — Platform & Apex",
-        "description": "Socle plateforme : métadonnées (objets, champs, permissions, sharing), Apex, Flow, SOQL, déploiement/retrieve, Code Analyzer, SLDS, documentation Salesforce.",
+        "description": "Compléments plateforme au socle sf-core : sharing et OWD, rapports et list views, Code Analyzer et ApexGuru, chiffrement, gestion de données, métadonnées avancées, widgets, validation et migration SLDS.",
         "keywords": ["salesforce", "apex", "flow", "soql", "metadata", "deploy", "slds"],
         "match": [r"^platform-", r"^automation-flow-", r"^design-systems-", r"^external-", r"^dx-code-", r"^dx-apexguru-",
                   r"^tableau-", r"^marketing-", r"^sales-"],  # clouds isolés (1-2 skills) : pas de plugin dédié tant que ça reste marginal
@@ -71,7 +105,7 @@ DOMAINS: dict[str, dict] = {
     },
     "experience": {
         "displayName": "Salesforce — Experience, LWC & Mobile",
-        "description": "Experience Cloud, LWC, LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile SDK.",
+        "description": "Experience Cloud, LWC avancé (migration, accessibilité, sécurité), LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile SDK.",
         "keywords": ["salesforce", "lwc", "experience cloud", "react", "cms", "commerce", "mobile"],
         "match": [r"^experience-", r"^commerce-", r"^mobile-"],
     },
@@ -101,8 +135,12 @@ EXTRA_SKILLS: dict[str, str] = {
     "plugins/builder/salesforce-development/skills/platform-manifest-generate": "platform",
 }
 
-REL_LINK_RE = re.compile(r"\.\./([a-z0-9][a-z0-9-]*)/")
+REL_LINK_RE = re.compile(r"(?:\.\./)+([a-z0-9][a-z0-9-]*)/")
+MD_LINK_RE = re.compile(r"\[([^\]\n]+)\]\((?:\.\./)+([a-z0-9][a-z0-9-]*)/([^)\s]*)\)")
 TEXT_EXT = {".md", ".txt", ".py", ".sh", ".js", ".ts", ".json", ".yaml", ".yml"}
+SCRIPT_EXT = {".py", ".sh", ".bash", ".js", ".mjs", ".cjs", ".ts", ".ps1"}
+TOOL_RE = re.compile(r"[^\s,(]+(?:\([^)]*\))?")  # `Read`, `Bash(sf agent:*)`…
+SUMMARY_CAP = 40  # lignes max par section « à relire » (corps de PR limité à 65 536 caractères)
 
 
 def log(msg: str) -> None:
@@ -137,8 +175,39 @@ def skill_frontmatter(skill_md: Path) -> dict:
     return out
 
 
+def rewrite_links(text: str, placement: dict[str, str], this_domain: str) -> tuple[str, int]:
+    """Remplace les liens `../autre-skill/...` dont la cible est dans un autre plugin par son nom appelable
+    `sf-<plugin>:<skill>` : Claude l'invoque si ce plugin est installé, sinon le nom dit lequel installer."""
+    rewritten = 0
+
+    def callable_name(skill: str) -> str | None:
+        d = placement.get(skill)
+        return None if d is None or d == this_domain else f"{PLUGIN_PREFIX}{d}:{skill}"
+
+    def md_link(m: re.Match) -> str:
+        nonlocal rewritten
+        label, skill, path = m.groups()
+        name = callable_name(skill)
+        if name is None:
+            return m.group(0)
+        rewritten += 1
+        other_file = path not in ("", "SKILL.md")
+        ref = f"skill `{name}`" + (f", file `{path}`" if other_file else "")
+        return ref if label == skill and not other_file else f"{label} ({ref})"
+
+    def bare(m: re.Match) -> str:  # chemin hors lien Markdown (code, prose)
+        nonlocal rewritten
+        name = callable_name(m.group(1))
+        if name is None:
+            return m.group(0)
+        rewritten += 1
+        return f"<skill {name}>/"
+
+    text = MD_LINK_RE.sub(md_link, text)
+    return REL_LINK_RE.sub(bare, text), rewritten
+
+
 def rewrite_cross_links(plugin_dir: Path, placement: dict[str, str], this_domain: str) -> int:
-    """Remplace `../autre-skill/...` par une mention textuelle quand la cible est dans un autre plugin."""
     rewritten = 0
     for f in plugin_dir.rglob("*"):
         if not f.is_file() or f.suffix not in TEXT_EXT:
@@ -147,20 +216,52 @@ def rewrite_cross_links(plugin_dir: Path, placement: dict[str, str], this_domain
             text = f.read_text(encoding="utf-8")
         except UnicodeDecodeError:
             continue
-
-        def repl(m: re.Match) -> str:
-            nonlocal rewritten
-            target = m.group(1)
-            target_domain = placement.get(target)
-            if target_domain is None or target_domain == this_domain:
-                return m.group(0)
-            rewritten += 1
-            return f"<skill:{target} — plugin {PLUGIN_PREFIX}{target_domain}>/"
-
-        new = REL_LINK_RE.sub(repl, text)
-        if new != text:
+        new, n = rewrite_links(text, placement, this_domain)
+        if n:
             f.write_text(new, encoding="utf-8")
+            rewritten += n
     return rewritten
+
+
+def allowed_tools(skill_md: Path) -> set[str]:
+    """Outils que le skill peut utiliser sans demander (`allowed-tools` du frontmatter)."""
+    if not skill_md.is_file():
+        return set()
+    m = re.match(r"^---\n(.*?)\n---", skill_md.read_text(encoding="utf-8", errors="replace"), re.S)
+    km = m and re.search(r"^allowed-tools:[ \t]*(.*(?:\n[ \t]+.*)*)", m.group(1), re.M)
+    if not km:
+        return set()
+    return {t for t in TOOL_RE.findall(re.sub(r"[\[\]\"']", " ", km.group(1))) if t != "-"}
+
+
+def review_changes(skills: list[str], sources: dict[str, Path], placement: dict[str, str],
+                   prev_skills: dict[str, str]) -> tuple[list[str], list[str]]:
+    """Ce qui s'exécute chez l'utilisateur et a changé depuis la dernière synchro : scripts embarqués
+    ajoutés/modifiés et `allowed-tools` modifiés. Comparaison avec plugins/ tel qu'il est avant régénération."""
+    scripts, tools = [], []
+    for s in skills:
+        old_root = PLUGINS_DIR / f"{PLUGIN_PREFIX}{prev_skills[s]}" / "skills" / s if s in prev_skills else None
+        for f in sorted(sources[s].rglob("*")):
+            if not f.is_file() or f.suffix not in SCRIPT_EXT:
+                continue
+            rel = f.relative_to(sources[s]).as_posix()
+            new = f.read_bytes()
+            if f.suffix in TEXT_EXT:  # même réécriture qu'à l'écriture, sinon faux « modifié » à chaque run
+                try:
+                    new = rewrite_links(new.decode("utf-8"), placement, placement[s])[0].encode("utf-8")
+                except UnicodeDecodeError:
+                    pass
+            old = old_root / rel if old_root else None
+            if old is None or not old.is_file():
+                scripts.append(f"ajouté : `{s}/{rel}`")
+            elif old.read_bytes().replace(b"\r\n", b"\n") != new.replace(b"\r\n", b"\n"):
+                scripts.append(f"modifié : `{s}/{rel}`")
+        new_t = allowed_tools(sources[s] / "SKILL.md")
+        old_t = allowed_tools(old_root / "SKILL.md") if old_root else set()
+        if new_t != old_t:
+            tools.append(f"`{s}` : " + " · ".join([f"+ `{t}`" for t in sorted(new_t - old_t)] +
+                                                   [f"− `{t}`" for t in sorted(old_t - new_t)]))
+    return scripts, tools
 
 
 def collect_reej_plugins() -> list[dict]:
@@ -230,6 +331,7 @@ def main() -> int:
     ap.add_argument("--marketplace-only", action="store_true",
                     help="ne clone rien : régénère seulement marketplace.json à partir des plugins présents (après ajout d'un plugin maison)")
     args = ap.parse_args()
+    sys.stdout.reconfigure(encoding="utf-8")  # Windows : sortie redirigée en cp1252 sinon, plantage sur « → »
 
     if args.marketplace_only:
         return write_marketplace_only()
@@ -263,7 +365,8 @@ def main() -> int:
                 continue
             if p.name not in sources:  # si Salesforce le remonte un jour à la racine, la racine gagne
                 sources[p.name] = p
-                placement[p.name] = d
+                placement[p.name] = CORE_DOMAIN if p.name in CORE_SKILLS else d
+        missing_core = [s for s in CORE_SKILLS if s not in sources]
         skills = sorted(sources)
         log(f"Upstream {commit[:8]} ({commit_date}) — {len(skills)} skills")
 
@@ -272,16 +375,27 @@ def main() -> int:
         added = sorted(set(skills) - set(prev_skills))
         removed = sorted(set(prev_skills) - set(skills))
         moved = sorted(s for s in skills if s in prev_skills and prev_skills[s] != placement[s])
+        scripts_changed, tools_changed = review_changes(skills, sources, placement, prev_skills)
 
         # ---- Résumé (stdout, réutilisé dans le corps de la PR) ----
         print(f"## Synchro sf-skills → {commit_date} (`{commit[:8]}`)\n")
         print(f"- Upstream : https://github.com/forcedotcom/sf-skills/commit/{commit}")
-        print(f"- Skills : **{len(skills)}** ({len(added)} ajoutés, {len(removed)} retirés, {len(moved)} déplacés)\n")
+        print(f"- Skills : **{len(skills)}** ({len(added)} ajoutés, {len(removed)} retirés, {len(moved)} déplacés)")
+        print(f"- À relire : **{len(scripts_changed)}** scripts ajoutés ou modifiés, **{len(tools_changed)}** `allowed-tools` modifiés\n")
         for label, items in (("Ajoutés", added), ("Retirés", removed), ("Déplacés de plugin", moved)):
             if items:
                 print(f"### {label}\n")
                 for s in items:
                     print(f"- `{s}` → {PLUGIN_PREFIX}{placement.get(s, prev_skills.get(s))}")
+                print()
+        for label, items in (("🔍 Scripts ajoutés ou modifiés — code que Claude peut exécuter sur les postes", scripts_changed),
+                             ("🔍 `allowed-tools` modifiés — outils que le skill utilise sans demander", tools_changed)):
+            if items:
+                print(f"### {label}\n")
+                for line in items[:SUMMARY_CAP]:
+                    print(f"- {line}")
+                if len(items) > SUMMARY_CAP:
+                    print(f"- … et {len(items) - SUMMARY_CAP} autres (voir le diff de la PR)")
                 print()
         if unmapped:
             print(f"### ⚠️ Non mappés (placés dans {PLUGIN_PREFIX}{DEFAULT_DOMAIN}, à ajouter dans DOMAINS)\n")
@@ -292,6 +406,11 @@ def main() -> int:
             print("### ⚠️ EXTRA_SKILLS introuvables upstream (déplacés ou supprimés ?)\n")
             for rel in missing_extra:
                 print(f"- `{rel}`")
+            print()
+        if missing_core:
+            print(f"### ⚠️ CORE_SKILLS introuvables upstream (renommés ou supprimés ? {PLUGIN_PREFIX}{CORE_DOMAIN} les a perdus)\n")
+            for s in missing_core:
+                print(f"- `{s}`")
             print()
         # Windows : limite MAX_PATH = 260 caractères. Claude Code clone le marketplace sous
         # C:\Users\<user>\.claude\plugins\marketplaces\<temp>\ (≈ 70-90 caractères de préfixe).
@@ -348,12 +467,16 @@ def main() -> int:
                 "keywords": cfg["keywords"],
                 "skills": "./skills/",
             }
+            if d != CORE_DOMAIN:  # installer un plugin de domaine installe aussi le socle
+                manifest["dependencies"] = [f"{PLUGIN_PREFIX}{CORE_DOMAIN}"]
             (pdir / ".claude-plugin").mkdir()
             (pdir / ".claude-plugin" / "plugin.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
             readme = [f"# {cfg['displayName']}", "", cfg["description"], "",
-                      f"{len(members)} skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `{commit[:8]}` ({commit_date}). Ne pas éditer à la main : régénéré par `scripts/sync.py`.", "",
-                      "| Skill | Description |", "|---|---|"]
+                      f"{len(members)} skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `{commit[:8]}` ({commit_date}). Ne pas éditer à la main : régénéré par `scripts/sync.py`.", ""]
+            if d != CORE_DOMAIN:
+                readme += [f"Dépend de `{PLUGIN_PREFIX}{CORE_DOMAIN}` (socle), installé automatiquement avec ce plugin.", ""]
+            readme += ["| Skill | Description |", "|---|---|"]
             for s in members:
                 fm = skill_frontmatter(pdir / "skills" / s / "SKILL.md")
                 desc = fm.get("description", "").replace("|", "\\|")
@@ -385,7 +508,7 @@ def main() -> int:
             "version": version,
             # pas d'horodatage du run : le fichier ne doit changer que si l'upstream change,
             # sinon chaque exécution ouvrirait une PR vide
-            "skills": placement,
+            "skills": dict(sorted(placement.items())),  # trié : l'ordre de iterdir() varie selon l'OS et le système de fichiers
         }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         log("Synchro terminée.")
         return 0

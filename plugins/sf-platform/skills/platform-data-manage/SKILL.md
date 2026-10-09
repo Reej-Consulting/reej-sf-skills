@@ -35,10 +35,10 @@ Use `platform-data-manage` when the work involves:
 - Apex anonymous scripts for data seeding / rollback
 
 Delegate elsewhere when the user is:
-- writing SOQL only → [platform-soql-query](../platform-soql-query/SKILL.md)
-- running or repairing Apex tests → [platform-apex-test-run](../platform-apex-test-run/SKILL.md)
-- deploying metadata first → [platform-metadata-deploy](../platform-metadata-deploy/SKILL.md)
-- creating or modifying custom objects / fields → [platform-custom-object-generate](../platform-custom-object-generate/SKILL.md) or [platform-custom-field-generate](../platform-custom-field-generate/SKILL.md)
+- writing SOQL only → skill `sf-core:platform-soql-query`
+- running or repairing Apex tests → skill `sf-core:platform-apex-test-run`
+- deploying metadata first → skill `sf-core:platform-metadata-deploy`
+- creating or modifying custom objects / fields → skill `sf-core:platform-custom-object-generate` or skill `sf-core:platform-custom-field-generate`
 
 ---
 
@@ -77,7 +77,7 @@ Ask for or infer:
 - Prefer **CLI-first** for straightforward CRUD; use anonymous Apex when the operation truly needs server-side orchestration.
 
 If metadata is missing, stop and hand off to:
-- [platform-custom-object-generate](../platform-custom-object-generate/SKILL.md) or [platform-custom-field-generate](../platform-custom-field-generate/SKILL.md) to create the missing schema, then [platform-metadata-deploy](../platform-metadata-deploy/SKILL.md) to deploy it before retrying the data operation
+- skill `sf-core:platform-custom-object-generate` or skill `sf-core:platform-custom-field-generate` to create the missing schema, then skill `sf-core:platform-metadata-deploy` to deploy it before retrying the data operation
 
 ---
 
@@ -194,12 +194,12 @@ Cleanup: <exact delete or rollback guidance>
 
 | Need | Delegate to | Reason |
 |---|---|---|
-| create missing custom objects | [platform-custom-object-generate](../platform-custom-object-generate/SKILL.md) | schema must exist before data operations |
-| create missing custom fields | [platform-custom-field-generate](../platform-custom-field-generate/SKILL.md) | field-level schema must exist before data creation |
-| run bulk-sensitive Apex validation | [platform-apex-test-run](../platform-apex-test-run/SKILL.md) | test execution and coverage |
-| deploy missing schema first | [platform-metadata-deploy](../platform-metadata-deploy/SKILL.md) | metadata readiness |
-| implement production Apex logic consuming the data | [platform-apex-generate](../platform-apex-generate/SKILL.md) | Apex class / trigger authoring |
-| implement Flow logic consuming the data | [automation-flow-generate](../automation-flow-generate/SKILL.md) | Flow authoring and automation |
+| create missing custom objects | skill `sf-core:platform-custom-object-generate` | schema must exist before data operations |
+| create missing custom fields | skill `sf-core:platform-custom-field-generate` | field-level schema must exist before data creation |
+| run bulk-sensitive Apex validation | skill `sf-core:platform-apex-test-run` | test execution and coverage |
+| deploy missing schema first | skill `sf-core:platform-metadata-deploy` | metadata readiness |
+| implement production Apex logic consuming the data | skill `sf-core:platform-apex-generate` | Apex class / trigger authoring |
+| implement Flow logic consuming the data | skill `sf-core:automation-flow-generate` | Flow authoring and automation |
 
 ---
 

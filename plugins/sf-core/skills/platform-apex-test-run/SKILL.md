@@ -36,7 +36,7 @@ Use `platform-apex-test-run` when the work involves:
 Delegate elsewhere when the user is:
 - writing or refactoring production Apex → `platform-apex-generate` skill
 - testing Agentforce agents → `agentforce-test` skill
-- testing LWC with Jest → [experience-lwc-generate](<skill:experience-lwc-generate — plugin sf-experience>/SKILL.md)
+- testing LWC with Jest → [experience-lwc-generate](../experience-lwc-generate/SKILL.md)
 
 ---
 
@@ -137,7 +137,7 @@ Next step: <fix class, add test, rerun scope, or widen regression>
 | Need | Delegate to | Reason |
 |------|-------------|--------|
 | Fix production code or author test classes | `platform-apex-generate` skill | Code generation and repair |
-| Create bulk / edge-case test data | [platform-data-manage](../platform-data-manage/SKILL.md) | Realistic test datasets |
+| Create bulk / edge-case test data | skill `sf-platform:platform-data-manage` | Realistic test datasets |
 | Deploy updated tests to org | [platform-metadata-deploy](../platform-metadata-deploy/SKILL.md) | Deployment workflows |
 | Inspect detailed runtime logs | [platform-apex-logs-debug](../platform-apex-logs-debug/SKILL.md) | Deeper failure analysis |
 

@@ -604,6 +604,6 @@ exports.startConversation = async (event) => {
 |-------|----------|
 | Connected Apps setup | [integration-connectivity-connected-app-configure skill](../../integration-connectivity-connected-app-configure/SKILL.md) |
 | Named Credentials | [named-credentials-guide.md](named-credentials-guide.md) |
-| Agentforce agents | [agentforce-generate skill](../<skill:agentforce-generate — plugin sf-agentforce>/SKILL.md) |
+| Agentforce agents | agentforce-generate skill (skill `sf-core:agentforce-generate`) |
 | Platform Events | [platform-events-guide.md](platform-events-guide.md) |
 | REST callout patterns | [rest-callout-patterns.md](rest-callout-patterns.md) |

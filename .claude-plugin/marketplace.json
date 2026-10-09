@@ -21,9 +21,25 @@
       ]
     },
     {
+      "name": "sf-core",
+      "source": "./plugins/sf-core",
+      "description": "Socle commun : SOQL, retrieve/deploy, Apex et tests, Flow, génération de métadonnées, LWC, Lightning Types, Agent Script, documentation Salesforce. Installé automatiquement avec tout autre plugin sf-*. 21 skills, synchronisés depuis forcedotcom/sf-skills@e5164d94.",
+      "version": "2026.10.7",
+      "keywords": [
+        "salesforce",
+        "soql",
+        "apex",
+        "flow",
+        "metadata",
+        "deploy",
+        "lwc",
+        "agentforce"
+      ]
+    },
+    {
       "name": "sf-agentforce",
       "source": "./plugins/sf-agentforce",
-      "description": "Agentforce (Agent Script, tests, observabilité, architecture, migration Einstein Bots), Data 360 / Data Cloud, Models API et canaux Agentforce. 16 skills, synchronisés depuis forcedotcom/sf-skills@e5164d94.",
+      "description": "Agentforce avancé (tests, observabilité, persona, migration Einstein Bots, canaux), Data 360 / Data Cloud, Models API. L'écriture d'Agent Script est dans sf-core. 14 skills, synchronisés depuis forcedotcom/sf-skills@e5164d94.",
       "version": "2026.10.7",
       "keywords": [
         "salesforce",
@@ -37,7 +53,7 @@
     {
       "name": "sf-platform",
       "source": "./plugins/sf-platform",
-      "description": "Socle plateforme : métadonnées (objets, champs, permissions, sharing), Apex, Flow, SOQL, déploiement/retrieve, Code Analyzer, SLDS, documentation Salesforce. 57 skills, synchronisés depuis forcedotcom/sf-skills@e5164d94.",
+      "description": "Compléments plateforme au socle sf-core : sharing et OWD, rapports et list views, Code Analyzer et ApexGuru, chiffrement, gestion de données, métadonnées avancées, widgets, validation et migration SLDS. 39 skills, synchronisés depuis forcedotcom/sf-skills@e5164d94.",
       "version": "2026.10.7",
       "keywords": [
         "salesforce",
@@ -80,7 +96,7 @@
     {
       "name": "sf-experience",
       "source": "./plugins/sf-experience",
-      "description": "Experience Cloud, LWC, LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile SDK. 45 skills, synchronisés depuis forcedotcom/sf-skills@e5164d94.",
+      "description": "Experience Cloud, LWC avancé (migration, accessibilité, sécurité), LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile SDK. 44 skills, synchronisés depuis forcedotcom/sf-skills@e5164d94.",
       "version": "2026.10.7",
       "keywords": [
         "salesforce",

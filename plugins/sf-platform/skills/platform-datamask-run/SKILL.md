@@ -330,8 +330,8 @@ result in the first screenful.
 | Need | Delegate to | Reason |
 |------|-------------|--------|
 | Seed realistic PII records to mask | [platform-data-manage](../platform-data-manage/SKILL.md) | Test-data creation |
-| Author custom anonymization Apex | [platform-apex-generate](../platform-apex-generate/SKILL.md) | Apex authoring |
-| Deploy the policy metadata to the org | [platform-metadata-deploy](../platform-metadata-deploy/SKILL.md) | Metadata deployment |
+| Author custom anonymization Apex | skill `sf-core:platform-apex-generate` | Apex authoring |
+| Deploy the policy metadata to the org | skill `sf-core:platform-metadata-deploy` | Metadata deployment |
 
 ---
 

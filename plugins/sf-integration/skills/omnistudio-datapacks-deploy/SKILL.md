@@ -39,10 +39,10 @@ Use `omnistudio-datapacks-deploy` when work involves:
 - troubleshooting DataPack dependency, matching-key, and GlobalKey issues
 
 Delegate elsewhere when the user is:
-- deploying standard metadata with `sf project deploy` -> [platform-metadata-deploy](<skill:platform-metadata-deploy — plugin sf-platform>/SKILL.md)
+- deploying standard metadata with `sf project deploy` -> skill `sf-core:platform-metadata-deploy`
 - building OmniScripts, FlexCards, IPs, or Data Mappers -> `omnistudio-*-build`
 - designing Product2 EPC bundles -> [omnistudio-epc-catalog-generate](../omnistudio-epc-catalog-generate/SKILL.md)
-- writing Apex/LWC code -> [platform-apex-generate](<skill:platform-apex-generate — plugin sf-platform>/SKILL.md), [experience-lwc-generate](<skill:experience-lwc-generate — plugin sf-experience>/SKILL.md)
+- writing Apex/LWC code -> skill `sf-core:platform-apex-generate`, skill `sf-core:experience-lwc-generate`
 
 ---
 
@@ -157,10 +157,10 @@ For incremental deploy optimization, use job-file options such as:
 
 | Need | Delegate to | Reason |
 |---|---|---|
-| metadata deploy outside DataPacks | [platform-metadata-deploy](<skill:platform-metadata-deploy — plugin sf-platform>/SKILL.md) | Metadata API workflows |
+| metadata deploy outside DataPacks | skill `sf-core:platform-metadata-deploy` | Metadata API workflows |
 | OmniStudio component authoring | `omnistudio-*-build` | build artifacts before deploy |
 | EPC product and offer payload authoring | [omnistudio-epc-catalog-generate](../omnistudio-epc-catalog-generate/SKILL.md) | Product2/DataPack model quality |
-| Apex trigger/log error diagnosis | [platform-apex-logs-debug](<skill:platform-apex-logs-debug — plugin sf-platform>/SKILL.md), [platform-apex-generate](<skill:platform-apex-generate — plugin sf-platform>/SKILL.md) | automation-side root-cause fixes |
+| Apex trigger/log error diagnosis | skill `sf-core:platform-apex-logs-debug`, skill `sf-core:platform-apex-generate` | automation-side root-cause fixes |
 
 ---
 
