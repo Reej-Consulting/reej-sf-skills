@@ -2,7 +2,7 @@
 
 Service Cloud : Omni-Channel, Digital Engagement (WhatsApp, messaging), ITSM, Email-to-Case, Help Agent, portails.
 
-65 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `e5164d94` (2026-10-07). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+65 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `4bbae5c4` (2026-10-09). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 
@@ -33,8 +33,8 @@ Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 | `service-itsm-agentic-setup-configure` | Top-level orchestrator for setting up IT Service Management (ITSM) in Salesforce Service Cloud. Use when the user asks to set up ITSM, configure service management, wants a guided … |
 | `service-itsm-agentic-setup-employee-agent-configure` | Create and activate an IT Service Employee agent as a Next-Gen Authoring (NGA) native agent from an ITSM Employee agent template's Agent Script, via the Salesforce CLI (sf): read t… |
 | `service-itsm-agentic-setup-fulfiller-agent-configure` | Create and activate the IT Service Fulfiller agent as a Next-Gen Authoring (NGA) native agent from the shipped ITSM Fulfiller template's Agent Script, using the Salesforce CLI (sf)… |
-| `service-itsm-agentic-setup-incident-management` | Orchestrator for Incident Management setup in Salesforce Service Cloud ITSM: presents the available features, tracks progress, and configures each — SLA & Milestones, Priority Matr… |
-| `service-itsm-agentic-setup-incident-sla-configure` | End-to-end Incident SLA setup for Service Cloud ITSM — creating a MilestoneType, an Incident-scoped SLA Policy (SlaProcess), attaching a Milestone with criteria, and wiring an Enti… |
+| `service-itsm-agentic-setup-incident-management` | Orchestrator for Incident Management setup in Service Cloud ITSM: presents the features, tracks progress, and configures each — SLA & Milestones, Priority Matrix, Incident preferen… |
+| `service-itsm-agentic-setup-incident-sla-configure` | End-to-end Incident SLA setup for Service Cloud ITSM — the policy's Business Hours (reuse a named schedule, or create one from described hours or a time zone), MilestoneTypes, an I… |
 | `service-itsm-agentic-setup-itsm-agentforce-permset-assign` | Resolve missing ITSM Intelligence invocable actions so a Fulfiller NGA agent can activate. Reads which of the three Core Fulfiller persona permsets (IncidentFulfiller, ProblemFulfi… |
 | `service-itsm-agentic-setup-uel-user-create` | Provision and enable a Unified Employee License (UEL) user in Salesforce with the full entity chain — User, Person Account, PersonContact, and Employee2 — through the Salesforce-ho… |
 | `service-itsm-channels-coordinate` | Top-level interactive coordinator for Employee Service (ITSM) channel setup. Presents menu of channel setup options (Portal, Teams, Slack) and delegates to the corresponding skill.… |
