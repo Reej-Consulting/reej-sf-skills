@@ -2,12 +2,13 @@
 
 Compléments plateforme au socle sf-core : sharing et OWD, rapports et list views, Code Analyzer et ApexGuru, chiffrement, gestion de données, métadonnées avancées, widgets, validation et migration SLDS.
 
-39 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `e5164d94` (2026-10-07). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+40 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `4bbae5c4` (2026-10-09). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 
 | Skill | Description |
 |---|---|
+| `crm-analytics-wave-generate` | Use to build a Wave Recipe, deploy a CRM Analytics dataset or dashboard, or author the full CRMA asset stack — apps, Wave Recipes (.wdpr), datasets, and dashboards — against a conn… |
 | `design-systems-slds-validate` | Audit Lightning Web Components for SLDS design-system compliance and produce a scored quality report. Runs the SLDS linter and analyzes CSS for theming hook usage and pairing, scor… |
 | `design-systems-slds2-migrate` | Migrate Lightning Web Components from SLDS 1 to SLDS 2 by running the SLDS linter and fixing violations. Use this skill whenever users mention SLDS 2, SLDS uplift, linter violation… |
 | `dx-apexguru-scan` | Run an ApexGuru performance scan on a Salesforce Apex project via the ApexGuru SFAP Scan API. Zips the project's Apex (any layout), submits it, polls to completion, decodes the bas… |

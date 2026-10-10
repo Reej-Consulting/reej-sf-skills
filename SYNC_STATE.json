@@ -1,8 +1,8 @@
 {
   "upstream_repo": "https://github.com/forcedotcom/sf-skills.git",
-  "upstream_commit": "e5164d94d7511c00fa02a5b8b60754b2361e178f",
-  "upstream_commit_date": "2026-10-07",
-  "version": "2026.10.7",
+  "upstream_commit": "4bbae5c421e51b40e4169afa72c4496372a602a7",
+  "upstream_commit_date": "2026-10-09",
+  "version": "2026.10.9",
   "skills": {
     "agentforce-architecture-analyze": "core",
     "agentforce-bot-upgrade": "agentforce",
@@ -24,6 +24,7 @@
     "consumer-goods-tpe-dashboard-configure": "industries",
     "consumer-goods-tpe-dashboard-custom-kpi-configure": "industries",
     "consumer-goods-tpe-datakit-deploy": "industries",
+    "crm-analytics-wave-generate": "platform",
     "data360-code-extension-generate": "agentforce",
     "data360-schema-get": "agentforce",
     "design-systems-slds-apply": "core",
