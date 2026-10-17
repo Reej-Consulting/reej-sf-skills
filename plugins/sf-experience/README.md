@@ -2,7 +2,7 @@
 
 Experience Cloud, LWC avancé (migration, accessibilité, sécurité), LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile SDK.
 
-44 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `e5164d94` (2026-10-07). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+46 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `625863fb` (2026-10-16). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 
@@ -32,6 +32,8 @@ Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 | `experience-lwc-runtime-observe` | Use when running Salesforce Lightning Preview for an app or a single LWC component to extract the runtime DOM for inspection. TRIGGER when the user says \"preview an LWC locally\",… |
 | `experience-lwc-security-validate` | Use this skill as THE specialized Lightning Web Security (LWS) validator for a Lightning Web Component bundle (`.js`, `.ts`, `.html`, `.css`, `.js-meta.xml`) — the canonical LWS/Pr… |
 | `experience-lwc-typescript-migrate` | Use when converting an existing JavaScript Lightning Web Component (.js, .html, .css) to TypeScript with full type annotations and a matching `.d.ts` file that exposes only the com… |
+| `experience-lwc-widget-assess` | Assess whether a specific Lightning web component can serve its user's purpose as an HXL declarative widget. Use for LWC-to-widget feasibility, portability audits, and candidate sc… |
+| `experience-lwc-widget-migrate` | Convert a specific existing Lightning web component (LWC) into a declarative HXL / Agentforce widget, end to end. Gates on experience-lwc-widget-assess and stops when a widget cann… |
 | `experience-lwr-site-generate` | Creates, modifies, or manages Salesforce Experience Cloud LWR sites via DigitalExperience metadata. Always trigger when the tasks involve LWR sites configurations, e.g. creating/mo… |
 | `experience-portal-create` | Create / provision / set up a NEW Digital Experience (Communities) / Experience Cloud site — employee service, IT support, help desk, HR, customer, and partner portals — via the he… |
 | `experience-search-coordinate` | Searches for and retrieves existing content and media (articles, blogs, news, FAQs, events, products, images, logos, icons, photos, graphics, banners, hero images, audio clips, vid… |

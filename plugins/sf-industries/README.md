@@ -2,7 +2,7 @@
 
 Field Service, Consumer Goods, Education Cloud, Life Sciences.
 
-31 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `e5164d94` (2026-10-07). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+30 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `625863fb` (2026-10-16). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 
@@ -30,7 +30,6 @@ Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 | `field-service-objective-designer-configure` | Designs service objectives for a Salesforce Field Service scheduling policy via a structured trade-off interview. Guides the user through objective selection and derives weights by… |
 | `field-service-prework-brief-deployer-configure` | Deploy the deterministic half of Einstein Pre-Work Brief on Field Service Mobile to a target org — prompt template, Lightning Data Service, licenses and permission sets, the Work O… |
 | `field-service-scheduling-policy-designer-query` | Designs the four policy-level settings for a Salesforce Field Service scheduling policy — name, optimization mode (In-Day vs Global), commit mode, and description — and delegates t… |
-| `field-service-setup-orchestrator-get` | Use this skill to set up Salesforce Field Service — Work Types, Skills, Service Territories, Operating Hours, Scheduling Policy, Work Rules, Service Objectives, Data Capture Forms,… |
 | `field-service-sobject-create-configure` | Headless 360 REST API deployment step for creating sObject records. Handles describe-based field discovery, required-field derivation, entity-relationship ordering, and composite g… |
 | `field-service-voice-to-form-configure` | Set up Voice to Form on Field Service Mobile end-to-end against a Salesforce org, covering both variants: Voice to Record Edit (voice-fills any record-edit screen) and Voice to For… |
 | `field-service-work-rule-designer-configure` | Designs the work rules for a Salesforce Field Service scheduling policy — the hard filters that determine which resources and time slots are eligible for an appointment. Step 2 of … |
