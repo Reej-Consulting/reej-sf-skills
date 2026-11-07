@@ -2,7 +2,7 @@
 
 Service Cloud : Omni-Channel, Digital Engagement (WhatsApp, messaging), ITSM, Email-to-Case, Help Agent, portails.
 
-65 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `e5164d94` (2026-10-07). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+66 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `0c7cb930` (2026-11-06). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 
@@ -19,6 +19,7 @@ Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 | `service-digital-engagement-channel-configure` | Configures and deploys enhanced chat Messaging Channels for Messaging for In-App and Web (MIAW). Use when the user needs to create, deploy, and activate a messaging channel configu… |
 | `service-digital-engagement-deployment-configure` | Configures Embedded Messaging Deployments for Messaging for In-App and Web (MIAW). Use when the user needs to create a new embedded messaging deployment from scratch using Connect … |
 | `service-digital-engagement-messaging-site-integrate` | Integrates a Messaging for In-App and Web (MIAW) Embedded Messaging chat widget into an Experience Cloud site by patching the site's LWR or Aura page bundle, deploying, publishing,… |
+| `service-e911-configure` | Use this skill when users want to set up and manage Service Cloud Voice (Native CCaaS / Thunderbird) Emergency Calling (E911). Trigger when users mention e911. |
 | `service-email-to-case-configure` | Use to configure Salesforce Email-to-Case headlessly via the Metadata API. Reads CaseSettings, applies the emailToCase config with updateMetadata, and verifies by re-reading. Also … |
 | `service-helpagent-coordinate` | Use to set up, configure, ground, or go live with a Salesforce Help Agent (an Agentforce Service Agent in Service Cloud) via a guided four-checkpoint flow. Use whenever a user says… |
 | `service-itsm-agentic-setup-agent-runtime-access-assign` | Grant a user the runtime permissions an activated ITSM agent's actions need so the actions do not fail on permission errors. After a Fulfiller or Employee agent is activated, this … |
@@ -33,8 +34,8 @@ Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 | `service-itsm-agentic-setup-configure` | Top-level orchestrator for setting up IT Service Management (ITSM) in Salesforce Service Cloud. Use when the user asks to set up ITSM, configure service management, wants a guided … |
 | `service-itsm-agentic-setup-employee-agent-configure` | Create and activate an IT Service Employee agent as a Next-Gen Authoring (NGA) native agent from an ITSM Employee agent template's Agent Script, via the Salesforce CLI (sf): read t… |
 | `service-itsm-agentic-setup-fulfiller-agent-configure` | Create and activate the IT Service Fulfiller agent as a Next-Gen Authoring (NGA) native agent from the shipped ITSM Fulfiller template's Agent Script, using the Salesforce CLI (sf)… |
-| `service-itsm-agentic-setup-incident-management` | Orchestrator for Incident Management setup in Salesforce Service Cloud ITSM: presents the available features, tracks progress, and configures each — SLA & Milestones, Priority Matr… |
-| `service-itsm-agentic-setup-incident-sla-configure` | End-to-end Incident SLA setup for Service Cloud ITSM — creating a MilestoneType, an Incident-scoped SLA Policy (SlaProcess), attaching a Milestone with criteria, and wiring an Enti… |
+| `service-itsm-agentic-setup-incident-management` | Orchestrator for Incident Management setup in Service Cloud ITSM: presents the features with live org status, and configures each — Incident preferences, Incident persona PSG assig… |
+| `service-itsm-agentic-setup-incident-sla-configure` | End-to-end Incident SLA setup for Service Cloud ITSM — the policy's Business Hours (reuse a named schedule, or create one from described hours or a time zone), MilestoneTypes, an I… |
 | `service-itsm-agentic-setup-itsm-agentforce-permset-assign` | Resolve missing ITSM Intelligence invocable actions so a Fulfiller NGA agent can activate. Reads which of the three Core Fulfiller persona permsets (IncidentFulfiller, ProblemFulfi… |
 | `service-itsm-agentic-setup-uel-user-create` | Provision and enable a Unified Employee License (UEL) user in Salesforce with the full entity chain — User, Person Account, PersonContact, and Employee2 — through the Salesforce-ho… |
 | `service-itsm-channels-coordinate` | Top-level interactive coordinator for Employee Service (ITSM) channel setup. Presents menu of channel setup options (Portal, Teams, Slack) and delegates to the corresponding skill.… |

@@ -2,12 +2,14 @@
 
 Compléments plateforme au socle sf-core : sharing et OWD, rapports et list views, Code Analyzer et ApexGuru, chiffrement, gestion de données, métadonnées avancées, widgets, validation et migration SLDS.
 
-39 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `e5164d94` (2026-10-07). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+48 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `0c7cb930` (2026-11-06). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 
 | Skill | Description |
 |---|---|
+| `afcc-setup-coordinate` | Orchestrates end-to-end headless setup of Agentforce Contact Center (AFCC) on a Salesforce org. Scans the org first, presents a delta plan for approval, then sequentially provision… |
+| `crm-analytics-wave-generate` | Use to build a Wave Recipe, deploy a CRM Analytics dataset or dashboard, or author the full CRMA asset stack — apps, Wave Recipes (.wdpr), datasets, and dashboards — against a conn… |
 | `design-systems-slds-validate` | Audit Lightning Web Components for SLDS design-system compliance and produce a scored quality report. Runs the SLDS linter and analyzes CSS for theming hook usage and pairing, scor… |
 | `design-systems-slds2-migrate` | Migrate Lightning Web Components from SLDS 1 to SLDS 2 by running the SLDS linter and fixing violations. Use this skill whenever users mention SLDS 2, SLDS uplift, linter violation… |
 | `dx-apexguru-scan` | Run an ApexGuru performance scan on a Salesforce Apex project via the ApexGuru SFAP Scan API. Zips the project's Apex (any layout), submits it, polls to completion, decodes the bas… |
@@ -16,6 +18,10 @@ Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 | `dx-code-analyzer-run` | Run Salesforce Code Analyzer to scan code for security, performance, best practice, and code style violations. Supports all engines (PMD, ESLint, CPD, RetireJS, Flow, SFGE, ApexGur… |
 | `external-diagram-mermaid-generate` | Salesforce architecture diagrams using Mermaid with ASCII fallback. Use this skill when generating text-based diagrams for Salesforce architecture, OAuth flows, ERDs, integration s… |
 | `marketing-message-test` | Salesforce Marketing Cloud / Engagement 360 message preview and test-send. Use this skill when the user wants to render a personalized or unpersonalized preview of an E360 message … |
+| `nonprofit-fundraising-configure` | Configure Nonprofit Cloud Fundraising on an org headlessly — assign permission sets/groups org-wide, enable Fundraising, create a default Gift Designation, configure gift/recurring… |
+| `nonprofit-volunteer-management-model-get` | Use this skill to explain how the Salesforce Nonprofit Cloud Volunteer Management (VM) data model works and why, answering from reference material without connecting to an org. Ans… |
+| `nonprofit-volunteer-management-records-create` | Use this skill to write Salesforce Nonprofit Cloud Volunteer Management (VM) records to an org once the user knows what to create, from a confirmed plan or a list of records: it re… |
+| `nonprofit-volunteer-management-structure-generate` | Use this skill to plan a Salesforce Nonprofit Cloud Volunteer Management (VM) program before anything is created: it interviews the user about their programs, sites, volunteer role… |
 | `platform-agentexchange-partner-offers-configure` | Enable or disable the org preference that controls whether a Salesforce org can receive partner offers from the Transactable Marketplace. Use this skill when the user wants to turn… |
 | `platform-custom-application-generate` | Use this skill when users need to create or configure tab-based Salesforce Custom Applications with navigation, branding, and action overrides. Trigger when users mention custom ap… |
 | `platform-custom-metadata-type-generate` | Use to create, generate, or validate Salesforce Custom Metadata Type metadata — the __mdt object, fields, and deployable records. Trigger on custom metadata types, CMDT, __mdt obje… |
@@ -24,7 +30,7 @@ Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 | `platform-custom-tab-generate` | Use this skill when users need to create or configure Salesforce Custom Tabs. Trigger when users mention tabs, navigation tabs, object tabs, web tabs, Visualforce tabs, Lightning c… |
 | `platform-data-manage` | Salesforce data operations with 130-point scoring. Use to create, update, delete, bulk import/export, generate test data, and clean up org records via sf CLI and anonymous Apex. TR… |
 | `platform-datamask-run` | Data Mask end-to-end operation on a sandbox: configure a masking policy over PII, run the masking job, poll it to completion, report masked-record results, and abort an in-progress… |
-| `platform-dataspace-access-configure` | Use this skill to configure or inspect Salesforce Data Cloud DataSpace access for permission sets. Grants dataspace-level access via MDAPI PermissionSet XML with dataspaceScopes el… |
+| `platform-dataspace-access-configure` | Grant a permission set Data Cloud access two ways: (1) data-space (dataspace) access via dataspaceScopes in PermissionSet XML (MDAPI) — create, change, or remove it; (2) object-lev… |
 | `platform-dsar-policy-manage` | Configure, run, and audit DsarPolicy Right-to-Portability exports end to end: author the data map over a subject's related records, resolve a request's subject (email/name/id) to a… |
 | `platform-encryption-configure` | Configure Salesforce Shield Platform Encryption — generate deployable encryption settings and encrypted-field metadata, and answer key-model and lifecycle questions. TRIGGER when: … |
 | `platform-flexipage-generate` | Use when users create, generate, modify, or validate Salesforce Lightning pages (FlexiPages). Trigger on RecordPage, AppPage, HomePage, Lightning pages, adding components to a page… |
@@ -33,8 +39,11 @@ Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 | `platform-list-view-generate` | Use this skill when users need to create, generate, or validate Salesforce List View metadata. Trigger when users mention list views, filtered record lists, creating views, setting… |
 | `platform-manifest-generate` | Use to generate a package.xml (and optionally destructiveChanges.xml / Pre / Post) from a source dir, a component list, or org introspection. Trigger on 'generate a package.xml fro… |
 | `platform-mcp-tool-widget-coordinate` | Orchestrate object-based Lightning Type + HXL widget generation to render the output of a custom MCP server tool backed by an Apex Invocable Action. TRIGGER only when the prompt EX… |
-| `platform-policy-rule-generate` | Use this skill when authoring PolicyRuleDefinition and PolicyRuleDefinitionSet metadata XML for Salesforce Data Cloud governance policies, or when editing *.policyRuleDefinition / … |
+| `platform-metadata-discovery-get` | Use before creating, changing, or writing code against Salesforce metadata, to find out what already exists in the org with the right tool. Routes each question to metadata groundi… |
+| `platform-metadata-grounding-get` | Find metadata that already exists in a Salesforce org by meaning, when you do not know its exact API name. Use to find objects, fields, flows, Apex classes, picklist values, permis… |
+| `platform-policy-rule-generate` | THE skill for creating a Data Cloud / Data Governance access policy — authors and deploys a PolicyRuleDefinitionSet + PolicyRuleDefinition pair (CRUD) covering OLS, FLS, RLS, maski… |
 | `platform-report-generate` | Use when users create, generate, or validate Salesforce Lightning Report metadata (.report-meta.xml) — tabular, summary, matrix, or joined reports with columns, groupings, filters,… |
+| `platform-role-hierarchy-apply` | Bulk-realign an existing Salesforce UserRole hierarchy from an external org-chart artifact (PDF, xlsx, or plain-text list of role-and-parent pairs) in one admin-approved manifest. … |
 | `platform-salesforce-connect-adapter-generate` | Custom Apex adapter generation for Salesforce Connect — connects any external REST API to Salesforce as live, queryable External Objects without ETL or copying. TRIGGER when: conne… |
 | `platform-sandbox-configure` | MUST USE this skill for ANY sandbox request — including simply getting a sandbox's details, status, license type, or pending-activation state by name or ID. TRIGGER when the user: … |
 | `platform-sharing-owd-configure` | Use when the user wants to retrieve or update Organization-Wide Default (OWD) sharing settings for Salesforce objects. TRIGGER on org-wide defaults, checking/viewing sharing defaul… |

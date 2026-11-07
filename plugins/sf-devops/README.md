@@ -2,14 +2,14 @@
 
 DevOps Center, pipelines, gestion des orgs (scratch, sandbox, Dev Hub, trials), packaging, post-copy sandbox.
 
-22 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `e5164d94` (2026-10-07). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+27 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `0c7cb930` (2026-11-06). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 
 | Skill | Description |
 |---|---|
-| `automation-sandbox-post-copy-config-generate` | Generate the JSON config file that the Salesforce sandbox post-copy automation tool consumes, from a customer SOP in any format (PDF, xlsx, csv, JSON, docx, Markdown, plain text, o… |
-| `automation-sandbox-post-copy-configure` | Apply a Salesforce sandbox post-copy automation JSON config against a target org. For each entry, the skill derives the correct Tooling API sobject from the entry's `ConfigurationN… |
+| `automation-sandbox-post-copy-config-generate` | Generates the JSON config file that the Salesforce sandbox post-copy automation tool consumes, from a customer SOP in any format (PDF, xlsx, csv, JSON, docx, Markdown, plain text, … |
+| `automation-sandbox-post-copy-configure` | Apply a Salesforce sandbox post-copy automation JSON config against a target org. Use when the user asks to apply, run, execute, dry-run, or preview a post-copy or post-refresh con… |
 | `dx-app-analytics-query` | ISV App Analytics metadata types — AppAnalyticsQueryRequest and AppAnalyticsSettings. Use this skill when the user asks about retrieving managed package usage data, configuring App… |
 | `dx-devops-conflict-resolve` | Use this skill to diagnose and resolve what blocks a DevOps Center promotion of a work item's feature branch: Git merge conflicts and deployment failures. DevOps Center is Git-back… |
 | `dx-devops-pipeline-manage` | Use this skill to manage the full lifecycle of a DevOps Center pipeline — list all pipelines, get a single pipeline's details, create a new pipeline linked to a Git repository, add… |
@@ -21,12 +21,17 @@ Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 | `dx-devops-test-suite-assignments-configure` | Recommends and manages DevOps Center test suite assignments for pipeline stages. Mode A analyzes a commit diff against assigned suite metadata to recommend relevant existing suites… |
 | `dx-devops-test-suite-run` | Runs DevOps Center test suites on a pipeline stage (Pre-Promote, Post-Promote, or Review event) end to end: triggers async execution via the Connect API after an explicit confirmat… |
 | `dx-devops-work-item-manage` | Use this skill to manage the full lifecycle of DevOps Center work items — list, create, update, commit changes, perform status transitions, and create pull requests. Update fields … |
+| `dx-lifecycle-center` | Lifecycle Center for DX Inspector and Builder Central. Four jobs: (A) list the orgs connected to DX Inspector; (B) connect a new org (sandbox or scratch, production, OrgFarm) as a … |
 | `dx-org-analyze` | Compare two Salesforce orgs side-by-side and produce a comparison report with drift score, or analyze a single org to produce an inventory covering metadata components, org permiss… |
-| `dx-org-devhub-configure` | Enable Dev Hub on a Salesforce org and view its scratch org allocation, using the Salesforce CLI (sf). Use when someone wants to turn on or enable Dev Hub, set up an org to create … |
+| `dx-org-devhub-configure` | Enable Dev Hub on a Salesforce org, view its status and scratch org allocation, or read its current DevHubSettings preferences, using the Salesforce CLI (sf). Use when someone want… |
 | `dx-org-manage` | Use to EXECUTE Salesforce org operations immediately via the sf CLI (this skill runs them, it does NOT generate scripts): create scratch orgs (from edition, definition file, snapsh… |
 | `dx-org-permission-set-assign` | ALWAYS USE THIS SKILL to assign permission sets to org users. Assign one or more permission sets to org users using the sf org assign permset command. TRIGGER when the user asks to… |
 | `dx-org-shape-manage` | ALWAYS USE THIS SKILL to create, list, or delete org shapes. An org shape is a captured baseline configuration (features, limits, edition, and Metadata API settings) of a source or… |
 | `dx-org-snapshot-manage` | ALWAYS USE THIS SKILL to create, check the status of, list, or delete scratch org snapshots. A snapshot is a point-in-time copy of a scratch org's metadata AND data, referenced by … |
 | `dx-org-switch` | Switches the active Salesforce org (default target-org) using the Salesforce CLI. Use whenever someone wants to change which org CLI commands run against — whether they say \"switc… |
 | `dx-org-trial-expiration-check` | Check when Salesforce orgs expire (or already expired) and what to do about it, for one org, the default org, or across all authenticated orgs, using the Salesforce CLI (sf). Use w… |
+| `dx-packaging-convert-1gp-to-2gp-create` | Use this skill when users want to convert a managed-released 1GP package to a 2GP package with `sf package convert`, verify the converted package version and its code coverage, and… |
+| `dx-packaging-move-to-2gp-migrate` | Use this skill when users want to finalize the irreversible, one-way Move-to-2GP cutover for a converted 1GP managed package — afterward, new major/minor 1GP versions can NEVER be … |
+| `dx-packaging-push-upgrade-configure` | Use this skill to plan, schedule, and monitor Salesforce package push upgrades from a Dev Hub. Finds subscriber orgs via the PackageSubscriber object, resolves and validates the ta… |
 | `dx-pkg-post-install-configure` | Use this skill to automate managed package post-install configuration. Package-agnostic — works with any managed package (LMA, FMA, work.com, Certinia, etc.). TRIGGER when: user in… |
+| `dx-scratch-def-configure` | Drafts a schema-valid Salesforce DX scratch-def from natural language. Preview first (confirmation card, do not write). A later edit — including a write that also changes the draft… |
