@@ -2,7 +2,7 @@
 
 Experience Cloud, LWC avancé (migration, accessibilité, sécurité), LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile SDK.
 
-44 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `e5164d94` (2026-10-07). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+48 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `0c7cb930` (2026-11-06). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 
@@ -11,15 +11,17 @@ Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 | `commerce-b2b-open-code-components-integrate` | Integrate Salesforce B2B Commerce open source components from GitHub into B2B Commerce stores. Use when users mention \"integrate open code components\", \"open source B2B commerce… |
 | `commerce-b2b-open-code-components-replace` | Replace OOTB (out-of-the-box) B2B Commerce components with open source equivalents in site metadata content.json files, or look up the equivalent open code `site:` component for OO… |
 | `commerce-b2b-store-create` | Interactive workflow to create Commerce B2B Stores and retrieve storefront metadata. Use when users want to: create B2B Commerce stores, build Commerce storefronts, set up B2B stor… |
+| `commerce-react-storefront-create` | Stand up the commerce-b2b-headless reference React storefront in a Salesforce B2B Commerce org, end to end — discover the org's WebStores, pick one, fill the four org-specific valu… |
 | `experience-accessibility-validate` | Use this skill to determine whether a Lightning Web Component (LWC) is accessible and meets WCAG accessibility guidelines. TRIGGER when the user asks \"is my component accessible?\… |
+| `experience-afv-analytics-query` | System-of-record for the public Lightning Instrumentation Headless Connect REST API route that retrieves Agentforce Vibes (AFV) metrics, analytics, data, and adoption/usage insight… |
+| `experience-app-mcp-delivery-generate` | Package and deliver an existing Salesforce hosted MCP server/App MCP for an Experience Site as an MCP configuration file or a Claude plugin repository. Discover the serving URL and… |
+| `experience-app-mcp-generate` | Create, extend, deploy, review readiness for, or activate an App MCP, a Salesforce custom hosted MCP server for an Aura Experience Site. Trigger when the user wants to expose an Ex… |
 | `experience-aura-lwc-migrate` | Use this skill to analyze a Salesforce Aura component bundle (.cmp, .app, .evt, .intf, Controller.js, Helper.js, Renderer.js) and produce a framework-agnostic migration blueprint (… |
 | `experience-cms-brand-apply` | Extracts, retrieves, and applies CMS brand guidelines (voice, tone, style, colors, typography) to generated content. Use this skill ANY TIME a user request involves branding, brand… |
 | `experience-cms-brand-create` | Author a Salesforce Digital Experience brand (a \"brand.json\") so the VS Code Brand Toolkit can load, edit, and preview it. Use this skill whenever someone wants to: create a bran… |
 | `experience-cms-content-generate` | Creates, edits, and publishes Salesforce CMS content of any kind — any domain, any topic. Single and bulk: create many in parallel, edit one or many, publish all or a subset. Use t… |
 | `experience-cms-content-render` | Renders, embeds, or displays existing Salesforce CMS content in a React or Angular uiBundle app: installs the CMS toolkit, registers a typed reference, generates a framework-matche… |
 | `experience-cms-content-type-generate` | Salesforce CMS ContentTypeBundle creation skill. Use this skill ANY TIME a user request involves creating a ContentTypeBundle, and activate FIRST when CMS ContentTypeBundle creatio… |
-| `experience-content-media-image-generate` | Generates high-fidelity visual assets, logos, and UI mockups using the media-management MCP server. Trigger this skill whenever the user asks to generate an image, create a logo, p… |
-| `experience-content-media-stock-image-search` | Searches for and downloads ethically-licensed stock images via the media-management MCP server. Use this skill whenever a user wants an image, photo, or picture — for BOTH requests… |
 | `experience-design-validate` | Use this skill to run a visual-craft audit of a rendered UI and produce an evidence-grounded Craft Report across Useful, Usable, Reliable, Coherent, and Well-Crafted. Invoke it for… |
 | `experience-lds-best-practices-apply` | Use when reviewing or implementing Lightning Data Service best practices in an LWC (.js, .html, .js-meta.xml) — UIAPI vs Apex, refreshApex / notifyRecordUpdateAvailable, @salesforc… |
 | `experience-lds-data-requirements-generate` | Use when a Lightning Web Component data need is described in ambiguous natural language — turn \"get contact info\" or \"show account data\" into a clear, PRD-ready data-requiremen… |
@@ -32,6 +34,8 @@ Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 | `experience-lwc-runtime-observe` | Use when running Salesforce Lightning Preview for an app or a single LWC component to extract the runtime DOM for inspection. TRIGGER when the user says \"preview an LWC locally\",… |
 | `experience-lwc-security-validate` | Use this skill as THE specialized Lightning Web Security (LWS) validator for a Lightning Web Component bundle (`.js`, `.ts`, `.html`, `.css`, `.js-meta.xml`) — the canonical LWS/Pr… |
 | `experience-lwc-typescript-migrate` | Use when converting an existing JavaScript Lightning Web Component (.js, .html, .css) to TypeScript with full type annotations and a matching `.d.ts` file that exposes only the com… |
+| `experience-lwc-widget-assess` | Assess whether a specific Lightning web component can serve its user's purpose as an HXL declarative widget. Use for LWC-to-widget feasibility, portability audits, and candidate sc… |
+| `experience-lwc-widget-migrate` | Convert a specific existing Lightning web component (LWC) into a declarative HXL / Agentforce widget, end to end. Gates on experience-lwc-widget-assess and stops when a widget cann… |
 | `experience-lwr-site-generate` | Creates, modifies, or manages Salesforce Experience Cloud LWR sites via DigitalExperience metadata. Always trigger when the tasks involve LWR sites configurations, e.g. creating/mo… |
 | `experience-portal-create` | Create / provision / set up a NEW Digital Experience (Communities) / Experience Cloud site — employee service, IT support, help desk, HR, customer, and partner portals — via the he… |
 | `experience-search-coordinate` | Searches for and retrieves existing content and media (articles, blogs, news, FAQs, events, products, images, logos, icons, photos, graphics, banners, hero images, audio clips, vid… |
