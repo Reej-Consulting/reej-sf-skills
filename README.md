@@ -15,7 +15,7 @@ Pourquoi ce repo plutôt que le marketplace officiel ? Celui de Salesforce ne pa
 | `sf-service` | Omni-Channel, Digital Engagement, ITSM, Email-to-Case, Help Agent |
 | `sf-experience` | Experience Cloud, LWC avancé, UI bundles React, CMS, Commerce B2B, Mobile |
 | `sf-integration` | Connected Apps, CDC, Platform Events, OmniStudio |
-| `sf-industries` | Field Service, Consumer Goods, Education, Life Sciences |
+| `sf-industries` | Field Service, Consumer Goods, Education, Life Sciences, Insurance, Nonprofit |
 | `reej-design` | **Maison Reej** — maquettes HTML SLDS pour l'avant-vente et les ateliers (voir `reej-plugins/`) |
 
 Les plugins `sf-*` sont le miroir Salesforce, régénérés automatiquement ; les plugins `reej-*` sont écrits par Reej, dans `reej-plugins/`, et se contribuent par PR — voir [CONTRIBUTING.md](CONTRIBUTING.md).
