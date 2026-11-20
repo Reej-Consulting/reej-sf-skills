@@ -29,6 +29,15 @@ La partie la plus importante est la `description` du frontmatter : c'est elle qu
 6. Ouvrir une PR vers `main` avec, dans la description : à quoi sert le skill, les prompts testés, et si un skill Salesforce voisin existe, pourquoi celui-ci s'en distingue. Le workflow *Validate marketplace* doit être vert.
 7. Après merge, prévenir l'équipe (canal Slack de la practice) : nom du plugin à mettre à jour.
 
+## Contenu adapté d'une source externe
+
+Un skill maison peut condenser le contenu d'un dépôt tiers quand celui-ci n'est pas utilisable tel quel (exemple : `reej-revenue`, adapté de SalesforceLabs/revenue-cloud-foundations). Dans ce cas :
+
+1. Vérifier la licence de la source et la reprendre dans le plugin (`LICENSE`, `NOTICE` qui décrit les modifications), avec une ligne d'attribution en tête de chaque fichier adapté.
+2. Déclarer l'origine dans `reej-plugins/<plugin>/sources.json` (dépôt, branche, correspondance fichier adapté → fichiers source), puis `python3 scripts/check_sources.py --snapshot <plugin>`.
+3. Écrire les règles d'adaptation et la procédure de report dans `reej-plugins/<plugin>/MAINTENANCE.md`.
+4. Désigner un relecteur expert du domaine : chaque mise à jour de la source (issue `source-update` ouverte par le workflow *Check adapted sources*) est reportée à la main et relue par lui.
+
 ## Après le merge, côté utilisateurs
 
 Rien n'est automatique : chacun doit faire *Update* du marketplace `reej-salesforce` puis *Update* du plugin `reej-…` (dans `/plugin` pour Claude Code, dans Paramètres → Plugins pour Cowork). D'où l'importance du message d'annonce.

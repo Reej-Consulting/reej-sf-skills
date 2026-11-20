@@ -17,6 +17,7 @@ Pourquoi ce repo plutôt que le marketplace officiel ? Celui de Salesforce ne pa
 | `sf-integration` | Connected Apps, CDC, Platform Events, OmniStudio |
 | `sf-industries` | Field Service, Consumer Goods, Education, Life Sciences |
 | `reej-design` | **Maison Reej** — maquettes HTML SLDS pour l'avant-vente et les ateliers (voir `reej-plugins/`) |
+| `reej-revenue` | **Maison Reej** — Revenue Cloud (RLM) sur projet client : modèle de données, Business APIs, Context Definitions, pricing, decision tables, CML (voir « Revenue Cloud » plus bas) |
 
 Les plugins `sf-*` sont le miroir Salesforce, régénérés automatiquement ; les plugins `reej-*` sont écrits par Reej, dans `reej-plugins/`, et se contribuent par PR — voir [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -107,12 +108,29 @@ Pas de mécanisme de marketplace à ce jour. Un skill s'ajoute individuellement 
 
 Chaque plugin ajoute les descriptions de ses skills au contexte de chaque session, et au-delà d'un certain volume Claude ne voit plus que le nom des skills, sans leur description : il ne pense alors plus à les utiliser. D'où le socle `sf-core`, volontairement limité à ~20 skills choisis d'après l'usage réel : l'installer partout (portée utilisateur). Les plugins de domaine (`sf-agentforce`, `sf-platform`, `sf-service`, `sf-experience`, `sf-devops`, `sf-integration`, `sf-industries`) s'installent en portée **locale** (pour vous seul, dans le projet concerné), seulement là où la mission le justifie. Dans Claude Code, `/context` montre ce que les skills consomment.
 
+## Revenue Cloud (RLM)
+
+Salesforce publie à part, sur [SalesforceLabs/revenue-cloud-foundations](https://github.com/SalesforceLabs/revenue-cloud-foundations) (Apache-2.0), 32 skills Revenue Cloud : connaissance (modèle de données, Business APIs, Context Definitions, pricing, decision tables, CML), exemples d'implémentation et outillage pour construire une org de référence. Ils ne fonctionnent qu'à l'intérieur de leur propre dépôt (CumulusCI, SFDMU, scripts et docs référencés depuis chaque skill) : ils ne sont donc pas recopiés ici. Deux chemins :
+
+| Besoin | Chemin |
+|---|---|
+| Projet client, dans le repo SFDX du client | Plugin maison `reej-revenue` : la connaissance des 7 skills de référence, adaptée sans l'outillage du dépôt, relue par un expert Revenue Cloud et tenue à jour (voir `reej-plugins/reej-revenue/MAINTENANCE.md`) |
+| Construire une org de référence ou de démo, exploiter les exemples complets | Cloner `revenue-cloud-foundations` (hors de tout repo client) et ouvrir Claude Code **à la racine de ce clone** : son `CLAUDE.md` et ses skills se chargent sans rien installer. Mise à jour : `git pull` |
+
+**Sous Windows**, ses skills (`.claude/skills/`) et son `CLAUDE.md` sont des liens symboliques : avec un clone Windows standard, ils deviennent de petits fichiers texte et Claude ne voit aucun skill. Salesforce indique ne pas avoir testé Windows. Deux solutions :
+
+1. **WSL (recommandé)** : cloner et travailler dans WSL, qui gère les liens symboliques ; c'est aussi là que s'installent le plus simplement les prérequis du dépôt (CumulusCI, SFDMU 5.6.4+, `sf`).
+2. **Sans liens symboliques** : ouvrir Claude Code à la racine du clone et commencer la session par : « Read AGENTS.md and .cursor/skills/README.md. Select and read the relevant .cursor/skills/<name>/SKILL.md and its linked references before answering my task. Follow the repository's validation and approval requirements. »
+
+Vérification : `/odt-authoring` doit être proposé par l'autocomplétion de Claude Code (solution 1).
+
 ## Synchronisation
 
 - **Automatique** : le workflow `.github/workflows/sync-upstream.yml` tourne chaque jour à 05:00 UTC. S'il y a des changements upstream, il ouvre une PR `sync/upstream` dont le corps liste les skills ajoutés, retirés ou déplacés, ainsi que les scripts et `allowed-tools` modifiés (ce qui s'exécute sur les postes : à relire en priorité). Merger la PR publie la nouvelle version ; les utilisateurs la récupèrent avec `marketplace update`.
 - **Manuelle** : onglet Actions → *Sync sf-skills upstream* → *Run workflow*. Cocher `auto_merge` pour pousser directement sur `main` sans PR.
 - **Locale** : `python3 scripts/sync.py` (ou `--dry-run` pour voir sans écrire), puis `python3 scripts/validate.py`. Après ajout d'un plugin maison : `python3 scripts/sync.py --marketplace-only` (régénère `marketplace.json` sans cloner Salesforce).
 - **Validation des PR humaines** : le workflow `validate.yml` vérifie `marketplace.json` et la structure des plugins sur toute PR touchant `reej-plugins/` ou `scripts/`.
+- **Sources des contenus adaptés** : le workflow `check-sources.yml` compare chaque lundi les sources déclarées dans `reej-plugins/*/sources.json` à la version adaptée, et ouvre une issue `source-update` si elles ont changé. Le report est manuel et relu (voir le `MAINTENANCE.md` du plugin).
 
 La version des plugins suit la date du commit upstream (`2026.9.10`), ce qui garantit qu'elle croît à chaque synchro.
 
@@ -133,4 +151,4 @@ Attention : un changement de découpage (`DOMAINS`, `CORE_SKILLS`) ne change pas
 
 ## Licence
 
-Les skills `sf-*` sont © Salesforce, sous licence Apache-2.0 (voir `LICENSE` et `NOTICE`) ; les scripts de ce repo sont sous la même licence. Les skills `reej-*` sont © Reej Consulting.
+Les skills `sf-*` sont © Salesforce, sous licence Apache-2.0 (voir `LICENSE` et `NOTICE`) ; les scripts de ce repo sont sous la même licence. Les skills `reej-*` sont © Reej Consulting, sauf les références de `reej-revenue`, adaptées de SalesforceLabs/revenue-cloud-foundations sous licence Apache-2.0 (voir `reej-plugins/reej-revenue/NOTICE`).

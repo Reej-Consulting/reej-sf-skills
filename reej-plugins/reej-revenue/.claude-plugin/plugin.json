@@ -1,0 +1,11 @@
+{
+  "name": "reej-revenue",
+  "displayName": "Reej — Revenue Cloud (RLM)",
+  "version": "0.1.0",
+  "description": "Skill maison Reej pour les projets clients Revenue Cloud (Revenue Lifecycle Management) : modèle de données, Business APIs, Context Definitions, procédures de prix et expression sets, decision tables, constraint models (CML). Références adaptées de SalesforceLabs/revenue-cloud-foundations (Apache-2.0).",
+  "author": { "name": "Reej Consulting", "url": "https://github.com/Reej-Consulting/reej-sf-skills" },
+  "license": "Apache-2.0",
+  "keywords": ["reej", "salesforce", "revenue cloud", "rlm", "pricing", "cml", "context definition", "decision table"],
+  "skills": "./skills/",
+  "dependencies": ["sf-core"]
+}

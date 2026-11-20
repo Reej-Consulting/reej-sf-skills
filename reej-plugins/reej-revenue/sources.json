@@ -1,0 +1,94 @@
+{
+  "source": {
+    "repo": "https://github.com/SalesforceLabs/revenue-cloud-foundations.git",
+    "branch": "main",
+    "commit": "c8506522ba45bb2c0015d41fa5eace51eed1ff91",
+    "commit_date": "2026-09-16"
+  },
+  "watch": ".cursor/skills/*/SKILL.md",
+  "references": {
+    "skills/reej-revenue-cloud-configure/references/data-model.md": [
+      ".cursor/skills/revenue-cloud-data-model/*"
+    ],
+    "skills/reej-revenue-cloud-configure/references/business-apis.md": [
+      ".cursor/skills/rlm-business-apis/*",
+      "postman/docs/*.md"
+    ],
+    "skills/reej-revenue-cloud-configure/references/context-definitions.md": [
+      ".cursor/skills/context-service/*"
+    ],
+    "skills/reej-revenue-cloud-configure/references/pricing-procedures.md": [
+      ".cursor/skills/pricing-wiring/*",
+      ".cursor/skills/expression-sets/*"
+    ],
+    "skills/reej-revenue-cloud-configure/references/decision-tables.md": [
+      ".cursor/skills/decision-tables/*"
+    ],
+    "skills/reej-revenue-cloud-configure/references/constraint-models.md": [
+      ".cursor/skills/constraint-models/*"
+    ]
+  },
+  "not_adapted": [
+    "apex-security-hardening",
+    "audit-review",
+    "build-harness",
+    "cci-orchestration",
+    "df-workshop-setup",
+    "doc-consistency",
+    "document-generation",
+    "inapp-framework",
+    "odt-authoring",
+    "pde-org-build",
+    "pmos-integration",
+    "qb-demo-script",
+    "ramped-quotes",
+    "release-enablement",
+    "renewal-asset-creation",
+    "repo-integration",
+    "revenue-cloud-docs",
+    "robot-testing",
+    "schema-validation",
+    "sfdmu-data-plans",
+    "skill-authoring",
+    "todo-tracker",
+    "troubleshooting",
+    "txn-data-harness",
+    "usage-consumption"
+  ],
+  "files": {
+    ".cursor/skills/constraint-models/SKILL.md": "d3f7c0c82132b9222dd8b275d14517f338bfdb32",
+    ".cursor/skills/context-service/SKILL.md": "11892a2ed32b510851ad9a05bc42866a8d9cfbfe",
+    ".cursor/skills/context-service/authoring-and-lifecycle.md": "387de1fc7ef3c9d8619525d2b711fe8c88876f74",
+    ".cursor/skills/context-service/data-model-and-api.md": "6a6ad465537a8642df0cab69660a34a56ded58c0",
+    ".cursor/skills/context-service/runtime-and-persistence.md": "27dd9ee491da1b297dc99235fc6bd4129d53cef6",
+    ".cursor/skills/decision-tables/SKILL.md": "b037151c251ab9d60ece8efa927f06af6bb998d0",
+    ".cursor/skills/decision-tables/authoring-and-data-model.md": "59c4f6695a94a616b7818b566f4c6b7a23bab51a",
+    ".cursor/skills/decision-tables/lifecycle-and-refresh.md": "23fb6e341af1f1a9cdad35b3338bccb5cb323e7a",
+    ".cursor/skills/expression-sets/SKILL.md": "0607a64575975b62fed85eb7c90a6ac9d66f45c3",
+    ".cursor/skills/expression-sets/authoring-and-overlays.md": "2204456fe815a47ff1957f75cc4e66e5daa75372",
+    ".cursor/skills/expression-sets/metadata-vs-connect.md": "e7917a82830970364452a60bbc98f37177732a19",
+    ".cursor/skills/pricing-wiring/SKILL.md": "4f08fbe81f592549c3bb4d667db86704b4091dc2",
+    ".cursor/skills/revenue-cloud-data-model/SKILL.md": "3884fd4e3f6de05294171ad69811f3650333c7c1",
+    ".cursor/skills/revenue-cloud-data-model/cross-domain-relationships.md": "4367079e5985debf59de184185f0b2acdb01739b",
+    ".cursor/skills/revenue-cloud-data-model/domains/approvals.md": "e7a968bba234b005dba71c61f533ea3511d95e09",
+    ".cursor/skills/revenue-cloud-data-model/domains/billing.md": "3ca033d768e3121bc02105ba18034b4b76478ba2",
+    ".cursor/skills/revenue-cloud-data-model/domains/configurator.md": "c9b35d8aaccd1a565b371cc0d31c19746958a5f2",
+    ".cursor/skills/revenue-cloud-data-model/domains/dro.md": "2a3050bb013eeb5bee529a15af4df1c25037a735",
+    ".cursor/skills/revenue-cloud-data-model/domains/pcm.md": "71482164f152977cd7d3e44a2763835e512c67d7",
+    ".cursor/skills/revenue-cloud-data-model/domains/pricing.md": "47e7d6e3450100248a5a324e7fc469cafa243c9e",
+    ".cursor/skills/revenue-cloud-data-model/domains/rates.md": "2ee5d0c6a4e322e2bb78f1c6d8a83c34ee748d34",
+    ".cursor/skills/revenue-cloud-data-model/domains/transactions.md": "d6c557e46cf4ab1721f8c0f73b22fd9014453a01",
+    ".cursor/skills/revenue-cloud-data-model/domains/usage.md": "e29b08c55869bb751ef818ffa5e8aad12af245c5",
+    ".cursor/skills/rlm-business-apis/SKILL.md": "96d3b7a3735b8f313431b8c874d80a09342930cf",
+    "postman/docs/billing-apis-quick-reference.md": "a6bb41d173270cf9f28a6d22ff4289face3b1d29",
+    "postman/docs/billing-business-apis-reference.md": "19f5d5fd5bbe5312208dc4c69e24ca3b429a38b5",
+    "postman/docs/context-service-apis-reference.md": "1bb8bfff11ffc56cc036ec5ee11e6636fa87105b",
+    "postman/docs/pcm-business-apis-reference.md": "ccd8cd8850496d968914951f98c4fb0e76ae5188",
+    "postman/docs/pricing-business-apis-v68.md": "54cf77fb33ac7ff11fe9fdea3c65edee147ee031",
+    "postman/docs/product-configurator-apis-reference.md": "4ebd8e83720b70e8ef07283e3b11b4cdb9780143",
+    "postman/docs/product-discovery-apis-reference.md": "df9e1bcf2e996c2c2e056007467b9dd4f04ed045",
+    "postman/docs/rate-management-apis-reference.md": "980ec10bc6442a128ffcae448aeb983cb0d88726",
+    "postman/docs/transaction-management-apis-reference.md": "cc5f66d56155c7d5f71ee24093fde951d19dc6e2",
+    "postman/docs/usage-management-apis-reference.md": "1e1ade5b8fd371541d3496c330eb17ecea38753d"
+  }
+}

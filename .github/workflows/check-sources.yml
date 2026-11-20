@@ -1,0 +1,47 @@
+name: Check adapted sources
+
+# Contenus maison adaptés d'un dépôt tiers (reej-plugins/*/sources.json) : chaque semaine, compare la
+# source à la version adaptée et ouvre (ou met à jour) une issue par plugin concerné. Le report dans nos
+# références est manuel et relu par un expert : voir reej-plugins/<plugin>/MAINTENANCE.md.
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # lundi 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Compare sources
+        run: python3 scripts/check_sources.py --out-dir /tmp/source-reports
+
+      - name: Open or update issues
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          shopt -s nullglob
+          reports=(/tmp/source-reports/*.md)
+          [ ${#reports[@]} -eq 0 ] && { echo "Aucune source modifiée."; exit 0; }
+          gh label create source-update --color FBCA04 --description "Source d'un contenu adapté modifiée" --force
+          for f in "${reports[@]}"; do
+            title="Source modifiée : $(basename "$f" .md)"
+            num=$(gh issue list --state open --label source-update --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
+            if [ -n "$num" ]; then
+              gh issue edit "$num" --body-file "$f"
+            else
+              url=$(gh issue create --title "$title" --body-file "$f" --label source-update --assignee ncomm)
+              # référent Revenue Cloud : assignation non bloquante (échoue s'il n'est pas collaborateur du repo)
+              gh issue edit "$url" --add-assignee mgironnet-droid \
+                || echo "::warning::mgironnet-droid non assignable à $url — l'ajouter comme collaborateur du repo"
+            fi
+          done

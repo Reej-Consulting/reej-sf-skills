@@ -1,0 +1,10 @@
+reej-revenue — plugin Reej Consulting
+
+Les fichiers skills/reej-revenue-cloud-configure/references/*.md sont adaptés de
+https://github.com/SalesforceLabs/revenue-cloud-foundations (dossier .cursor/skills,
+commit c850652, Release 264 / API v68.0)
+Copyright (c) 2026 Salesforce, Inc. — licence Apache-2.0 (voir LICENSE).
+
+Modifications par Reej Consulting : outillage propre à ce dépôt retiré (CumulusCI,
+SFDMU, scripts, données de démo), contenu condensé et regroupé par thème.
+Le SKILL.md est écrit par Reej Consulting.
