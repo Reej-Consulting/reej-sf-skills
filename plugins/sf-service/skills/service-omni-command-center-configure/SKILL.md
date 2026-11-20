@@ -5,15 +5,13 @@ allowed-tools: Bash Read Write Edit Grep Glob
 metadata:
   version: "1.0"
   domains: ["Service"]
-  minApiVersion: "69.0"
+  minApiVersion: "66.0"
   relatedSkills:
     - "service-omni-base-settings-configure"
     - "service-omni-channel-setup-coordinate"
     - "service-omni-command-center-analyze"
     - "service-omni-supervisor-config-deploy"
-  accessCheck:
-    - type: license
-      value: ServiceCloud
+  accessCheck: "OrgPermissions.LightningService"
   cliTools:
     - tool: ["jq"]
       semver: ">=1.6"

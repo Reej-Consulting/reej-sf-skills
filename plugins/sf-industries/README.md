@@ -1,8 +1,8 @@
 # Salesforce — Industries
 
-Field Service, Consumer Goods, Education Cloud, Life Sciences.
+Field Service, Consumer Goods, Education Cloud, Life Sciences, Health Cloud, Insurance, Nonprofit Cloud.
 
-31 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `e5164d94` (2026-10-07). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+33 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `431c50f6` (2026-11-20). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 
@@ -28,14 +28,16 @@ Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 | `field-service-foundation-setup-designer-get` | Creates Field Service foundation data — Work Types, Skills, Service Territories, and Operating Hours. Accepts existing data in any format or designs from scratch, and confirms the … |
 | `field-service-mobile-branding-configure` | Derive a Field Service mobile app color scheme from a brand source (URL, hex codes, brand-guide paste, or color description), validate WCAG AA contrast in both light and dark mode,… |
 | `field-service-objective-designer-configure` | Designs service objectives for a Salesforce Field Service scheduling policy via a structured trade-off interview. Guides the user through objective selection and derives weights by… |
-| `field-service-prework-brief-deployer-configure` | Deploy the deterministic half of Einstein Pre-Work Brief on Field Service Mobile to a target org — prompt template, Lightning Data Service, licenses and permission sets, the Work O… |
 | `field-service-scheduling-policy-designer-query` | Designs the four policy-level settings for a Salesforce Field Service scheduling policy — name, optimization mode (In-Day vs Global), commit mode, and description — and delegates t… |
-| `field-service-setup-orchestrator-get` | Use this skill to set up Salesforce Field Service — Work Types, Skills, Service Territories, Operating Hours, Scheduling Policy, Work Rules, Service Objectives, Data Capture Forms,… |
 | `field-service-sobject-create-configure` | Headless 360 REST API deployment step for creating sObject records. Handles describe-based field discovery, required-field derivation, entity-relationship ordering, and composite g… |
-| `field-service-voice-to-form-configure` | Set up Voice to Form on Field Service Mobile end-to-end against a Salesforce org, covering both variants: Voice to Record Edit (voice-fills any record-edit screen) and Voice to For… |
 | `field-service-work-rule-designer-configure` | Designs the work rules for a Salesforce Field Service scheduling policy — the hard filters that determine which resources and time slots are eligible for an appointment. Step 2 of … |
+| `industries-patient-card-generate` | Build specification for the Health Cloud Patient Card Lightning Web Component: a single-card patient summary with a Provider (clinical) and a Payer (coverage) persona, header, memb… |
 | `insurance-brokerage-agency-billing-configure` | Configure end-to-end Agency Billing on a Salesforce FSC Insurance Brokerage org via dispatch MCP calls. Use this skill when users want to set up brokerage billing, configure agency… |
 | `life-sciences-fieldsalesrep-coordinate` | Use this skill to run the full end-to-end Life Sciences Cloud setup workflow for field sales rep in sequence. Trigger when the user says 'set up Life Sciences Cloud end to end', 'r… |
 | `life-sciences-kam-coordinate` | Use this skill to run the full end-to-end Life Sciences Cloud setup workflow for a key account management (KAM) user in sequence. Trigger when the user says 'set up Life Sciences C… |
 | `life-sciences-prerequisites-validate` | Validate Life Sciences Cloud for Customer Engagement org prerequisites. Use when an admin needs to verify that all required settings, permissions, OWD sharing rules, and feature to… |
 | `life-sciences-territory-configure` | Use this skill to create and activate a Territory Type, Territory Model, and Territories for Life Sciences Cloud. Trigger when the user says 'set up territories', 'create territory… |
+| `nonprofit-fundraising-configure` | Configure Nonprofit Cloud Fundraising on an org headlessly — assign permission sets/groups org-wide, enable Fundraising, create a default Gift Designation, configure gift/recurring… |
+| `nonprofit-volunteer-management-model-get` | Use this skill to explain how the Salesforce Nonprofit Cloud Volunteer Management (VM) data model works and why, answering from reference material without connecting to an org. Ans… |
+| `nonprofit-volunteer-management-records-create` | Use this skill to write Salesforce Nonprofit Cloud Volunteer Management (VM) records to an org once the user knows what to create, from a confirmed plan or a list of records: it re… |
+| `nonprofit-volunteer-management-structure-generate` | Use this skill to plan a Salesforce Nonprofit Cloud Volunteer Management (VM) program before anything is created: it interviews the user about their programs, sites, volunteer role… |

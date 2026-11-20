@@ -2,7 +2,7 @@
 
 Socle commun : SOQL, retrieve/deploy, Apex et tests, Flow, génération de métadonnées, LWC, Lightning Types, Agent Script, documentation Salesforce. Installé automatiquement avec tout autre plugin sf-*.
 
-21 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `e5164d94` (2026-10-07). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+21 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `431c50f6` (2026-11-20). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 | Skill | Description |
 |---|---|
@@ -20,10 +20,10 @@ Socle commun : SOQL, retrieve/deploy, Apex et tests, Flow, génération de méta
 | `platform-custom-field-generate` | Use when users create, generate, or validate Salesforce Custom Field metadata. Trigger on custom fields, field types, Roll-Up Summary, Master-Detail/Lookup relationships, formula f… |
 | `platform-custom-lightning-type-generate` | Use this skill when users need to create Custom Lightning Types (CLTs) for Einstein Agent actions or structured input/output schemas. Trigger when users mention CLT, Custom Lightni… |
 | `platform-custom-object-generate` | Use when users create, generate, or validate Salesforce Custom Object metadata. Trigger on custom objects, .object files, sharing models, name fields, or validation rules — e.g. \"… |
-| `platform-data-and-tooling-api-context-get` | Authoritative field/schema reference for 2130 STANDARD Salesforce objects — sObject and Tooling field API names, types, properties (filterable/sortable/groupable/updateable), and r… |
+| `platform-data-and-tooling-api-context-get` | Authoritative field/schema reference for 2161 STANDARD Salesforce objects, including Tooling API records. Use to verify exact field names, types, relationships, Filter/Sort/Group/C… |
 | `platform-docs-get` | Official Salesforce documentation retrieval skill. Use when you need authoritative Salesforce docs from developer.salesforce.com, help.salesforce.com, architect.salesforce.com, adm… |
 | `platform-metadata-api-context-get` | REQUIRED companion for Salesforce metadata generation — load this schema/API-context skill in the SAME turn as ANY metadata generator (if you load a generator, you ALSO load this).… |
-| `platform-metadata-deploy` | Salesforce DevOps automation using sf CLI v2. TRIGGER when: user deploys metadata, creates/manages scratch orgs or sandboxes, sets up CI/CD pipelines, or troubleshoots deployment e… |
+| `platform-metadata-deploy` | Salesforce DevOps automation using sf CLI v2. TRIGGER when: user deploys metadata, validates a deploy or does a dry-run, deploys to a Production org, quick-deploys a validated job … |
 | `platform-metadata-retrieve` | ALWAYS USE THIS SKILL to retrieve metadata from an org to your local project with sf project retrieve start. Supports retrieval by all changes, source directory, metadata type (wil… |
 | `platform-permission-set-generate` | Generates correct, deployable Salesforce permission set metadata (PermissionSet XML) with object, field, user, and app permissions. Use this skill when creating or editing permissi… |
 | `platform-soql-query` | Use when the user needs SOQL/SOSL authoring or optimization: natural-language-to-query generation, relationship queries, aggregates, query-plan/selectivity analysis, and performanc… |
