@@ -82,6 +82,7 @@ DOMAINS: dict[str, dict] = {
             r"^agentforce-", r"^data360-", r"^platform-models-api-",
             r"^platform-agent(ic)?setup-", r"^platform-tracing-agentforce-",
             r"^sales-agentforce-", r"^service-agentforce-",
+            r"^afcc-",  # Agentforce Contact Center : à côté de service-agentforce-contact-center-coordinate
         ],
     },
     "platform": {
@@ -89,7 +90,7 @@ DOMAINS: dict[str, dict] = {
         "description": "Compléments plateforme au socle sf-core : sharing et OWD, rapports et list views, Code Analyzer et ApexGuru, chiffrement, gestion de données, métadonnées avancées, widgets, validation et migration SLDS.",
         "keywords": ["salesforce", "apex", "flow", "soql", "metadata", "deploy", "slds"],
         "match": [r"^platform-", r"^automation-flow-", r"^design-systems-", r"^external-", r"^dx-code-", r"^dx-apexguru-",
-                  r"^tableau-", r"^marketing-", r"^sales-"],  # clouds isolés (1-2 skills) : pas de plugin dédié tant que ça reste marginal
+                  r"^tableau-", r"^crm-analytics-", r"^marketing-", r"^sales-"],  # clouds isolés (1-2 skills) : pas de plugin dédié tant que ça reste marginal
     },
     "devops": {
         "displayName": "Salesforce — DevOps & Orgs",
@@ -117,9 +118,10 @@ DOMAINS: dict[str, dict] = {
     },
     "industries": {
         "displayName": "Salesforce — Industries",
-        "description": "Field Service, Consumer Goods, Education Cloud, Life Sciences.",
-        "keywords": ["salesforce", "field service", "consumer goods", "education cloud", "life sciences"],
-        "match": [r"^field-service-", r"^consumer-goods-", r"^education-cloud-", r"^life-sciences-", r"^insurance-"],
+        "description": "Field Service, Consumer Goods, Education Cloud, Life Sciences, Insurance, Nonprofit Cloud.",
+        "keywords": ["salesforce", "field service", "consumer goods", "education cloud", "life sciences", "insurance", "nonprofit"],
+        "match": [r"^field-service-", r"^consumer-goods-", r"^education-cloud-", r"^life-sciences-", r"^insurance-",
+                  r"^nonprofit-"],
     },
 }
 DEFAULT_DOMAIN = "platform"
