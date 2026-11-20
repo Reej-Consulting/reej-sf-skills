@@ -18,11 +18,9 @@ metadata:
   cliTools:
     - tool: ["sf"]
       semver: ">=2.0.0"
-  accessCheck:
-    - type: "license"
-      value: "Agentforce"
-    - type: "orgPerm"
-      value: "EinsteinForEducationCloud"
+    - tool: ["jq"]
+      semver: ">=1.7.0"
+  accessCheck: "(OrgPermissions.EinsteinForEducationCloud) && (OrgPermissions.EinsteinAgentPlatform)"
 ---
 
 # Configuring the Education Cloud Student Recruitment Agent
