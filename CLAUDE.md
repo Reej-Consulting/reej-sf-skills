@@ -17,6 +17,7 @@ Pourquoi un miroir plutôt que le marketplace officiel : au démarrage (sept. 20
 | `scripts/validate.py` | Contrôle de cohérence : marketplace ↔ plugin.json, préfixes `sf-`/`reej-`, frontmatter des SKILL.md, doublons de noms, `SYNC_STATE.json`, refuse tout `TODO` dans un fichier d'un skill maison. Avec `--base <ref>` (activé en CI sur les PR) : exige un incrément de version pour tout plugin maison modifié. |
 | `.github/workflows/sync-upstream.yml` | Cron quotidien 05:00 UTC + déclenchement manuel. Ouvre une PR `sync/upstream` s'il y a des changements (option `auto_merge` pour pousser direct sur `main`). |
 | `.github/workflows/validate.yml` | Sur toute PR/push touchant `reej-plugins/`, `scripts/` ou `marketplace.json` : vérifie que `marketplace.json` est à jour puis lance `validate.py`. |
+| `scripts/check_sources.py` + `.github/workflows/check-sources.yml` | Contenus maison **adaptés** d'un dépôt tiers (`reej-plugins/*/sources.json`) : compare chaque lundi la source au commit adapté et ouvre une issue `source-update`. Jamais de réécriture automatique : report manuel selon le `MAINTENANCE.md` du plugin, relu par un expert, puis `--snapshot <plugin>`. |
 | `.claude-plugin/marketplace.json` | Catalogue : entrées `reej-*` d'abord, puis `sf-*`. Généré, ne pas éditer. |
 | `SYNC_STATE.json` | Commit upstream synchronisé + placement de chaque skill. Sans horodatage (sinon PR vide à chaque run). |
 | `CONTRIBUTING.md` | Procédure complète pour ajouter un skill ou un plugin maison. |
