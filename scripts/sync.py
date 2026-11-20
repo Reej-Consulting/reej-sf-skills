@@ -118,10 +118,10 @@ DOMAINS: dict[str, dict] = {
     },
     "industries": {
         "displayName": "Salesforce — Industries",
-        "description": "Field Service, Consumer Goods, Education Cloud, Life Sciences, Insurance, Nonprofit Cloud.",
-        "keywords": ["salesforce", "field service", "consumer goods", "education cloud", "life sciences", "insurance", "nonprofit"],
+        "description": "Field Service, Consumer Goods, Education Cloud, Life Sciences, Health Cloud, Insurance, Nonprofit Cloud.",
+        "keywords": ["salesforce", "field service", "consumer goods", "education cloud", "life sciences", "health cloud", "insurance", "nonprofit"],
         "match": [r"^field-service-", r"^consumer-goods-", r"^education-cloud-", r"^life-sciences-", r"^insurance-",
-                  r"^nonprofit-"],
+                  r"^nonprofit-", r"^industries-"],  # industries- : skills Industries transverses ou Health Cloud
     },
 }
 DEFAULT_DOMAIN = "platform"
