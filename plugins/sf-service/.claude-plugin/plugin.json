@@ -2,7 +2,7 @@
   "name": "sf-service",
   "displayName": "Salesforce — Service Cloud",
   "version": "2026.11.20",
-  "description": "Service Cloud : Omni-Channel, Digital Engagement (WhatsApp, messaging), ITSM, Email-to-Case, Help Agent, portails. 66 skills, synchronisés depuis forcedotcom/sf-skills@431c50f6.",
+  "description": "Service Cloud : Omni-Channel, Digital Engagement (WhatsApp, messaging), ITSM, Email-to-Case, Help Agent, portails. 66 skills, synchronisés depuis forcedotcom/sf-skills@b09f91fe.",
   "author": {
     "name": "Reej Consulting (repackaging) — skills © Salesforce",
     "url": "https://github.com/forcedotcom/sf-skills"

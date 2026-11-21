@@ -2,7 +2,7 @@
   "name": "sf-industries",
   "displayName": "Salesforce — Industries",
   "version": "2026.11.20",
-  "description": "Field Service, Consumer Goods, Education Cloud, Life Sciences, Health Cloud, Insurance, Nonprofit Cloud. 33 skills, synchronisés depuis forcedotcom/sf-skills@431c50f6.",
+  "description": "Field Service, Consumer Goods, Education Cloud, Life Sciences, Health Cloud, Insurance, Nonprofit Cloud. 33 skills, synchronisés depuis forcedotcom/sf-skills@b09f91fe.",
   "author": {
     "name": "Reej Consulting (repackaging) — skills © Salesforce",
     "url": "https://github.com/forcedotcom/sf-skills"
