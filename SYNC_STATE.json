@@ -1,6 +1,6 @@
 {
   "upstream_repo": "https://github.com/forcedotcom/sf-skills.git",
-  "upstream_commit": "431c50f69746c84c6348c19778b71d6ad257f696",
+  "upstream_commit": "b09f91fe832e19b1f8c5eddd3bfb418640d997b4",
   "upstream_commit_date": "2026-11-20",
   "version": "2026.11.20",
   "skills": {

@@ -25,7 +25,7 @@
     {
       "name": "sf-core",
       "source": "./plugins/sf-core",
-      "description": "Socle commun : SOQL, retrieve/deploy, Apex et tests, Flow, génération de métadonnées, LWC, Lightning Types, Agent Script, documentation Salesforce. Installé automatiquement avec tout autre plugin sf-*. 21 skills, synchronisés depuis forcedotcom/sf-skills@431c50f6.",
+      "description": "Socle commun : SOQL, retrieve/deploy, Apex et tests, Flow, génération de métadonnées, LWC, Lightning Types, Agent Script, documentation Salesforce. Installé automatiquement avec tout autre plugin sf-*. 21 skills, synchronisés depuis forcedotcom/sf-skills@b09f91fe.",
       "version": "2026.11.20",
       "keywords": [
         "salesforce",
@@ -41,7 +41,7 @@
     {
       "name": "sf-agentforce",
       "source": "./plugins/sf-agentforce",
-      "description": "Agentforce avancé (tests, observabilité, persona, migration Einstein Bots, canaux), Data 360 / Data Cloud, Models API. L'écriture d'Agent Script est dans sf-core. 16 skills, synchronisés depuis forcedotcom/sf-skills@431c50f6.",
+      "description": "Agentforce avancé (tests, observabilité, persona, migration Einstein Bots, canaux), Data 360 / Data Cloud, Models API. L'écriture d'Agent Script est dans sf-core. 16 skills, synchronisés depuis forcedotcom/sf-skills@b09f91fe.",
       "version": "2026.11.20",
       "keywords": [
         "salesforce",
@@ -55,7 +55,7 @@
     {
       "name": "sf-platform",
       "source": "./plugins/sf-platform",
-      "description": "Compléments plateforme au socle sf-core : sharing et OWD, rapports et list views, Code Analyzer et ApexGuru, chiffrement, gestion de données, métadonnées avancées, widgets, validation et migration SLDS. 43 skills, synchronisés depuis forcedotcom/sf-skills@431c50f6.",
+      "description": "Compléments plateforme au socle sf-core : sharing et OWD, rapports et list views, Code Analyzer et ApexGuru, chiffrement, gestion de données, métadonnées avancées, widgets, validation et migration SLDS. 43 skills, synchronisés depuis forcedotcom/sf-skills@b09f91fe.",
       "version": "2026.11.20",
       "keywords": [
         "salesforce",
@@ -70,7 +70,7 @@
     {
       "name": "sf-devops",
       "source": "./plugins/sf-devops",
-      "description": "DevOps Center, pipelines, gestion des orgs (scratch, sandbox, Dev Hub, trials), packaging, post-copy sandbox. 27 skills, synchronisés depuis forcedotcom/sf-skills@431c50f6.",
+      "description": "DevOps Center, pipelines, gestion des orgs (scratch, sandbox, Dev Hub, trials), packaging, post-copy sandbox. 27 skills, synchronisés depuis forcedotcom/sf-skills@b09f91fe.",
       "version": "2026.11.20",
       "keywords": [
         "salesforce",
@@ -84,7 +84,7 @@
     {
       "name": "sf-service",
       "source": "./plugins/sf-service",
-      "description": "Service Cloud : Omni-Channel, Digital Engagement (WhatsApp, messaging), ITSM, Email-to-Case, Help Agent, portails. 66 skills, synchronisés depuis forcedotcom/sf-skills@431c50f6.",
+      "description": "Service Cloud : Omni-Channel, Digital Engagement (WhatsApp, messaging), ITSM, Email-to-Case, Help Agent, portails. 66 skills, synchronisés depuis forcedotcom/sf-skills@b09f91fe.",
       "version": "2026.11.20",
       "keywords": [
         "salesforce",
@@ -98,7 +98,7 @@
     {
       "name": "sf-experience",
       "source": "./plugins/sf-experience",
-      "description": "Experience Cloud, LWC avancé (migration, accessibilité, sécurité), LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile SDK. 48 skills, synchronisés depuis forcedotcom/sf-skills@431c50f6.",
+      "description": "Experience Cloud, LWC avancé (migration, accessibilité, sécurité), LDS/GraphQL, UI bundles React, CMS, Commerce B2B, Mobile SDK. 48 skills, synchronisés depuis forcedotcom/sf-skills@b09f91fe.",
       "version": "2026.11.20",
       "keywords": [
         "salesforce",
@@ -113,7 +113,7 @@
     {
       "name": "sf-integration",
       "source": "./plugins/sf-integration",
-      "description": "Connected Apps, Named Credentials, Change Data Capture, Platform Events, OmniStudio (OmniScript, FlexCards, Integration Procedures, DataRaptor). 12 skills, synchronisés depuis forcedotcom/sf-skills@431c50f6.",
+      "description": "Connected Apps, Named Credentials, Change Data Capture, Platform Events, OmniStudio (OmniScript, FlexCards, Integration Procedures, DataRaptor). 12 skills, synchronisés depuis forcedotcom/sf-skills@b09f91fe.",
       "version": "2026.11.20",
       "keywords": [
         "salesforce",
@@ -127,7 +127,7 @@
     {
       "name": "sf-industries",
       "source": "./plugins/sf-industries",
-      "description": "Field Service, Consumer Goods, Education Cloud, Life Sciences, Health Cloud, Insurance, Nonprofit Cloud. 33 skills, synchronisés depuis forcedotcom/sf-skills@431c50f6.",
+      "description": "Field Service, Consumer Goods, Education Cloud, Life Sciences, Health Cloud, Insurance, Nonprofit Cloud. 33 skills, synchronisés depuis forcedotcom/sf-skills@b09f91fe.",
       "version": "2026.11.20",
       "keywords": [
         "salesforce",

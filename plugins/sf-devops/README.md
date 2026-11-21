@@ -2,7 +2,7 @@
 
 DevOps Center, pipelines, gestion des orgs (scratch, sandbox, Dev Hub, trials), packaging, post-copy sandbox.
 
-27 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `431c50f6` (2026-11-20). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
+27 skills, copie de [forcedotcom/sf-skills](https://github.com/forcedotcom/sf-skills) au commit `b09f91fe` (2026-11-20). Ne pas éditer à la main : régénéré par `scripts/sync.py`.
 
 Dépend de `sf-core` (socle), installé automatiquement avec ce plugin.
 
